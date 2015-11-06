@@ -1,6 +1,6 @@
 {
   "name": "react-native-lock-ios",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Auth0 Lock for React Native (iOS)",
   "main": "auth0-lock.js",
   "scripts": {
@@ -18,7 +18,8 @@
     "authentication",
     "jwt",
     "ios",
-    "touchid"
+    "touchid",
+    "passwordless"
   ],
   "nativePackage": true,
   "author": "Auth0",
@@ -26,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/auth0/react-native-lock-ios/issues"
   },
-  "homepage": "https://github.com/auth0/react-native-lock-ios#readme"
+  "homepage": "https://auth0.com"
 }

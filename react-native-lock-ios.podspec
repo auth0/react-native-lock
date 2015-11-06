@@ -20,14 +20,14 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core', 'NativeModule'
 
   s.subspec 'Core' do |core|
-    core.source_files = '*.{h,m}'
+    core.source_files = 'objc/core/*.{h,m}'
     core.dependency 'Lock/UI', '~> 1.21'
     core.dependency 'Lock/TouchID'
     core.dependency 'Lock/SMS'
   end
 
   s.subspec 'NativeModule' do |native|
-    native.source_files = 'NativeModule/*.{h,m}'
+    native.source_files = 'objc/*.{h,m}'
     native.dependency 'React/Core'
     native.dependency 'LockReact/Core'
   end

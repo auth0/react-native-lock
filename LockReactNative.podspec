@@ -21,9 +21,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
     core.source_files = 'objc/core/*.{h,m}'
+    core.public_header_files = "objc/core/A0LockReact.h"
     core.dependency 'Lock/UI', '~> 1.21'
     core.dependency 'Lock/TouchID'
     core.dependency 'Lock/SMS'
+    core.dependency 'Lock/Email'
   end
 
   s.subspec 'NativeModule' do |native|

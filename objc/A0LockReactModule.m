@@ -58,7 +58,7 @@ RCT_EXPORT_METHOD(registerNativeAuthentication:(NSArray *)authentications) {
     }
     NSMutableArray *authenticators = [@[] mutableCopy];
     for (NSDictionary *authentication in authentications) {
-        NSString *name = authentication[@"provider"];
+        NSString *name = authentication[@"name"];
 #ifdef FACEBOOK_ENABLED
         if ([@"facebook" isEqualToString:name]) {
             NSArray *permissions = authentication[@"permissions"];
@@ -89,18 +89,6 @@ RCT_EXPORT_METHOD(registerNativeAuthentication:(NSArray *)authentications) {
 RCT_EXPORT_METHOD(show:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[A0LockReact sharedInstance] showWithOptions:options callback:callback];
-    });
-}
-
-RCT_EXPORT_METHOD(showSMS:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[A0LockReact sharedInstance] showSMSWithOptions:options callback:callback];
-    });
-}
-
-RCT_EXPORT_METHOD(showTouchID:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[A0LockReact sharedInstance] showTouchIDWithOptions:options callback:callback];
     });
 }
 

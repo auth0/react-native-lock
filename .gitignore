@@ -33,3 +33,5 @@ node_modules/
 # Generic
 *.log
 
+#Auth0
+Auth0.plist

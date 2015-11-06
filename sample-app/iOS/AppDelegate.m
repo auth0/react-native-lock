@@ -49,7 +49,12 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   [A0LockLogger logAll];
+  [[[A0LockReact sharedInstance] lock] applicationLaunchedWithOptions:launchOptions];
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+  return [[[A0LockReact sharedInstance] lock] continueUserActivity:userActivity restorationHandler:restorationHandler];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {

@@ -105,6 +105,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				45982515977321D08CBE94FD /* Embed Pods Frameworks */,
 				6AAD50B054EBA409605F35D1 /* Copy Pods Resources */,
+				5F6925F81BED3F5E0025538B /* Auth0 */,
 			);
 			buildRules = (
 			);
@@ -185,6 +186,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LockReact/Pods-LockReact-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5F6925F81BED3F5E0025538B /* Auth0 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Auth0;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "AUTH0_PLIST=\"${SRCROOT}/Auth0.plist\"\nif [ -f $AUTH0_PLIST ];\nthen\ncp \"$AUTH0_PLIST\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\"\nfi";
 		};
 		6AAD50B054EBA409605F35D1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

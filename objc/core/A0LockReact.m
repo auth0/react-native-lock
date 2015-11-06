@@ -45,20 +45,28 @@
 }
 
 - (void)showWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
+    static NSString *TouchID = @"touchid";
+    static NSString *SMS = @"sms";
+    static NSString *Email = @"email";
+
     if (!self.lock) {
         callback(@[@"Please configure Lock before using it", [NSNull null], [NSNull null]]);
         return;
     }
     NSArray *connections = options[@"connections"];
-    BOOL isTouchID = [connections containsObject:@"touchid"];
-    BOOL isSMS = [connections containsObject:@"sms"];
-    if (isTouchID && isSMS) {
-        callback(@[@"Must specify either 'touchid' or 'sms' connections", [NSNull null], [NSNull null]]);
+    NSArray *passwordless = [connections filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString * _Nonnull name, NSDictionary<NSString *,id> * _Nullable bindings) {
+        NSString *lowecaseName = name.lowercaseString;
+        return [lowecaseName isEqualToString:TouchID] || [lowecaseName isEqualToString:SMS] || [lowecaseName isEqualToString:Email];
+    }]];
+    BOOL isTouchID = [connections containsObject:TouchID];
+    BOOL isSMS = [connections containsObject:SMS];
+    BOOL isEmail = [connections containsObject:Email];
+    if (passwordless.count > 1) {
+        callback(@[@"Must specify either 'touchid', 'email' or 'sms' connections", [NSNull null], [NSNull null]]);
         return;
     }
 
     UIViewController *controller = [[[[UIApplication sharedApplication] windows] firstObject] rootViewController];
-    UIViewController *lock;
     A0AuthenticationBlock authenticationBlock = ^(A0UserProfile *profile, A0Token *token) {
         if (profile && token) {
             NSDictionary *profileDict = [profile asDictionary];
@@ -72,76 +80,41 @@
     void(^dismissBlock)() = ^{
         callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
     };
+
     if (isTouchID) {
-        lock = [self buildTouchIDLockWithOptions:options authenticationBlock:authenticationBlock dismissBlock:dismissBlock];
+        A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
+        lock.closable = [options[@"closable"] boolValue];
+        lock.authenticationParameters = [self authenticationParametersFromOptions:options];
+        lock.onAuthenticationBlock = authenticationBlock;
+        lock.onUserDismissBlock = dismissBlock;
+        [self.lock presentTouchIDController:lock fromController:controller];
     } else if (isSMS) {
-        lock = [self buildSMSLockWithOptions:options authenticationBlock:authenticationBlock dismissBlock:dismissBlock];
+        A0SMSLockViewController *lock = [self.lock newSMSViewController];
+        lock.closable = [options[@"closable"] boolValue];
+        lock.onAuthenticationBlock = authenticationBlock;
+        lock.onUserDismissBlock = dismissBlock;
+        [self.lock presentSMSController:lock fromController:controller];
+    } else if (isEmail) {
+        A0EmailLockViewController *lock = [self.lock newEmailViewController];
+        lock.closable = [options[@"closable"] boolValue];
+        lock.authenticationParameters = [self authenticationParametersFromOptions:options];
+        lock.onAuthenticationBlock = authenticationBlock;
+        lock.onUserDismissBlock = dismissBlock;
+        [self.lock presentEmailController:lock fromController:controller];
     } else {
-        lock = [self buildLockWithOptions:options authenticationBlock:authenticationBlock dismissBlock:dismissBlock];
+        A0LockViewController *lock = [self.lock newLockViewController];
+        lock.closable = [options[@"closable"] boolValue];
+        lock.usesEmail = [self booleanValueOf:options[@"usesEmail"] defaultValue:YES];
+        lock.useWebView = [self booleanValueOf:options[@"useWebView"] defaultValue:YES];
+        lock.loginAfterSignUp = [self booleanValueOf:options[@"loginAfterSignUp"] defaultValue:YES];
+        lock.defaultADUsernameFromEmailPrefix = [options[@"defaultADUsernameFromEmailPrefix"] boolValue];
+        lock.connections = options[@"connections"];
+        lock.defaultDatabaseConnectionName = options[@"defaultDatabaseConnectionName"];
+        lock.authenticationParameters = [self authenticationParametersFromOptions:options];
+        lock.onAuthenticationBlock = authenticationBlock;
+        lock.onUserDismissBlock = dismissBlock;
+        [self.lock presentLockController:lock fromController:controller];
     }
-    [controller presentViewController:lock animated:YES completion:nil];
-}
-
-- (void)showSMSWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
-    UIViewController *controller = [[[[UIApplication sharedApplication] windows] firstObject] rootViewController];
-    A0AuthenticationBlock authenticationBlock = ^(A0UserProfile *profile, A0Token *token) {
-        NSDictionary *profileDict = [profile asDictionary];
-        NSDictionary *tokenDict = [token asDictionary];
-        callback(@[[NSNull null], profileDict, tokenDict]);
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    };
-    void(^dismissBlock)() = ^{
-        callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
-    };
-    UIViewController *lock = [self buildSMSLockWithOptions:options authenticationBlock:authenticationBlock dismissBlock:dismissBlock];
-    [controller presentViewController:lock animated:YES completion:nil];
-}
-
-- (void)showTouchIDWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
-    UIViewController *controller = [[[[UIApplication sharedApplication] windows] firstObject] rootViewController];
-    A0AuthenticationBlock authenticationBlock = ^(A0UserProfile *profile, A0Token *token) {
-        NSDictionary *profileDict = [profile asDictionary];
-        NSDictionary *tokenDict = [token asDictionary];
-        callback(@[[NSNull null], profileDict, tokenDict]);
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    };
-    void(^dismissBlock)() = ^{
-        callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
-    };
-    UIViewController *lock = [self buildTouchIDLockWithOptions:options authenticationBlock:authenticationBlock dismissBlock:dismissBlock];
-    [controller presentViewController:lock animated:YES completion:nil];
-}
-
-- (UIViewController *)buildTouchIDLockWithOptions:(NSDictionary *)options authenticationBlock:(A0AuthenticationBlock)authenticationBlock dismissBlock:(void(^)())dismissBlock {
-    A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
-    lock.closable = [options[@"closable"] boolValue];
-    lock.authenticationParameters = [self authenticationParametersFromOptions:options];
-    lock.onAuthenticationBlock = authenticationBlock;
-    lock.onUserDismissBlock = dismissBlock;
-    return [[UINavigationController alloc] initWithRootViewController:lock];
-}
-
-- (UIViewController *)buildSMSLockWithOptions:(NSDictionary *)options authenticationBlock:(A0AuthenticationBlock)authenticationBlock dismissBlock:(void(^)())dismissBlock {
-    A0SMSLockViewController *lock = [self.lock newSMSViewController];
-    lock.closable = [options[@"closable"] boolValue];
-    lock.onAuthenticationBlock = authenticationBlock;
-    lock.onUserDismissBlock = dismissBlock;
-    return [[UINavigationController alloc] initWithRootViewController:lock];
-}
-
-- (UIViewController *)buildLockWithOptions:(NSDictionary *)options authenticationBlock:(A0AuthenticationBlock)authenticationBlock dismissBlock:(void(^)())dismissBlock {
-    A0LockViewController *lock = [self.lock newLockViewController];
-    lock.closable = [options[@"closable"] boolValue];
-    lock.usesEmail = [options[@"usesEmail"] boolValue];
-    lock.useWebView = [options[@"useWebView"] boolValue];
-    lock.loginAfterSignUp = [options[@"loginAfterSignUp"] boolValue];
-    lock.defaultADUsernameFromEmailPrefix = [options[@"defaultADUsernameFromEmailPrefix"] boolValue];
-    lock.connections = options[@"connections"];
-    lock.defaultDatabaseConnectionName = options[@"defaultDatabaseConnectionName"];
-    lock.authenticationParameters = [self authenticationParametersFromOptions:options];
-    lock.onAuthenticationBlock = authenticationBlock;
-    lock.onUserDismissBlock = dismissBlock;
-    return lock;
 }
 
 - (A0AuthParameters *)authenticationParametersFromOptions:(NSDictionary *)options {
@@ -158,4 +131,7 @@
     return [A0AuthParameters newWithDictionary:params];
 }
 
+- (BOOL)booleanValueOf:(id)value defaultValue:(BOOL)defaultValue {
+    return value != nil ? [value boolValue] : defaultValue;
+}
 @end

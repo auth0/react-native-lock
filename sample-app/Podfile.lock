@@ -65,6 +65,9 @@ PODS:
   - Lock/CoreUI (1.21.0):
     - CocoaLumberjack (~> 2.0)
     - Lock/Core
+  - Lock/Email (1.21.0):
+    - CocoaLumberjack (~> 2.0)
+    - Lock/UI
   - Lock/SMS (1.21.0):
     - CocoaLumberjack (~> 2.0)
     - Lock/UI
@@ -80,6 +83,7 @@ PODS:
     - LockReactNative/Core (= 0.0.1)
     - LockReactNative/NativeModule (= 0.0.1)
   - LockReactNative/Core (0.0.1):
+    - Lock/Email
     - Lock/SMS
     - Lock/TouchID
     - Lock/UI (~> 1.21)
@@ -134,7 +138,7 @@ SPEC CHECKSUMS:
   Lock: cf46cea61023248b458662a9800a99c410a355f4
   Lock-Facebook: 09f2397cbc9ae2e1fc654f7e66248da30343e349
   Lock-Twitter: 385c8ec734fb627ac05cc8e77aaf58a8142b25b8
-  LockReactNative: 05e560c7f40bb521b5a6e009b882462b2034ce29
+  LockReactNative: 9b3d3a3e32f52b6b427caebe7008b1ef26f74f90
   LUKeychainAccess: d22fc00b33ad92c7532962b86daa94c14b85ecbe
   NSData+Base64: 4e84902c4db907a15673474677e57763ef3903e4
   OAuthCore: 43dce261db846a1fe20234d95654257e00e78581

@@ -65,7 +65,6 @@ var LockReactApp = React.createClass({
       connections: ["touchid"],
       closable: true,
       authParams: {
-        connection: 'Username-Password-Authentication',
         scope: "openid email offline_access",
       },
     }, (err, profile, token) => {

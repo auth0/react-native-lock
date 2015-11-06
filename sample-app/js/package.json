@@ -6,7 +6,7 @@
   "author": "Auth0",
   "license": "MIT",
   "dependencies": {
-    "react-native": "^0.13.2"
+    "react-native": "~> 0.13.2"
   },
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh --assetRoots=../iOS/Images.xcassets"

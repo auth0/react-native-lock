@@ -16,9 +16,9 @@ var {
 
 var HeaderView = require('./header');
 var TokenView = require('./token');
-var Lock = require('NativeModules').LockReact;
+var Auth0Lock = require('react-native-lock-ios');
 
-Lock.init({});
+var lock = new Auth0Lock();
 
 var LockReactApp = React.createClass({
   getInitialState: function() {
@@ -61,7 +61,8 @@ var LockReactApp = React.createClass({
     );
   },
   _onShowLock: function() {
-    Lock.showTouchID({
+    lock.show({
+      connections: ["touchid"],
       closable: true,
       authParams: {
         connection: 'Username-Password-Authentication',

@@ -1,20 +1,26 @@
-var LockModule = require('NativeModules').LockReact;
+var LockModule = require('NativeModules').Auth0LockModule;
 
 class Auth0Lock {
   constructor(options) {
-    this.lockOptions = {
-      clientId: options.clientId,
-      domain: options.domain,
-      configurationDomain: options.configurationDomain
-    };
-    this.nativeIntegrations = options.integrations;
+    if (options) {
+      this.lockOptions = {
+        clientId: options.clientId,
+        domain: options.domain,
+        configurationDomain: options.configurationDomain
+      };
+      this.nativeIntegrations = options.integrations;
+    } else {
+      this.lockOptions = {};
+    }
   }
 
   show(options, callback) {
-    Lock.init(this.lockOptions);
+    LockModule.init(this.lockOptions);
     if (this.nativeIntegrations) {
-      Lock.registerNativeAuthentication(this.nativeIntegrations);
+      LockModule.registerNativeAuthentication(this.nativeIntegrations);
     }
-    Lock.show(options, callback);
+    LockModule.show(options, callback);
   }
 }
+
+module.exports = Auth0Lock;

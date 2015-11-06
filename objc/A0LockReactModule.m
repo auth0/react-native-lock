@@ -41,7 +41,7 @@
 
 @implementation A0LockReactModule
 
-RCT_EXPORT_MODULE(LockReact);
+RCT_EXPORT_MODULE(Auth0LockModule);
 
 RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
     if (values.count == 2) {
@@ -76,7 +76,7 @@ RCT_EXPORT_METHOD(registerNativeAuthentication:(NSArray *)authentications) {
         }
 #endif
 #ifdef GOOGLE_PLUS_ENABLED
-        if ([@"google+" isEqualToString:name]) {
+        if ([@"google" isEqualToString:name]) {
             NSString *clientId = authentication[@"client_id"];
             NSArray *scopes = authentication[@"scopes"];
             [authenticators addObject:[A0GooglePlusAuthenticator newAuthenticatorWithClientId:clientId andScopes:scopes]];

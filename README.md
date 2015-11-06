@@ -1,9 +1,10 @@
 # react-native-lock-ios
 
-[![CI Status](http://img.shields.io/travis/auth0/react-native-lock-ios.svg?style=flat)](https://travis-ci.org/auth0/Lock.ReactNative)
-[![Version](https://img.shields.io/cocoapods/v/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
-[![License](https://img.shields.io/cocoapods/l/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
-[![Platform](https://img.shields.io/cocoapods/p/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
+[![NPM version][npm-image]][npm-url]
+[![CI Status][travis-image]][travis-url]
+[![CP Version][cocoapods-version-image]][cocoapods-url]
+[![CP License][cocoapods-license-image]][cocoapods-url]
+[![CP Platform][cocoapods-platform-image]][cocoapods-url]
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps and Salesforce.
 
@@ -145,3 +146,14 @@ Auth0
 ## License
 
 react-native-lock-ios is available under the MIT license. See the [LICENSE file](LICENSE) for more info.
+
+<!-- Variables -->
+[npm-image]: https://img.shields.io/npm/v/react-native-lock-ios.svg?style=flat
+[npm-url]: https://npmjs.org/package/react-native-lock-ios
+[travis-image]: http://img.shields.io/travis/auth0/react-native-lock-ios.svg?style=flat
+[travis-url]: https://travis-ci.org/auth0/react-native-lock-ios
+[cocoapods-version-image]: https://img.shields.io/cocoapods/v/LockReactNative.svg?style=flat
+[cocoapods-license-image]: https://img.shields.io/cocoapods/l/LockReactNative.svg?style=flat
+[cocoapods-platform-image]: https://img.shields.io/cocoapods/p/LockReactNative.svg?style=flat
+[cocoapods-url]: http://cocoapods.org/pods/LockReactNative
+

@@ -49,7 +49,7 @@ var Auth0Lock = require('react-native-lock-ios');
 And initialize it with your Auth0 credentials that you can get from [our dashboard](https://app.auth0.com/#/applications)
 
 ```js
-var lock = new Auth0Lock(clientId: "YOUR_CLIENT_ID", domain: "YOUR_DOMAIN");
+var lock = new Auth0Lock({clientId: "YOUR_CLIENT_ID", domain: "YOUR_DOMAIN"});
 ```
 
 ### Email/Password, Enterprise & Social authentication

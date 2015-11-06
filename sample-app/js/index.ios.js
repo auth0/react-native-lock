@@ -13,7 +13,6 @@ var {
   Image,
   TouchableHighlight,
 } = React;
-
 var HeaderView = require('./header');
 var TokenView = require('./token');
 var Auth0Lock = require('react-native-lock-ios');

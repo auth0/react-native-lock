@@ -51,17 +51,16 @@ RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
     }
 }
 
-RCT_EXPORT_METHOD(registerNativeAuthentication:(NSArray *)authentications) {
+RCT_EXPORT_METHOD(nativeIntegrations:(NSDictionary *)integrations) {
     A0Lock *lock = [[A0LockReact sharedInstance] lock];
     if (!lock) {
         return;
     }
-    NSMutableArray *authenticators = [@[] mutableCopy];
-    for (NSDictionary *authentication in authentications) {
-        NSString *name = authentication[@"name"];
+    __block NSMutableArray *authenticators = [@[] mutableCopy];
+    [integrations enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSDictionary * _Nonnull values, BOOL * _Nonnull stop) {
 #ifdef FACEBOOK_ENABLED
-        if ([@"facebook" isEqualToString:name]) {
-            NSArray *permissions = authentication[@"permissions"];
+        if ([@"facebook" isEqualToString:key]) {
+            NSArray *permissions = values[@"permissions"];
             if (permissions.count == 0) {
                 permissions = nil;
             }
@@ -69,21 +68,21 @@ RCT_EXPORT_METHOD(registerNativeAuthentication:(NSArray *)authentications) {
         }
 #endif
 #ifdef TWITTER_ENABLED
-        if ([@"twitter" isEqualToString:name]) {
-            NSString *apiKey = authentication[@"api_key"];
-            NSString *apiSecret = authentication[@"api_secret"];
+        if ([@"twitter" isEqualToString:key]) {
+            NSString *apiKey = values[@"api_key"];
+            NSString *apiSecret = values[@"api_secret"];
             [authenticators addObject:[A0TwitterAuthenticator newAuthenticatorWithKey:apiKey andSecret:apiSecret]];
         }
 #endif
 #ifdef GOOGLE_PLUS_ENABLED
-        if ([@"google" isEqualToString:name]) {
-            NSString *clientId = authentication[@"client_id"];
-            NSArray *scopes = authentication[@"scopes"];
+        if ([@"google" isEqualToString:key]) {
+            NSString *clientId = values[@"client_id"];
+            NSArray *scopes = values[@"scopes"];
             [authenticators addObject:[A0GooglePlusAuthenticator newAuthenticatorWithClientId:clientId andScopes:scopes]];
         }
 #endif
-        [lock registerAuthenticators:authenticators];
-    }
+    }];
+    [lock registerAuthenticators:authenticators];
 }
 
 RCT_EXPORT_METHOD(show:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {

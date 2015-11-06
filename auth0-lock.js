@@ -17,7 +17,7 @@ class Auth0Lock {
   show(options, callback) {
     LockModule.init(this.lockOptions);
     if (this.nativeIntegrations) {
-      LockModule.registerNativeAuthentication(this.nativeIntegrations);
+      LockModule.nativeIntegrations(this.nativeIntegrations);
     }
     LockModule.show(options, callback);
   }

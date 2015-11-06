@@ -1,0 +1,17 @@
+platform :ios, '8.0'
+
+target 'LockReact' do
+  pod 'LockReact/NativeModule', :path => '../'
+  pod 'Lock-Facebook'
+  pod 'Lock-Twitter'
+
+pod 'React', :path => 'js/node_modules/react-native', :subspecs => [
+  'Core',
+  'RCTImage',
+  'RCTNetwork',
+  'RCTText',
+  'RCTWebSocket',
+  # Add any other subspecs you want to use in your project
+]
+end
+

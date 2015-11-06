@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
                         We have SDKs for the most common platforms (Ruby, Node, iOS, Angular, etc.) so that with a couple lines of code, you can get the Authentication for your app implemented. 
                         Let us worry about Authentication so that you can focus on the core of your business.
                        DESC
-  s.homepage         = "https://github.com/auth0/Lock.ReactNative"
+  s.homepage         = "https://github.com/auth0/react-native-lock-ios"
   s.license          = 'MIT'
   s.author           = { "Auth0" => "support@auth0.com", "Hernan Zalazar" => "hernan@auth0.com" }
-  s.source           = { :git => "https://github.com/auth0/Lock.ReactNative.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/auth0/react-native-lock-ios.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/auth0'
 
   s.platform     = :ios, '7.0'

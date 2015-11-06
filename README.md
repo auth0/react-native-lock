@@ -1,99 +1,73 @@
-# LockReact
+# react-native-lock-ios
 
-[![CI Status](http://img.shields.io/travis/auth0/Lock.ReactNative.svg?style=flat)](https://travis-ci.org/auth0/Lock.ReactNative)
-[![Version](https://img.shields.io/cocoapods/v/LockReact.svg?style=flat)](http://cocoapods.org/pods/LockReact)
-[![License](https://img.shields.io/cocoapods/l/LockReact.svg?style=flat)](http://cocoapods.org/pods/LockReact)
-[![Platform](https://img.shields.io/cocoapods/p/LockReact.svg?style=flat)](http://cocoapods.org/pods/LockReact)
+[![CI Status](http://img.shields.io/travis/auth0/react-native-lock-ios.svg?style=flat)](https://travis-ci.org/auth0/Lock.ReactNative)
+[![Version](https://img.shields.io/cocoapods/v/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
+[![License](https://img.shields.io/cocoapods/l/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
+[![Platform](https://img.shields.io/cocoapods/p/LockReactNative.svg?style=flat)](http://cocoapods.org/pods/LockReactNative)
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps and Salesforce.
 
-**LockReact** is a wrapper around [Lock](https://github.com/auth0/Lock.iOS-OSX) so it easier to use with React Native.
-
-> LockReact API is in Beta and might be subject to changes due to improvements in either Lock or React Native
+**react-native-lock-ios** is a wrapper around [Lock](https://github.com/auth0/Lock.iOS-OSX) so it can be used from an iOS React Native application
 
 ## Requirements
 
-iOS 7+ & React Native
+* iOS 7+ 
+* React Native
+* CocoaPods
 
 ## Installation
 
-### Using CocoaPods Only
-LockReact is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Run `npm install --save react-native-lock-ios` to add the package to your app's dependencies.
+
+To tell CocoaPods what native libraries you need, create a file named `Podfile` like this in your app's project directory:
 
 ```ruby
-pod 'LockReact/NativeModule', '~> 0.4'
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'React', :subspecs => [
+  'Core', 
+  'RCTImage', 
+  'RCTNetwork', 
+  'RCTText', 
+  'RCTWebSocket'
+  ], :path => 'node_modules/react-native'
+pod 'LockReactNative', :path => 'node_modules/react-native-lock-ios'
 ```
 
-### React Native CLI + CocoaPods
-
-If your already created your application using `react-native init` command, you need to include this Pod instead:
-
-```ruby
-pod 'LockReact', '~> 0.4'
-```
-
-Then copy [A0LockReactModule.h](https://raw.githubusercontent.com/auth0/Lock.ReactNative/master/Pod/Classes/NativeModule/A0LockReactModule.h) and [A0LockReactModule.m](https://raw.githubusercontent.com/auth0/Lock.ReactNative/master/Pod/Classes/NativeModule/A0LockReactModule.m) to your Xcode project, and make sure they added to your app's target.
+Now run from the same folder the command `pod install`. It will automatically download **Lock for iOS** with all it's dependencies, and create an Xcode workspace containing all of them. 
+From now on open `<YourAppName>.xcworkspace` instead of `<YourAppName>.xcodeproject`. This is because now React Native's iOS code (and Lock's) is now pulled in via CocoaPods.
+Another necessary step you need to do is remove the React, RCTImage, etc. subprojects from your app's Xcode project.
 
 ## Usage
 
-In your project's `Info.plist` file add the following entries:
-
-* __Auth0ClientId__: The client ID of your application in __Auth0__.
-* __Auth0Domain__: Your account's domain in __Auth0__.
-
-> You can find these values in your app's settings in [Auth0 dashboard](https://app.auth0.com/#/applications).
-
-For example:
-
-[![Auth0 plist](http://assets.auth0.com/mobile-sdk-lock/example-plist.png)](http://auth0.com)
-
-Also you need to register a Custom URL type, it must have a custom scheme with the following format `a0<Your Client ID>`. For example if your Client ID is `Exe6ccNagokLH7mBmzFejP` then the custom scheme should be `a0Exe6ccNagokLH7mBmzFejP`.
-
-Then you'll need to handle that custom scheme, so first import `A0LockReact` header in your `AppDelegate.m`
-
-```objc
-#import <LockReact/A0LockReact.h>
-```
-
-and override `-application:openURL:sourceApplication:annotation:` method, if you haven't done it before, and add the following line:
-
-```objc
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  return [[[A0LockReact sharedInstance] lock] handleURL:url sourceApplication:sourceApplication];
-}
-```
-
-> This is required to be able to return back to your application when authenticating with Safari (or native integration with FB or Twitter if used). This call checks the URL and handles all that have the custom scheme defined before.
-
-Finally in the file `index.ios.js`, require Lock's module like this:
+Let's require `react-native-lock-ios` module:
 
 ```js
-var Lock = require('NativeModules').LockReactModule;
-Lock.init({});
+var Auth0Lock = require('react-native-lock-ios');
+```
+
+And initialize it with your Auth0 credentials that you can get from [our dashboard](https://app.auth0.com/#/applications)
+
+```js
+var lock = new Auth0Lock(clientId: "YOUR_CLIENT_ID", domain: "YOUR_DOMAIN");
 ```
 
 ### Email/Password, Enterprise & Social authentication
 
 ```js
-Lock.show({}, (err, profile, token) => {
+lock.show({}, (err, profile, token) => {
   console.log('Logged in!');
 });
 ```
 
 And you'll see our native login screen
 
-[![Lock.png](http://blog.auth0.com.s3.amazonaws.com/Lock-Widget-Screenshot.png)](https://auth0.com)
-
-> By default all social authentication will be done using Safari, if you want native integration please check this [wiki page](https://github.com/auth0/Lock.iOS-OSX/wiki/Native-Social-Authentication).
+[![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-default.png)](https://auth0.com)
 
 ### TouchID
 
 ```js
-Lock.showTouchID({
-  authParams: {
-    connection: 'Username-Password-Authentication',  
-  }
+lock.show({
+  connections: ["touchid"]
 }, (err, profile, token) => {
   console.log('Logged in!');
 });
@@ -101,24 +75,35 @@ Lock.showTouchID({
 
 And you'll see TouchID login screen
 
-[![Lock.png](http://blog.auth0.com.s3.amazonaws.com/Lock-TouchID-Screenshot.png)](https://auth0.com)
+[![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-pwdless-touchid.png)](https://auth0.com)
 
 > Because it uses a Database connection, the user can change it's password and authenticate using email/password whenever needed. For example when you change your device.
 
-### SMS
+### SMS Passwordless
 
 ```js
-Lock.showSMS({
-  apiToken: "API V2 TOKEN",
+lock.show({
+  connections: ["sms"]
 }, (err, profile, token) => {
   console.log('Logged in!');
 });
 ```
-And you'll see SMS login screen
+And you'll see SMS Passwordless login screen
 
-[![Lock.png](http://blog.auth0.com.s3.amazonaws.com/Lock-SMS-Screenshot.png)](https://auth0.com)
+[![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-pwdless-sms.png)](https://auth0.com)
 
-> You need generate a v2 API Token used to register the  phone number and send the login code with SMS. This token can be generated in  [Auth0 API v2 page](https://docs.auth0.com/apiv2), just select the scope `create:users` and copy the generated API Token.
+### Email Passwordless
+
+```js
+lock.show({
+  connections: ["email"]
+}, (err, profile, token) => {
+  console.log('Logged in!');
+});
+```
+And you'll see Email Passwordless login screen
+
+[![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-pwdless-email.png)](https://auth0.com)
 
 ## API
 
@@ -129,22 +114,6 @@ Show Lock's authentication screen as a modal screen using the connections config
 
 * **closable** (`boolean`): If Lock screen can be dismissed
 * **connections** (`[string]`): List of enabled connections to use for authentication. Must be enabled in your app's dashboard first.
-* **authParams** (`object`): Object with the parameters to be sent to the Authentication API, e.g. `scope`.
-
-The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
-
-####.showSMS(options, callback)
-Show Lock's SMS authentication screen as a modal screen. This is the list of valid options:
-
-* **closable** (`boolean`): If Lock screen can be dismissed
-* **authParams** (`object`): Object with the parameters to be sent to the Authentication API, e.g. `scope`.
-
-The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
-
-####.showTouchID(options, callback)
-Show Lock's TouchID authentication screen as a modal screen. This is the list of valid options:
-
-* **closable** (`boolean`): If Lock screen can be dismissed
 * **authParams** (`object`): Object with the parameters to be sent to the Authentication API, e.g. `scope`.
 
 The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
@@ -175,4 +144,4 @@ Auth0
 
 ## License
 
-LockReact is available under the MIT license. See the [LICENSE file](LICENSE) for more info.
+react-native-lock-ios is available under the MIT license. See the [LICENSE file](LICENSE) for more info.

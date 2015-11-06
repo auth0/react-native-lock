@@ -1,7 +1,7 @@
 platform :ios, '8.0'
 
 target 'LockReact' do
-  pod 'LockReact/NativeModule', :path => '../'
+  pod 'LockReactNative', :path => 'js/node_modules/react-native-lock-ios'
   pod 'Lock-Facebook'
   pod 'Lock-Twitter'
 

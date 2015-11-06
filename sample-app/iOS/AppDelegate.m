@@ -11,7 +11,7 @@
 
 #import "RCTRootView.h"
 #import <Lock/Lock.h>
-#import <LockReact/A0LockReact.h>
+#import <LockReactNative/A0LockReact.h>
 
 @implementation AppDelegate
 

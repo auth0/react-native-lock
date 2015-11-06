@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import "A0LockReactModule.h"
-#import <LockReact/A0LockReact.h>
+#import <LockReactNative/A0LockReact.h>
 #import <Lock/Lock.h>
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)

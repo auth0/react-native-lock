@@ -76,12 +76,15 @@ PODS:
   - Lock/UI (1.21.0):
     - CocoaLumberjack (~> 2.0)
     - Lock/CoreUI
-  - LockReact/Core (0.4.1):
+  - LockReactNative (0.0.1):
+    - LockReactNative/Core (= 0.0.1)
+    - LockReactNative/NativeModule (= 0.0.1)
+  - LockReactNative/Core (0.0.1):
     - Lock/SMS
     - Lock/TouchID
-    - Lock/UI (~> 1.12)
-  - LockReact/NativeModule (0.4.1):
-    - LockReact/Core
+    - Lock/UI (~> 1.21)
+  - LockReactNative/NativeModule (0.0.1):
+    - LockReactNative/Core
     - React/Core
   - LUKeychainAccess (1.2.5)
   - NSData+Base64 (1.0.0)
@@ -108,7 +111,7 @@ PODS:
 DEPENDENCIES:
   - Lock-Facebook
   - Lock-Twitter
-  - LockReact/NativeModule (from `../`)
+  - LockReactNative (from `js/node_modules/react-native-lock-ios`)
   - React/Core (from `js/node_modules/react-native`)
   - React/RCTImage (from `js/node_modules/react-native`)
   - React/RCTNetwork (from `js/node_modules/react-native`)
@@ -116,8 +119,8 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `js/node_modules/react-native`)
 
 EXTERNAL SOURCES:
-  LockReact:
-    :path: "../"
+  LockReactNative:
+    :path: js/node_modules/react-native-lock-ios
   React:
     :path: js/node_modules/react-native
 
@@ -131,7 +134,7 @@ SPEC CHECKSUMS:
   Lock: cf46cea61023248b458662a9800a99c410a355f4
   Lock-Facebook: 09f2397cbc9ae2e1fc654f7e66248da30343e349
   Lock-Twitter: 385c8ec734fb627ac05cc8e77aaf58a8142b25b8
-  LockReact: dae5618d54094d15f33fa3ddbd52b6960bbe739f
+  LockReactNative: 05e560c7f40bb521b5a6e009b882462b2034ce29
   LUKeychainAccess: d22fc00b33ad92c7532962b86daa94c14b85ecbe
   NSData+Base64: 4e84902c4db907a15673474677e57763ef3903e4
   OAuthCore: 43dce261db846a1fe20234d95654257e00e78581

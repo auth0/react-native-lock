@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "react-native-lock-ios"
+  s.name             = "LockReactNative"
   s.version          = "0.0.1"
   s.summary          = "A wrapper of Lock for iOS to use with React Native."
   s.description      = <<-DESC
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   s.subspec 'NativeModule' do |native|
     native.source_files = 'objc/*.{h,m}'
     native.dependency 'React/Core'
-    native.dependency 'LockReact/Core'
+    native.dependency 'LockReactNative/Core'
   end
 end

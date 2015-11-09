@@ -48,6 +48,11 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.7.1):
     - FBSDKCoreKit
+  - Lock (1.21.0):
+    - CocoaLumberjack (~> 2.0)
+    - Lock/Core (= 1.21.0)
+    - Lock/UI (= 1.21.0)
+    - Lock/WebView (= 1.21.0)
   - Lock-Facebook (2.2.1):
     - CocoaLumberjack (~> 2.0)
     - FBSDKCoreKit (~> 4.6)
@@ -79,15 +84,18 @@ PODS:
   - Lock/UI (1.21.0):
     - CocoaLumberjack (~> 2.0)
     - Lock/CoreUI
-  - LockReactNative (0.0.1):
-    - LockReactNative/Core (= 0.0.1)
-    - LockReactNative/NativeModule (= 0.0.1)
-  - LockReactNative/Core (0.0.1):
+  - Lock/WebView (1.21.0):
+    - CocoaLumberjack (~> 2.0)
+    - Lock/CoreUI
+  - LockReactNative (0.0.3):
+    - LockReactNative/Core (= 0.0.3)
+    - LockReactNative/NativeModule (= 0.0.3)
+  - LockReactNative/Core (0.0.3):
+    - Lock (~> 1.21)
     - Lock/Email
     - Lock/SMS
     - Lock/TouchID
-    - Lock/UI (~> 1.21)
-  - LockReactNative/NativeModule (0.0.1):
+  - LockReactNative/NativeModule (0.0.3):
     - LockReactNative/Core
     - React/Core
   - LUKeychainAccess (1.2.5)
@@ -138,7 +146,7 @@ SPEC CHECKSUMS:
   Lock: cf46cea61023248b458662a9800a99c410a355f4
   Lock-Facebook: 09f2397cbc9ae2e1fc654f7e66248da30343e349
   Lock-Twitter: 385c8ec734fb627ac05cc8e77aaf58a8142b25b8
-  LockReactNative: 9b3d3a3e32f52b6b427caebe7008b1ef26f74f90
+  LockReactNative: 431089783a2aedb4ac0fd60f8768ad95c0027680
   LUKeychainAccess: d22fc00b33ad92c7532962b86daa94c14b85ecbe
   NSData+Base64: 4e84902c4db907a15673474677e57763ef3903e4
   OAuthCore: 43dce261db846a1fe20234d95654257e00e78581

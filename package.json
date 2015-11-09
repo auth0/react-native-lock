@@ -1,6 +1,6 @@
 {
   "name": "react-native-lock-ios",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Auth0 Lock for React Native (iOS)",
   "main": "auth0-lock.js",
   "scripts": {

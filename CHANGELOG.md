@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.0.4](https://github.com/auth0/react-native-lock-ios/tree/0.0.4) (2015-11-09)
+[Full Changelog](https://github.com/auth0/react-native-lock-ios/compare/0.0.3...0.0.4)
+
+**Merged pull requests:**
+
+- Add Lock/WebView as a dependency [\#1](https://github.com/auth0/react-native-lock-ios/pull/1) ([hzalaz](https://github.com/hzalaz))
+
+## [0.0.3](https://github.com/auth0/react-native-lock-ios/tree/0.0.3) (2015-11-06)
+[Full Changelog](https://github.com/auth0/react-native-lock-ios/compare/0.0.2...0.0.3)
+
 ## [0.0.2](https://github.com/auth0/react-native-lock-ios/tree/0.0.2) (2015-11-06)
 [Full Changelog](https://github.com/auth0/react-native-lock-ios/compare/0.0.1...0.0.2)
 

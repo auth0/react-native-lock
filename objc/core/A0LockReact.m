@@ -117,6 +117,25 @@
     }
 }
 
+- (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback {
+    A0IdentityProviderAuthenticator *authenticator = [self.lock identityProviderAuthenticator];
+    void(^success)(A0UserProfile *, A0Token *) = ^(A0UserProfile *profile, A0Token *token) {
+    if (profile && token) {
+        NSDictionary *profileDict = [profile asDictionary];
+        NSDictionary *tokenDict = [token asDictionary];
+        callback(@[[NSNull null], profileDict, tokenDict]);
+    } else {
+        callback(@[@"Unexpected null value in profile or token"]);
+    }
+    };
+    void(^failure)(NSError *) = ^(NSError *error) {
+        callback(@[[error localizedDescription]]);
+    };
+
+    A0AuthParameters* parameters = [A0AuthParameters newWithDictionary:options];
+    [authenticator authenticateWithConnectionName:connectionName parameters:parameters success:success failure:failure];
+}
+
 - (A0AuthParameters *)authenticationParametersFromOptions:(NSDictionary *)options {
     NSDictionary *jsonParameters = options[@"authParams"];
     if (jsonParameters.count == 0) {

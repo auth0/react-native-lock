@@ -21,6 +21,14 @@ class Auth0Lock {
     }
     LockModule.show(options, callback);
   }
+
+  authenticate(connectionName, options, callback) {
+    LockModule.init(this.lockOptions);
+    if (this.nativeIntegrations) {
+      LockModule.nativeIntegrations(this.nativeIntegrations);
+    }
+    LockModule.authenticate(connectionName, options, callback);
+  }
 }
 
 module.exports = Auth0Lock;

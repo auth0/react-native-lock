@@ -20,7 +20,7 @@
 
 Run `npm install --save react-native-lock-ios` to add the package to your app's dependencies.
 
-To tell CocoaPods what native libraries you need, create a file named `Podfile` like this in your app's project directory:
+To tell CocoaPods what native libraries you need, create a file named `Podfile` with the following content inside the folder `<project name>/ios`
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -30,8 +30,8 @@ pod 'React', :subspecs => [
   'RCTNetwork', 
   'RCTText', 
   'RCTWebSocket'
-  ], :path => 'node_modules/react-native'
-pod 'LockReactNative', :path => 'node_modules/react-native-lock-ios'
+  ], :path => '../node_modules/react-native'
+pod 'LockReactNative', :path => '../node_modules/react-native-lock-ios'
 ```
 
 Now run from the same folder the command `pod install`. It will automatically download **Lock for iOS** with all it's dependencies, and create an Xcode workspace containing all of them. 

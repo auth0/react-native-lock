@@ -56,10 +56,13 @@
             return;
         }
         UIViewController *controller = [[[[UIApplication sharedApplication] windows] firstObject] rootViewController];
-        [controller dismissViewControllerAnimated:YES completion:nil];
-        self.shown = NO;
+        [controller dismissViewControllerAnimated:YES completion:^{
+            self.shown = NO;
+            callback(@[]);
+        }];
+    } else {
+        callback(@[]);
     }
-    callback(@[]);
 }
 
 - (void)showWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {

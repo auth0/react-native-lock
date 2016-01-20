@@ -14,6 +14,10 @@ class Auth0Lock {
     }
   }
 
+  hide(callback) {
+    LockModule.hide(callback);
+  }
+
   show(options, callback) {
     LockModule.init(this.lockOptions);
     if (this.nativeIntegrations) {

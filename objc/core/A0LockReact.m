@@ -25,6 +25,11 @@
 #import "A0Token+ReactNative.h"
 #import "A0UserProfile+ReactNative.h"
 
+
+@interface A0LockReact()
+@property (nonatomic, assign) BOOL shown;
+@end
+
 @implementation A0LockReact
 
 + (instancetype)sharedInstance {
@@ -42,6 +47,19 @@
 
 - (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain {
     _lock = [A0Lock newLockWithClientId:clientId domain:domain];
+}
+
+- (void)hideWithCallback:(A0LockCallback)callback {
+    if (self.shown) {
+        if (!self.lock) {
+            callback(@[@"Please configure Lock before using it"]);
+            return;
+        }
+        UIViewController *controller = [[[[UIApplication sharedApplication] windows] firstObject] rootViewController];
+        [controller dismissViewControllerAnimated:YES completion:nil];
+        self.shown = NO;
+    }
+    callback(@[]);
 }
 
 - (void)showWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
@@ -78,6 +96,7 @@
         [controller dismissViewControllerAnimated:YES completion:nil];
     };
     void(^dismissBlock)() = ^{
+        self.shown =  NO;
         callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
     };
 
@@ -115,6 +134,7 @@
         lock.onUserDismissBlock = dismissBlock;
         [self.lock presentLockController:lock fromController:controller];
     }
+    self.shown = YES;
 }
 
 - (A0AuthParameters *)authenticationParametersFromOptions:(NSDictionary *)options {

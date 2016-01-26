@@ -29,6 +29,8 @@ typedef void(^A0LockCallback)(NSArray *parameters);
 
 @property (strong, readonly, nonatomic) A0Lock *lock;
 
+- (void)hideWithCallback:(A0LockCallback)callback;
+
 - (void)showWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback;
 
 - (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback;

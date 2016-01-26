@@ -85,6 +85,12 @@ RCT_EXPORT_METHOD(nativeIntegrations:(NSDictionary *)integrations) {
     [lock registerAuthenticators:authenticators];
 }
 
+RCT_EXPORT_METHOD(hide:(RCTResponseSenderBlock)callback) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[A0LockReact sharedInstance] hideWithCallback:callback];
+    });
+}
+
 RCT_EXPORT_METHOD(show:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[A0LockReact sharedInstance] showWithOptions:options callback:callback];

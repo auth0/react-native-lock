@@ -141,11 +141,11 @@ Auth0 helps you to:
 
 ## Author
 
-Auth0
+[Auth0](auth0.com)
 
 ## License
 
-react-native-lock-ios is available under the MIT license. See the [LICENSE file](LICENSE) for more info.
+react-native-lock-ios is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 <!-- Variables -->
 [npm-image]: https://img.shields.io/npm/v/react-native-lock-ios.svg?style=flat

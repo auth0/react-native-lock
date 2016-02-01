@@ -1,5 +1,20 @@
 # Change Log
 
+## [0.0.5](https://github.com/auth0/react-native-lock-ios/tree/0.0.5) (2016-02-01)
+[Full Changelog](https://github.com/auth0/react-native-lock-ios/compare/0.0.4...0.0.5)
+
+**Closed issues:**
+
+- authParams applied inconsistently [\#9](https://github.com/auth0/react-native-lock-ios/issues/9)
+- Cannot get native Facebook login to work [\#8](https://github.com/auth0/react-native-lock-ios/issues/8)
+- ld: 221 duplicate symbols for architecture x86\_64 [\#3](https://github.com/auth0/react-native-lock-ios/issues/3)
+
+**Merged pull requests:**
+
+- Update License and readme [\#12](https://github.com/auth0/react-native-lock-ios/pull/12) ([Annyv2](https://github.com/Annyv2))
+- add authenticate method [\#11](https://github.com/auth0/react-native-lock-ios/pull/11) ([keeth](https://github.com/keeth))
+- Add hide method to react-native-lock-ios [\#10](https://github.com/auth0/react-native-lock-ios/pull/10) ([brianneisler](https://github.com/brianneisler))
+
 ## [0.0.4](https://github.com/auth0/react-native-lock-ios/tree/0.0.4) (2015-11-09)
 [Full Changelog](https://github.com/auth0/react-native-lock-ios/compare/0.0.3...0.0.4)
 

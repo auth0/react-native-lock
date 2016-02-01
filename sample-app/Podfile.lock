@@ -87,15 +87,15 @@ PODS:
   - Lock/WebView (1.21.0):
     - CocoaLumberjack (~> 2.0)
     - Lock/CoreUI
-  - LockReactNative (0.0.3):
-    - LockReactNative/Core (= 0.0.3)
-    - LockReactNative/NativeModule (= 0.0.3)
-  - LockReactNative/Core (0.0.3):
+  - LockReactNative (0.0.4):
+    - LockReactNative/Core (= 0.0.4)
+    - LockReactNative/NativeModule (= 0.0.4)
+  - LockReactNative/Core (0.0.4):
     - Lock (~> 1.21)
     - Lock/Email
     - Lock/SMS
     - Lock/TouchID
-  - LockReactNative/NativeModule (0.0.3):
+  - LockReactNative/NativeModule (0.0.4):
     - LockReactNative/Core
     - React/Core
   - LUKeychainAccess (1.2.5)
@@ -103,17 +103,17 @@ PODS:
   - OAuthCore (0.0.1):
     - NSData+Base64
   - PSAlertView (2.0.3)
-  - React/Core (0.13.2)
-  - React/RCTImage (0.13.2):
+  - React/Core (0.19.0)
+  - React/RCTImage (0.19.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.13.2):
+  - React/RCTNetwork (0.19.0):
     - React/Core
-  - React/RCTText (0.13.2):
+  - React/RCTText (0.19.0):
     - React/Core
-  - React/RCTWebSocket (0.13.2):
+  - React/RCTWebSocket (0.19.0):
     - React/Core
-  - SimpleKeychain (0.6.1)
+  - SimpleKeychain (0.7.0)
   - TouchIDAuth (0.2.0):
     - SimpleKeychain (~> 0.3)
   - TWReverseAuth (0.1.1):
@@ -146,13 +146,13 @@ SPEC CHECKSUMS:
   Lock: cf46cea61023248b458662a9800a99c410a355f4
   Lock-Facebook: 09f2397cbc9ae2e1fc654f7e66248da30343e349
   Lock-Twitter: 385c8ec734fb627ac05cc8e77aaf58a8142b25b8
-  LockReactNative: 431089783a2aedb4ac0fd60f8768ad95c0027680
+  LockReactNative: 5380650513a98f99a0c408f86917e85e67a2b46e
   LUKeychainAccess: d22fc00b33ad92c7532962b86daa94c14b85ecbe
   NSData+Base64: 4e84902c4db907a15673474677e57763ef3903e4
   OAuthCore: 43dce261db846a1fe20234d95654257e00e78581
   PSAlertView: 16d35f5dba549418492cf68a750d4f0dca21f4a2
-  React: 25a94f46f38c444fe20ad66ac630dc4251506887
-  SimpleKeychain: 150d76f3b9200de58f033228f6e976c6241a221c
+  React: 788590e9bb1784fac953ded1b325f16d9e817090
+  SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
   TouchIDAuth: 0cf861f58a2cacfc1c12cb02de4850729d943c81
   TWReverseAuth: d2deef3521fa6bee32eabab67f114c2c4a53d4f5
 

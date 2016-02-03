@@ -33,6 +33,11 @@ class Auth0Lock {
     }
     LockModule.authenticate(connectionName, options, callback);
   }
+
+  getDelegationToken(options, callback) {
+    LockModule.init(this.lockOptions);
+    LockModule.getDelegationToken(options, callback);
+  }
 }
 
 module.exports = Auth0Lock;

@@ -23,6 +23,8 @@
 #import "A0LockReactModule.h"
 #import <LockReactNative/A0LockReact.h>
 #import <Lock/Lock.h>
+#import <Lock/A0Theme.h>
+@import UIKit;
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)
 #define FACEBOOK_ENABLED 1
@@ -103,4 +105,35 @@ RCT_EXPORT_METHOD(authenticate:(NSString *)connectionName options:(NSDictionary 
     });
 }
 
+RCT_EXPORT_METHOD(registerColorForKey: (NSString *)hexString key:(NSString *)key) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        A0Theme *theme = [A0Theme sharedInstance];
+        if ([hexString length] == 0) {
+            UIColor *transparent = [UIColor clearColor];
+            [theme registerColor: transparent forKey: key];
+        } else {
+            unsigned rgbValue = 0;
+            NSScanner *scanner = [NSScanner scannerWithString:hexString];
+            [scanner setScanLocation:1]; // bypass '#' character
+            [scanner scanHexInt:&rgbValue];
+            UIColor *color = [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+            [theme registerColor: color forKey: key];
+        }
+    });
+}
+
+RCT_EXPORT_METHOD(registerFontForKey: (NSString *)fontName fontSize:(float)fontSize key:(NSString *)key) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIFont *font = [UIFont fontWithName:fontName size:fontSize];
+        A0Theme *theme = [A0Theme sharedInstance];
+        [theme registerFont: font forKey: key];
+    });
+}
+
+RCT_EXPORT_METHOD(registerImageNameForKey: (NSString *)imageName key:(NSString *)key) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        A0Theme *theme = [A0Theme sharedInstance];
+        [theme registerImageWithName: imageName forKey: key];
+    });
+}
 @end

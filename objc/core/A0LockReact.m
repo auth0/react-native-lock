@@ -22,6 +22,7 @@
 
 #import "A0LockReact.h"
 #import <Lock/Lock.h>
+#import <Lock/A0APIClient.h>
 #import "A0Token+ReactNative.h"
 #import "A0UserProfile+ReactNative.h"
 
@@ -140,16 +141,51 @@
     self.shown = YES;
 }
 
+- (void)delegationWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
+    if (!self.lock) {
+        callback(@[@"Please configure Lock before using it"]);
+        return;
+    }
+    if (!options[@"api"]) {
+        callback(@[@"Must specify api in options."]);
+        return;
+    }
+    if (!options[@"id_token"]) {
+        callback(@[@"Must specify id_token in options"]);
+        return;
+    }
+    if (!options[@"scope"]) {
+        callback(@[@"Must specify scope in options"]);
+        return;
+    }
+
+    A0APIClient *client = [self.lock apiClient];
+
+    void(^success)(NSDictionary *) = ^(NSDictionary *credentials) {
+        callback(@[[NSNull null], credentials]);
+    };
+    void(^failure)(NSError *) = ^(NSError *error) {
+        callback(@[[error localizedDescription]]);
+    };
+
+    A0AuthParameters *parameters = [A0AuthParameters newWithDictionary:@{
+                                                                         A0ParameterAPIType: options[@"api"],
+                                                                         @"id_token": options[@"id_token"],
+                                                                         A0ParameterScope: [self scopeParamterFromOptions:options],
+                                                                         }];
+    [client fetchDelegationTokenWithParameters:parameters success:success failure:failure];
+}
+
 - (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback {
     A0IdentityProviderAuthenticator *authenticator = [self.lock identityProviderAuthenticator];
     void(^success)(A0UserProfile *, A0Token *) = ^(A0UserProfile *profile, A0Token *token) {
-    if (profile && token) {
-        NSDictionary *profileDict = [profile asDictionary];
-        NSDictionary *tokenDict = [token asDictionary];
-        callback(@[[NSNull null], profileDict, tokenDict]);
-    } else {
-        callback(@[@"Unexpected null value in profile or token"]);
-    }
+        if (profile && token) {
+            NSDictionary *profileDict = [profile asDictionary];
+            NSDictionary *tokenDict = [token asDictionary];
+            callback(@[[NSNull null], profileDict, tokenDict]);
+        } else {
+            callback(@[@"Unexpected null value in profile or token"]);
+        }
     };
     void(^failure)(NSError *) = ^(NSError *error) {
         callback(@[[error localizedDescription]]);
@@ -159,17 +195,18 @@
     [authenticator authenticateWithConnectionName:connectionName parameters:parameters success:success failure:failure];
 }
 
+- (NSArray *)scopeParamterFromOptions:(NSDictionary *)options {
+    NSArray *scopes = [options[@"scope"] componentsSeparatedByString:@" "];
+    return scopes;
+}
+
 - (A0AuthParameters *)authenticationParametersFromOptions:(NSDictionary *)options {
     NSDictionary *jsonParameters = options[@"authParams"];
     if (jsonParameters.count == 0) {
         return nil;
     }
     NSMutableDictionary *params = [jsonParameters mutableCopy];
-    NSString *scope = params[@"scope"];
-    NSArray *scopes = [scope componentsSeparatedByString:@" "];
-    if (scopes.count > 0) {
-        params[@"scope"] = scopes;
-    }
+    params[@"scope"] = [self scopeParamterFromOptions:params];
     return [A0AuthParameters newWithDictionary:params];
 }
 

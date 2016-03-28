@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F0498451CA9E822006F6C05 /* A0LockReactModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0498381CA9E822006F6C05 /* A0LockReactModule.m */; };
+		5F0498461CA9E822006F6C05 /* A0LockReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04983C1CA9E822006F6C05 /* A0LockReact.m */; };
+		5F0498471CA9E822006F6C05 /* A0ObjectSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04983E1CA9E822006F6C05 /* A0ObjectSerializer.m */; };
+		5F0498481CA9E822006F6C05 /* A0Token+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0498401CA9E822006F6C05 /* A0Token+ReactNative.m */; };
+		5F0498491CA9E822006F6C05 /* A0UserIdentity+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0498421CA9E822006F6C05 /* A0UserIdentity+ReactNative.m */; };
+		5F04984A1CA9E822006F6C05 /* A0UserProfile+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0498441CA9E822006F6C05 /* A0UserProfile+ReactNative.m */; };
+		5F04984B1CA9E830006F6C05 /* A0LockReactModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5F0498371CA9E822006F6C05 /* A0LockReactModule.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F0498281CA9E741006F6C05 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5F04984B1CA9E830006F6C05 /* A0LockReactModule.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5F04982A1CA9E741006F6C05 /* libReactNativeLock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactNativeLock.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0498371CA9E822006F6C05 /* A0LockReactModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0LockReactModule.h; sourceTree = "<group>"; };
+		5F0498381CA9E822006F6C05 /* A0LockReactModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0LockReactModule.m; sourceTree = "<group>"; };
+		5F04983A1CA9E822006F6C05 /* A0DictionarySerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0DictionarySerialization.h; sourceTree = "<group>"; };
+		5F04983B1CA9E822006F6C05 /* A0LockReact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0LockReact.h; sourceTree = "<group>"; };
+		5F04983C1CA9E822006F6C05 /* A0LockReact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0LockReact.m; sourceTree = "<group>"; };
+		5F04983D1CA9E822006F6C05 /* A0ObjectSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0ObjectSerializer.h; sourceTree = "<group>"; };
+		5F04983E1CA9E822006F6C05 /* A0ObjectSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0ObjectSerializer.m; sourceTree = "<group>"; };
+		5F04983F1CA9E822006F6C05 /* A0Token+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0Token+ReactNative.h"; sourceTree = "<group>"; };
+		5F0498401CA9E822006F6C05 /* A0Token+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0Token+ReactNative.m"; sourceTree = "<group>"; };
+		5F0498411CA9E822006F6C05 /* A0UserIdentity+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0UserIdentity+ReactNative.h"; sourceTree = "<group>"; };
+		5F0498421CA9E822006F6C05 /* A0UserIdentity+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0UserIdentity+ReactNative.m"; sourceTree = "<group>"; };
+		5F0498431CA9E822006F6C05 /* A0UserProfile+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0UserProfile+ReactNative.h"; sourceTree = "<group>"; };
+		5F0498441CA9E822006F6C05 /* A0UserProfile+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0UserProfile+ReactNative.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F0498271CA9E741006F6C05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F0498211CA9E741006F6C05 = {
+			isa = PBXGroup;
+			children = (
+				5F04982C1CA9E741006F6C05 /* ReactNativeLock */,
+				5F04982B1CA9E741006F6C05 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F04982B1CA9E741006F6C05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F04982A1CA9E741006F6C05 /* libReactNativeLock.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F04982C1CA9E741006F6C05 /* ReactNativeLock */ = {
+			isa = PBXGroup;
+			children = (
+				5F0498361CA9E822006F6C05 /* Classes */,
+			);
+			path = ReactNativeLock;
+			sourceTree = "<group>";
+		};
+		5F0498361CA9E822006F6C05 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5F0498371CA9E822006F6C05 /* A0LockReactModule.h */,
+				5F0498381CA9E822006F6C05 /* A0LockReactModule.m */,
+				5F0498391CA9E822006F6C05 /* core */,
+			);
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		5F0498391CA9E822006F6C05 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5F04983A1CA9E822006F6C05 /* A0DictionarySerialization.h */,
+				5F04983B1CA9E822006F6C05 /* A0LockReact.h */,
+				5F04983C1CA9E822006F6C05 /* A0LockReact.m */,
+				5F04983D1CA9E822006F6C05 /* A0ObjectSerializer.h */,
+				5F04983E1CA9E822006F6C05 /* A0ObjectSerializer.m */,
+				5F04983F1CA9E822006F6C05 /* A0Token+ReactNative.h */,
+				5F0498401CA9E822006F6C05 /* A0Token+ReactNative.m */,
+				5F0498411CA9E822006F6C05 /* A0UserIdentity+ReactNative.h */,
+				5F0498421CA9E822006F6C05 /* A0UserIdentity+ReactNative.m */,
+				5F0498431CA9E822006F6C05 /* A0UserProfile+ReactNative.h */,
+				5F0498441CA9E822006F6C05 /* A0UserProfile+ReactNative.m */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F0498291CA9E741006F6C05 /* ReactNativeLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F0498331CA9E741006F6C05 /* Build configuration list for PBXNativeTarget "ReactNativeLock" */;
+			buildPhases = (
+				5F0498261CA9E741006F6C05 /* Sources */,
+				5F0498271CA9E741006F6C05 /* Frameworks */,
+				5F0498281CA9E741006F6C05 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactNativeLock;
+			productName = ReactNativeLock;
+			productReference = 5F04982A1CA9E741006F6C05 /* libReactNativeLock.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F0498221CA9E741006F6C05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Auth0;
+				TargetAttributes = {
+					5F0498291CA9E741006F6C05 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 5F0498251CA9E741006F6C05 /* Build configuration list for PBXProject "ReactNativeLock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5F0498211CA9E741006F6C05;
+			productRefGroup = 5F04982B1CA9E741006F6C05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F0498291CA9E741006F6C05 /* ReactNativeLock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F0498261CA9E741006F6C05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F04984A1CA9E822006F6C05 /* A0UserProfile+ReactNative.m in Sources */,
+				5F0498471CA9E822006F6C05 /* A0ObjectSerializer.m in Sources */,
+				5F0498491CA9E822006F6C05 /* A0UserIdentity+ReactNative.m in Sources */,
+				5F0498451CA9E822006F6C05 /* A0LockReactModule.m in Sources */,
+				5F0498461CA9E822006F6C05 /* A0LockReact.m in Sources */,
+				5F0498481CA9E822006F6C05 /* A0Token+ReactNative.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F0498311CA9E741006F6C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../React/**",
+					"$(SRCROOT)/../react-native/React/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5F0498321CA9E741006F6C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../React/**",
+					"$(SRCROOT)/../react-native/React/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F0498341CA9E741006F6C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5F0498351CA9E741006F6C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F0498251CA9E741006F6C05 /* Build configuration list for PBXProject "ReactNativeLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F0498311CA9E741006F6C05 /* Debug */,
+				5F0498321CA9E741006F6C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F0498331CA9E741006F6C05 /* Build configuration list for PBXNativeTarget "ReactNativeLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F0498341CA9E741006F6C05 /* Debug */,
+				5F0498351CA9E741006F6C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F0498221CA9E741006F6C05 /* Project object */;
+}

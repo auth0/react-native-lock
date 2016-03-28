@@ -1,2 +1,4 @@
 *.yml
 sample-app/
+Pods/
+*.framework

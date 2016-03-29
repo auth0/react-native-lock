@@ -1,2 +1,3 @@
 *.yml
 sample-app/
+*.framework

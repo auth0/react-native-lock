@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
-
 var React = require('react-native');
 var {
   AppRegistry,
@@ -13,11 +7,40 @@ var {
   Image,
   TouchableHighlight,
 } = React;
-var HeaderView = require('./header');
-var TokenView = require('./token');
+
 var Auth0Lock = require('react-native-lock-ios');
 
 var lock = new Auth0Lock();
+
+var HeaderView = React.createClass({
+  render: function() {
+    return (
+      <View style={styles.header}>
+        <Image style={styles.logo} source={require('./img/logo-horizontal-blue.png')}/>
+        <Text style={styles.title}>Welcome to Lock + React Native</Text>
+      </View>
+    );
+  }
+});
+
+var TokenView = React.createClass({
+
+  render: function() {
+    return (
+      <View style={styles.tokenContainer}>
+        <Text style={styles.label}>Username:</Text>
+        <Text style={styles.value}>{this.props.username}</Text>
+        <Text style={styles.label}>Email:</Text>
+        <Text style={styles.value}>{this.props.email}</Text>
+        <Text style={styles.label}>JWT:</Text>
+        <Text style={styles.value}>{this.props.jwt}</Text>
+        <Text style={styles.label}>Refresh Token:</Text>
+        <Text style={styles.value}>{this.props.refreshToken}</Text>
+      </View>
+    );
+  }
+
+});
 
 var LockReactApp = React.createClass({
   getInitialState: function() {
@@ -115,6 +138,47 @@ var styles = StyleSheet.create({
     fontSize: 14,
     alignSelf: 'center',
   },
+
+  // Token View
+  tokenContainer: {
+    flex: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: '#D0D2D3',
+    margin: 8,
+    padding: 10,
+  },
+  label: {
+    fontFamily: 'HelveticaNeue-Medium',
+    marginTop: 10,
+  },
+  value: {
+    fontFamily: 'HelveticaNeue-Light',
+    alignSelf: 'center',
+  },
+
+  // Header View
+  header: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    paddingTop: 30,
+  },
+  title: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    paddingTop: 10,
+    fontFamily: 'HelveticaNeue-Light',
+    fontSize: 20,
+  },
+  logo: {
+    height: 70,
+    width: 191
+  },
+
 });
 
 AppRegistry.registerComponent('LockReact', () => LockReactApp);

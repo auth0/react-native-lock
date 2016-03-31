@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Lock/A0UserProfile.h>
-#import <LockReactNative/A0DictionarySerialization.h>
+#import "A0DictionarySerialization.h"
 
 @interface A0UserProfile (ReactNative) <A0DictionarySerialization>
 

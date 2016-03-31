@@ -23,9 +23,12 @@
 #import "A0LockReact.h"
 #import <Lock/Lock.h>
 #import <Lock/A0APIClient.h>
+#import <Lock/A0Telemetry.h>
 #import "A0Token+ReactNative.h"
 #import "A0UserProfile+ReactNative.h"
 
+
+NSString * const A0LockReactVersion = @"0.0.5";
 
 @interface A0LockReact()
 @property (nonatomic, assign) BOOL shown;
@@ -43,11 +46,21 @@
 }
 
 - (void)configureLockFromBundle {
-    _lock = [A0Lock new];
+    [self configureWithLock:[A0Lock new]];
 }
 
 - (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain {
-    _lock = [A0Lock newLockWithClientId:clientId domain:domain];
+    [self configureWithLock:[A0Lock newLockWithClientId:clientId domain:domain]];
+}
+
+- (void)configureWithLock:(A0Lock *)lock {
+    _lock = lock;
+    NSString *lockVersion = [A0Telemetry libraryVersion];
+    NSDictionary *extra = @{
+        @"lib_version": lockVersion,
+    };
+    A0Telemetry *telemetry = [A0Telemetry telemetryEnabled] ? [[A0Telemetry alloc] initWithName:@"lock.react-native.ios" version:A0LockReactVersion extra:extra] : nil;
+    _lock.telemetry = telemetry;
 }
 
 - (void)hideWithCallback:(A0LockCallback)callback {

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Lock/A0Token.h>
-#import <LockReactNative/A0DictionarySerialization.h>
+#import "A0DictionarySerialization.h"
 
 @interface A0Token (ReactNative) <A0DictionarySerialization>
 

@@ -44,10 +44,10 @@
 RCT_EXPORT_MODULE(Auth0LockModule);
 
 RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
-    if (values.count == 2) {
-        [[A0LockReact sharedInstance] configureLockWithClientId:values[@"clientId"] domain:values[@"domain"]];
-    } else {
-        [[A0LockReact sharedInstance] configureLockFromBundle];
+    NSString *clientId = values[@"clientId"];
+    NSString *domain = values[@"domain"];
+    if (clientId && domain) {
+        [[A0LockReact sharedInstance] configureLockWithClientId:clientId domain:domain version:values[@"libraryVersion"]];
     }
 }
 

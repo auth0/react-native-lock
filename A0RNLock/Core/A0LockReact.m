@@ -27,9 +27,6 @@
 #import "A0Token+ReactNative.h"
 #import "A0UserProfile+ReactNative.h"
 
-
-NSString * const A0LockReactVersion = @"0.0.5";
-
 @interface A0LockReact()
 @property (nonatomic, assign) BOOL shown;
 @end
@@ -45,22 +42,15 @@ NSString * const A0LockReactVersion = @"0.0.5";
     return instance;
 }
 
-- (void)configureLockFromBundle {
-    [self configureWithLock:[A0Lock new]];
-}
-
-- (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain {
-    [self configureWithLock:[A0Lock newLockWithClientId:clientId domain:domain]];
-}
-
-- (void)configureWithLock:(A0Lock *)lock {
-    _lock = lock;
+- (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain version:(NSString *)version {
+    self.lock = [A0Lock newLockWithClientId:clientId domain:domain];
     NSString *lockVersion = [A0Telemetry libraryVersion];
+    NSString *libraryVersion = version != mil ? version : @"0.0.0";
     NSDictionary *extra = @{
         @"lib_version": lockVersion,
     };
-    A0Telemetry *telemetry = [A0Telemetry telemetryEnabled] ? [[A0Telemetry alloc] initWithName:@"lock.react-native.ios" version:A0LockReactVersion extra:extra] : nil;
-    _lock.telemetry = telemetry;
+    A0Telemetry *telemetry = [A0Telemetry telemetryEnabled] ? [[A0Telemetry alloc] initWithName:@"lock.react-native.ios" version:libraryVersion extra:extra] : nil;
+    self.lock.telemetry = telemetry;
 }
 
 - (void)hideWithCallback:(A0LockCallback)callback {

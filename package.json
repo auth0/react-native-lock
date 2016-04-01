@@ -27,5 +27,11 @@
   "bugs": {
     "url": "https://github.com/auth0/react-native-lock-ios/issues"
   },
-  "homepage": "https://auth0.com"
+  "homepage": "https://auth0.com",
+  "rnpm": {
+    "commands": {
+      "prelink": "node_modules/react-native-lock-ios/bin/prepare.sh",
+      "postlink": "node_modules/react-native-lock-ios/bin/cocoapods.sh"
+    }
+  }
 }

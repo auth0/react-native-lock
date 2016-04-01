@@ -1,4 +1,6 @@
 *.yml
 sample-app/
 *.framework
-android/
+android/build/
+*.iml
+*.class

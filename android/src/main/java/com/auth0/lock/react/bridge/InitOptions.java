@@ -36,10 +36,10 @@ public class InitOptions {
     private static final String CONFIGURATION_DOMAIN_KEY = "configurationDomain";
     private static final String LIBRARY_VERSION_KEY = "libraryVersion";
 
-    private final String clientId;
-    private final String domain;
-    private final String configurationDomain;
-    private final String libraryVersion;
+    private String clientId;
+    private String domain;
+    private String configurationDomain;
+    private String libraryVersion;
 
     public InitOptions(@Nullable ReadableMap options) {
         if (options == null) {

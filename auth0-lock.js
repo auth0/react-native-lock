@@ -1,4 +1,5 @@
-var LockModule = require('react-native').NativeModules.Auth0LockModule;
+var { NativeModules } = require('react-native');
+var LockModule = NativeModules.Auth0LockModule;
 
 class Auth0Lock {
   constructor(options) {

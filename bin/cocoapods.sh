@@ -1,7 +1,13 @@
 #!/bin/sh
 
-podfile=`pwd`/ios/Podfile
-template=`pwd`/node_modules/react-native-lock-ios/Podfile.template
+ios_dir=`pwd`/ios
+if [ -d ios_dir ]
+  then
+  exit 0
+fi
+
+podfile="$ios_dir/Podfile"
+template=`pwd`/node_modules/react-native-lock/Podfile.template
 
 echo "Checking Podfile in iOS project ($podfile)"
 

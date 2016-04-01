@@ -129,10 +129,10 @@ And finally run `react-native run-android`
 
 ## Usage
 
-Let's require `react-native-lock-ios` module:
+Let's require `react-native-lock` module:
 
 ```js
-var Auth0Lock = require('react-native-lock-ios');
+var Auth0Lock = require('react-native-lock');
 ```
 
 And initialize it with your Auth0 credentials that you can get from [our dashboard](https://app.auth0.com/#/applications)
@@ -153,7 +153,7 @@ And you'll see our native login screen
 
 [![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-default.png)](https://auth0.com)
 
-### TouchID
+### TouchID (iOS Only)
 
 ```js
 lock.show({

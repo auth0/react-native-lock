@@ -37,9 +37,7 @@ typedef void(^A0LockCallback)(NSArray *parameters);
 
 - (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback;
 
-- (void)configureLockFromBundle;
-
-- (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain;
+- (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain version:(NSString *)version;
 
 + (instancetype)sharedInstance;
 

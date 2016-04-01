@@ -1,3 +1,4 @@
 *.yml
 sample-app/
 *.framework
+android/

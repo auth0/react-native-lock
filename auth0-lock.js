@@ -1,17 +1,18 @@
 var { NativeModules } = require('react-native');
 var LockModule = NativeModules.Auth0LockModule;
 
+const VERSION = require('./version');
+
 class Auth0Lock {
   constructor(options) {
     if (options) {
       this.lockOptions = {
         clientId: options.clientId,
         domain: options.domain,
-        configurationDomain: options.configurationDomain
+        configurationDomain: options.configurationDomain,
+        libraryVersion: VERSION
       };
       this.nativeIntegrations = options.integrations;
-    } else {
-      this.lockOptions = {};
     }
   }
 

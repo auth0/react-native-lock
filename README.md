@@ -2,41 +2,130 @@
 
 [![NPM version][npm-image]][npm-url]
 [![CI Status][travis-image]][travis-url]
-[![CP Version][cocoapods-version-image]][cocoapods-url]
-[![CP License][cocoapods-license-image]][cocoapods-url]
-[![CP Platform][cocoapods-platform-image]][cocoapods-url]
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps and Salesforce.
 
-**react-native-lock-ios** is a wrapper around [Lock](https://github.com/auth0/Lock.iOS-OSX) so it can be used from an iOS React Native application
+**react-native-lock** is a wrapper around Lock's implementations for [iOS](https://github.com/auth0/Lock.iOS-OSX) and [Android](https://github.com/auth0/Lock.Android) ready to use for React Native
 
 ## Requirements
 
+* [rnpm](https://github.com/rnpm/rnpm)
+
+### iOS
+
 * iOS 7+ 
-* React Native
-* CocoaPods
+* [CocoaPods](https://cocoapods.org)
+
+### Android
+
+* Minimum SDK 16
 
 ## Installation
 
 Run `npm install --save react-native-lock-ios` to add the package to your app's dependencies.
 
-To tell CocoaPods what native libraries you need, create a file named `Podfile` with the following content inside the folder `<project name>/ios`
+### iOS
 
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-pod 'React', :subspecs => [
-  'Core', 
-  'RCTImage', 
-  'RCTNetwork', 
-  'RCTText', 
-  'RCTWebSocket'
-  ], :path => '../node_modules/react-native'
-pod 'LockReactNative', :path => '../node_modules/react-native-lock-ios'
+#### rnpm
+
+Run `rnpm link react-native-lock` so your project is linked against your Xcode project & install Lock for iOS using CocoaPods and run `react-native run-ios`
+
+#### Manually
+
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+2. Go to `node_modules` ➜ `react-native-lock` and add `A0RNLock.xcodeproj`
+3. In XCode, in the project navigator, select your project. Add `libA0RNLock.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Header Search Paths` and make sure it contains `$(SRCROOT)/../react-native/React`, `$(SRCROOT)/../../React`, `${SRCROOT}/../../ios/Pods/Headers/Public` and `${SRCROOT}/../../ios/Pods/Headers/Public/Lock` - all marked as `recursive`.
+5. Inside your `ios` directory add a file named `Podfile` with the following [content](https://github.com/auth0/react-native-lock/blob/master/Podfile.template)
+6. Run `pod install --project-directory=ios`
+7. Run `react-native run-ios`
+
+### Android
+
+In your file `android/settings.gradle` add the following
+
+```gradle
+include ':react-native-lock'
+project(':react-native-lock').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-lock/android')
 ```
 
-Now run from the same folder the command `pod install`. It will automatically download **Lock for iOS** with all it's dependencies, and create an Xcode workspace containing all of them. 
-From now on open `<YourAppName>.xcworkspace` instead of `<YourAppName>.xcodeproject`. This is because now React Native's iOS code (and Lock's) is now pulled in via CocoaPods.
-Another necessary step you need to do is remove the React, RCTImage, etc. subprojects from your app's Xcode project.
+In the file `android/app/build.gradle` add a new dependency 
+
+```gradle
+dependencies {
+  //Other gradle dependencies...
+  compile project(':react-native-lock')
+}
+```
+
+And in the same file inside the `android` section
+
+```gradle
+packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+}
+```
+
+> This fixes the error `Error: duplicate files during packaging of APK
+
+Then in the file `MainActivity.java` add the following Java import
+
+```java
+import com.auth0.lock.react.LockReactPackage;
+```
+
+and add Lock's React Native module
+
+```java
+    /**
+     * A list of packages used by the app. If the app uses additional views
+     * or modules besides the default ones, add more packages here.
+     */
+    @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+            new MainReactPackage(),
+            //Other RN modules
+            new LockReactPackage()
+        );
+    }
+```
+
+Then in your `android/app/src/mainAndroidManifest.xml` add the following inside `<application>` tag
+
+```xml
+<!--Auth0 Lock-->
+<activity
+  android:name="com.auth0.lock.LockActivity"
+  android:theme="@style/Lock.Theme"
+  android:screenOrientation="portrait"
+  android:launchMode="singleTask">
+</activity>
+<!--Auth0 Lock End-->
+<!--Auth0 Lock Embedded WebView-->
+<activity 
+    android:name="com.auth0.identity.web.WebViewActivity" 
+    android:theme="@style/Lock.Theme">
+</activity>
+<!--Auth0 Lock Embedded WebView End-->
+<!--Auth0 Lock Passwordless-->
+<activity
+    android:name="com.auth0.lock.passwordless.LockPasswordlessActivity"
+    android:theme="@style/Lock.Theme"
+    android:screenOrientation="portrait"
+    android:launchMode="singleTask">
+</activity>
+<activity 
+    android:name="com.auth0.lock.passwordless.CountryCodeActivity" 
+    android:theme="@style/Lock.Theme">
+</activity>
+<!--Auth0 Lock Passwordless End-->
+```
+
+> For more information and configuration options you should see the Lock.Android [docs](https://github.com/auth0/Lock.Android)
+
+And finally run `react-native run-android`
 
 ## Usage
 

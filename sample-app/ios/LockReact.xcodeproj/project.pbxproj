@@ -21,14 +21,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		5F0499861CAABE07006F6C05 /* A0LockReactModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0499791CAABE07006F6C05 /* A0LockReactModule.m */; };
-		5F0499871CAABE07006F6C05 /* A0LockReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04997D1CAABE07006F6C05 /* A0LockReact.m */; };
-		5F0499881CAABE07006F6C05 /* A0ObjectSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04997F1CAABE07006F6C05 /* A0ObjectSerializer.m */; };
-		5F0499891CAABE07006F6C05 /* A0Token+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0499811CAABE07006F6C05 /* A0Token+ReactNative.m */; };
-		5F04998A1CAABE07006F6C05 /* A0UserIdentity+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0499831CAABE07006F6C05 /* A0UserIdentity+ReactNative.m */; };
-		5F04998B1CAABE07006F6C05 /* A0UserProfile+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0499851CAABE07006F6C05 /* A0UserProfile+ReactNative.m */; };
-		64CB7B2C06B764E79D294370 /* libPods-LockReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5953CC17463C18CBA7EE5172 /* libPods-LockReact.a */; };
+		48BF762DA5834ECA8EDA54B0 /* libA0RNLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D11B253A0DD44499DCEE89A /* libA0RNLock.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		982AE32A1D74E357C4CA0AC0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6F8AD979D28B068CEF2BF9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,24 +126,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LockReact/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LockReact/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		5953CC17463C18CBA7EE5172 /* libPods-LockReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LockReact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F0499781CAABE07006F6C05 /* A0LockReactModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0LockReactModule.h; sourceTree = "<group>"; };
-		5F0499791CAABE07006F6C05 /* A0LockReactModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0LockReactModule.m; sourceTree = "<group>"; };
-		5F04997B1CAABE07006F6C05 /* A0DictionarySerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0DictionarySerialization.h; sourceTree = "<group>"; };
-		5F04997C1CAABE07006F6C05 /* A0LockReact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0LockReact.h; sourceTree = "<group>"; };
-		5F04997D1CAABE07006F6C05 /* A0LockReact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0LockReact.m; sourceTree = "<group>"; };
-		5F04997E1CAABE07006F6C05 /* A0ObjectSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0ObjectSerializer.h; sourceTree = "<group>"; };
-		5F04997F1CAABE07006F6C05 /* A0ObjectSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0ObjectSerializer.m; sourceTree = "<group>"; };
-		5F0499801CAABE07006F6C05 /* A0Token+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0Token+ReactNative.h"; sourceTree = "<group>"; };
-		5F0499811CAABE07006F6C05 /* A0Token+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0Token+ReactNative.m"; sourceTree = "<group>"; };
-		5F0499821CAABE07006F6C05 /* A0UserIdentity+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0UserIdentity+ReactNative.h"; sourceTree = "<group>"; };
-		5F0499831CAABE07006F6C05 /* A0UserIdentity+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0UserIdentity+ReactNative.m"; sourceTree = "<group>"; };
-		5F0499841CAABE07006F6C05 /* A0UserProfile+ReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A0UserProfile+ReactNative.h"; sourceTree = "<group>"; };
-		5F0499851CAABE07006F6C05 /* A0UserProfile+ReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "A0UserProfile+ReactNative.m"; sourceTree = "<group>"; };
-		7134DA248E59CB2227CB6CA7 /* Pods-LockReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockReact.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockReact/Pods-LockReact.release.xcconfig"; sourceTree = "<group>"; };
+		4D11B253A0DD44499DCEE89A /* libA0RNLock.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libA0RNLock.a; sourceTree = "<group>"; };
+		72B10A834B9A4855760C4D6E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		C713FC945E3EA2BC4DF9F82F /* Pods-LockReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockReact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockReact/Pods-LockReact.debug.xcconfig"; sourceTree = "<group>"; };
+		8D972ED3791741D0A3AB1DA9 /* A0RNLock.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = A0RNLock.xcodeproj; path = "../node_modules/react-native-lock-ios/A0RNLock.xcodeproj"; sourceTree = "<group>"; };
+		AA6F8AD979D28B068CEF2BF9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D31E0CEC0C76557C0E5837 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +157,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				64CB7B2C06B764E79D294370 /* libPods-LockReact.a in Frameworks */,
+				48BF762DA5834ECA8EDA54B0 /* libA0RNLock.a in Frameworks */,
+				982AE32A1D74E357C4CA0AC0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +222,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		11BE30DFD0A20FFDDD3E1282 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA6F8AD979D28B068CEF2BF9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,7 +249,6 @@
 		13B07FAE1A68108700A75B9A /* LockReact */ = {
 			isa = PBXGroup;
 			children = (
-				5F0499771CAABE07006F6C05 /* Lock */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -276,40 +268,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F0499771CAABE07006F6C05 /* Lock */ = {
+		22151ABC5422CBDD8DD3F194 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5F0499781CAABE07006F6C05 /* A0LockReactModule.h */,
-				5F0499791CAABE07006F6C05 /* A0LockReactModule.m */,
-				5F04997A1CAABE07006F6C05 /* core */,
-			);
-			name = Lock;
-			path = "../node_modules/react-native-lock-ios/objc";
-			sourceTree = "<group>";
-		};
-		5F04997A1CAABE07006F6C05 /* core */ = {
-			isa = PBXGroup;
-			children = (
-				5F04997B1CAABE07006F6C05 /* A0DictionarySerialization.h */,
-				5F04997C1CAABE07006F6C05 /* A0LockReact.h */,
-				5F04997D1CAABE07006F6C05 /* A0LockReact.m */,
-				5F04997E1CAABE07006F6C05 /* A0ObjectSerializer.h */,
-				5F04997F1CAABE07006F6C05 /* A0ObjectSerializer.m */,
-				5F0499801CAABE07006F6C05 /* A0Token+ReactNative.h */,
-				5F0499811CAABE07006F6C05 /* A0Token+ReactNative.m */,
-				5F0499821CAABE07006F6C05 /* A0UserIdentity+ReactNative.h */,
-				5F0499831CAABE07006F6C05 /* A0UserIdentity+ReactNative.m */,
-				5F0499841CAABE07006F6C05 /* A0UserProfile+ReactNative.h */,
-				5F0499851CAABE07006F6C05 /* A0UserProfile+ReactNative.m */,
-			);
-			path = core;
-			sourceTree = "<group>";
-		};
-		6B837982903BDAD038D69FAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C713FC945E3EA2BC4DF9F82F /* Pods-LockReact.debug.xcconfig */,
-				7134DA248E59CB2227CB6CA7 /* Pods-LockReact.release.xcconfig */,
+				C6D31E0CEC0C76557C0E5837 /* Pods.debug.xcconfig */,
+				72B10A834B9A4855760C4D6E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -335,6 +298,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				8D972ED3791741D0A3AB1DA9 /* A0RNLock.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -354,8 +318,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* LockReactTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				6B837982903BDAD038D69FAB /* Pods */,
-				B33053C05C1552DF721CB497 /* Frameworks */,
+				22151ABC5422CBDD8DD3F194 /* Pods */,
+				11BE30DFD0A20FFDDD3E1282 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -368,14 +332,6 @@
 				00E356EE1AD99517003FC87E /* LockReactTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B33053C05C1552DF721CB497 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5953CC17463C18CBA7EE5172 /* libPods-LockReact.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,14 +359,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LockReact" */;
 			buildPhases = (
-				C35760EC6017D6C0837434A0 /* Check Pods Manifest.lock */,
+				9A6C07C4722CEEC098A2148C /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E2188CEE561EFFCB195CAF27 /* Embed Pods Frameworks */,
-				844F581459E1C60E8B682BDC /* Copy Pods Resources */,
 				5F0499AA1CAABEE5006F6C05 /* Auth0 */,
+				D2D4916874A86B186F46FFFB /* Embed Pods Frameworks */,
+				6A5C3E5B06E0987EA7A77CC9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -427,7 +383,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -618,7 +574,7 @@
 			shellPath = /bin/sh;
 			shellScript = "AUTH0_PLIST=\"${SRCROOT}/Auth0.plist\"\nif [ -f $AUTH0_PLIST ];\nthen\ncp \"$AUTH0_PLIST\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\"\nfi";
 		};
-		844F581459E1C60E8B682BDC /* Copy Pods Resources */ = {
+		6A5C3E5B06E0987EA7A77CC9 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -630,10 +586,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LockReact/Pods-LockReact-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C35760EC6017D6C0837434A0 /* Check Pods Manifest.lock */ = {
+		9A6C07C4722CEEC098A2148C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -648,7 +604,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E2188CEE561EFFCB195CAF27 /* Embed Pods Frameworks */ = {
+		D2D4916874A86B186F46FFFB /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -660,7 +616,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LockReact/Pods-LockReact-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -678,14 +634,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F04998B1CAABE07006F6C05 /* A0UserProfile+ReactNative.m in Sources */,
-				5F0499861CAABE07006F6C05 /* A0LockReactModule.m in Sources */,
-				5F04998A1CAABE07006F6C05 /* A0UserIdentity+ReactNative.m in Sources */,
-				5F0499871CAABE07006F6C05 /* A0LockReact.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				5F0499891CAABE07006F6C05 /* A0Token+ReactNative.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				5F0499881CAABE07006F6C05 /* A0ObjectSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +677,11 @@
 				INFOPLIST_FILE = LockReactTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockReact.app/LockReact";
 			};
@@ -744,6 +699,11 @@
 				INFOPLIST_FILE = LockReactTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockReact.app/LockReact";
 			};
@@ -751,7 +711,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C713FC945E3EA2BC4DF9F82F /* Pods-LockReact.debug.xcconfig */;
+			baseConfigurationReference = C6D31E0CEC0C76557C0E5837 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
@@ -759,6 +719,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 				);
 				INFOPLIST_FILE = LockReact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -769,13 +730,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7134DA248E59CB2227CB6CA7 /* Pods-LockReact.release.xcconfig */;
+			baseConfigurationReference = 72B10A834B9A4855760C4D6E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 				);
 				INFOPLIST_FILE = LockReact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -822,6 +784,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -862,6 +825,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

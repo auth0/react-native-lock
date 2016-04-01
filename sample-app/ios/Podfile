@@ -4,7 +4,7 @@
 # use_frameworks!
 
 target 'LockReact' do
-  pod 'Lock', '~> 1.22'
+  pod 'Lock', '~> 1.24'
   pod 'Lock/TouchID'
   pod 'Lock/SMS'
   pod 'Lock/Email'

@@ -43,9 +43,9 @@
 }
 
 - (void)configureLockWithClientId:(NSString *)clientId domain:(NSString *)domain version:(NSString *)version {
-    self.lock = [A0Lock newLockWithClientId:clientId domain:domain];
+    _lock = [A0Lock newLockWithClientId:clientId domain:domain];
     NSString *lockVersion = [A0Telemetry libraryVersion];
-    NSString *libraryVersion = version != mil ? version : @"0.0.0";
+    NSString *libraryVersion = version != nil ? version : @"0.0.0";
     NSDictionary *extra = @{
         @"lib_version": lockVersion,
     };

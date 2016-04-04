@@ -24,6 +24,7 @@
 
 package com.auth0.lock.react;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -158,7 +159,6 @@ public class LockReactModule extends ReactContextBaseJavaModule {
      */
     @ReactMethod
     public void show(@Nullable ReadableMap options, Callback callback) {
-        Context context = getReactApplicationContext();
         authCallback = callback;
         authenticationReceiver.registerIn(this.broadcastManager);
 
@@ -174,17 +174,24 @@ public class LockReactModule extends ReactContextBaseJavaModule {
 
         LockContext.configureLock(lockBuilder);
 
+        Activity activity = getCurrentActivity();
+
+        if (activity == null) {
+            invokeAuthCallback(getReactApplicationContext().getString(R.string.com_auth0_android_react_native_lock_no_activity), null, null);
+            return;
+        }
+
         Intent intent;
         switch (showOptions.getConnectionType()) {
             case CONNECTION_SMS:
-                intent = new Intent(context, LockPasswordlessActivity.class);
+                intent = new Intent(activity, LockPasswordlessActivity.class);
                 intent.putExtra(LockPasswordlessActivity.PASSWORDLESS_TYPE_PARAMETER,
                         showOptions.useMagicLink()
                                 ? LockPasswordlessActivity.MODE_SMS_MAGIC_LINK
                                 : LockPasswordlessActivity.MODE_SMS_CODE);
                 break;
             case CONNECTION_EMAIL:
-                intent = new Intent(context, LockPasswordlessActivity.class);
+                intent = new Intent(activity, LockPasswordlessActivity.class);
                 intent.putExtra(LockPasswordlessActivity.PASSWORDLESS_TYPE_PARAMETER,
                         showOptions.useMagicLink()
                                 ? LockPasswordlessActivity.MODE_EMAIL_MAGIC_LINK
@@ -192,17 +199,10 @@ public class LockReactModule extends ReactContextBaseJavaModule {
                 break;
             case CONNECTION_NATIVE:
             default:
-                intent = new Intent(context, LockActivity.class);
+                intent = new Intent(activity, LockActivity.class);
         }
 
-        /*
-         * android.util.AndroidRuntimeException:
-         * Calling startActivity() from outside of an Activity context requires the
-         * FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
-         */
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-
+        activity.startActivity(intent);
     }
 
     private boolean invokeAuthCallback(String err, UserProfile profile, Token token) {

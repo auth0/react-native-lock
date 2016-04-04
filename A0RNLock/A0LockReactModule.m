@@ -97,7 +97,7 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)options callback:(RCTResponseSenderBlock)
     });
 }
 
-RCT_EXPORT_METHOD(getDelegationToken:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
+RCT_EXPORT_METHOD(delegation:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[A0LockReact sharedInstance] delegationWithOptions:options callback:callback];
     });

@@ -36,3 +36,12 @@ node_modules/
 #Auth0
 Auth0.plist
 auth0-credentials.js
+
+# Android
+.gradle
+/local.properties
+.idea
+.DS_Store
+/build
+/**/build
+*.iml

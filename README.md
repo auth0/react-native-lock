@@ -30,6 +30,20 @@ Run `npm install --save react-native-lock` to add the package to your app's depe
 
 Run `rnpm link react-native-lock` so your project is linked against your Xcode project & install Lock for iOS using CocoaPods and run `react-native run-ios`
 
+If you get the following warning.
+
+```
+!] The `<YourAppName> [Debug]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods/Pods.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+
+[!] The `<YourAppName> [Release]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods/Pods.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+```
+
+Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)`.
+
 #### Manually
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
@@ -237,12 +251,8 @@ Auth0 helps you to:
 react-native-lock-ios is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 <!-- Variables -->
-[npm-image]: https://img.shields.io/npm/v/react-native-lock-ios.svg?style=flat
-[npm-url]: https://npmjs.org/package/react-native-lock-ios
-[travis-image]: http://img.shields.io/travis/auth0/react-native-lock-ios.svg?style=flat
-[travis-url]: https://travis-ci.org/auth0/react-native-lock-ios
-[cocoapods-version-image]: https://img.shields.io/cocoapods/v/LockReactNative.svg?style=flat
-[cocoapods-license-image]: https://img.shields.io/cocoapods/l/LockReactNative.svg?style=flat
-[cocoapods-platform-image]: https://img.shields.io/cocoapods/p/LockReactNative.svg?style=flat
-[cocoapods-url]: http://cocoapods.org/pods/LockReactNative
+[npm-image]: https://img.shields.io/npm/v/react-native-lock.svg?style=flat
+[npm-url]: https://npmjs.org/package/react-native-lock
+[travis-image]: http://img.shields.io/travis/auth0/react-native-lock.svg?style=flat
+[travis-url]: https://travis-ci.org/auth0/react-native-lock
 

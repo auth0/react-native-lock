@@ -1,4 +1,4 @@
-var { NativeModules } = require('react-native');
+var { NativeModules, Platform } = require('react-native');
 var LockModule = NativeModules.Auth0LockModule;
 
 const VERSION = require('./version');
@@ -17,7 +17,7 @@ class Auth0Lock {
   }
 
   hide(callback) {
-    if (!LockModule.hide) {
+    if (Platform.OS === "android") {
       callback();
       return;
     }
@@ -26,21 +26,29 @@ class Auth0Lock {
 
   show(options, callback) {
     LockModule.init(this.lockOptions);
-    if (this.nativeIntegrations && LockModule.nativeIntegrations) {
+    if (Platform.OS === "ios" && this.nativeIntegrations) {
       LockModule.nativeIntegrations(this.nativeIntegrations);
     }
     LockModule.show(options, callback);
   }
 
   authenticate(connectionName, options, callback) {
+    if (Platform.OS === "android") {
+      callback("Not available in Android", null, null);
+      return;
+    }
     LockModule.init(this.lockOptions);
-    if (this.nativeIntegrations && LockModule.nativeIntegrations) {
+    if (this.nativeIntegrations) {
       LockModule.nativeIntegrations(this.nativeIntegrations);
     }
     LockModule.authenticate(connectionName, options, callback);
   }
 
   delegation(options, callback) {
+    if (Platform.OS === "android") {
+      callback("Not available in Android", null, null);
+      return;
+    }
     LockModule.init(this.lockOptions);
     LockModule.delegation(options, callback);
   }

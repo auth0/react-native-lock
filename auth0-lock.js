@@ -17,12 +17,16 @@ class Auth0Lock {
   }
 
   hide(callback) {
+    if (!LockModule.hide) {
+      callback();
+      return;
+    }
     LockModule.hide(callback);
   }
 
   show(options, callback) {
     LockModule.init(this.lockOptions);
-    if (this.nativeIntegrations) {
+    if (this.nativeIntegrations && LockModule.nativeIntegrations) {
       LockModule.nativeIntegrations(this.nativeIntegrations);
     }
     LockModule.show(options, callback);
@@ -30,15 +34,15 @@ class Auth0Lock {
 
   authenticate(connectionName, options, callback) {
     LockModule.init(this.lockOptions);
-    if (this.nativeIntegrations) {
+    if (this.nativeIntegrations && LockModule.nativeIntegrations) {
       LockModule.nativeIntegrations(this.nativeIntegrations);
     }
     LockModule.authenticate(connectionName, options, callback);
   }
 
-  getDelegationToken(options, callback) {
+  delegation(options, callback) {
     LockModule.init(this.lockOptions);
-    LockModule.getDelegationToken(options, callback);
+    LockModule.delegation(options, callback);
   }
 }
 

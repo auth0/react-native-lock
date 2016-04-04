@@ -22,7 +22,7 @@
 
 ## Installation
 
-Run `npm install --save react-native-lock-ios` to add the package to your app's dependencies.
+Run `npm install --save react-native-lock` to add the package to your app's dependencies.
 
 ### iOS
 

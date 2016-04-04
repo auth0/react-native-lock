@@ -30,6 +30,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+
 import com.auth0.core.Strategies;
 import com.auth0.core.Token;
 import com.auth0.core.UserProfile;
@@ -49,7 +50,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import java.util.HashMap;
+
 import java.util.Map;
 
 public class LockReactModule extends ReactContextBaseJavaModule {
@@ -71,6 +72,7 @@ public class LockReactModule extends ReactContextBaseJavaModule {
     Map<Strategies, IdentityProvider> providers;
 
     private Callback authCallback;
+
     AuthenticationReceiver authenticationReceiver = new AuthenticationReceiver() {
         @Override
         public void onAuthentication(@NonNull UserProfile profile, @NonNull Token token) {

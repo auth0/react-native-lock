@@ -125,6 +125,7 @@ public class UserProfileBridgeTest {
         userProfileMap.put("user_id", "id-value");
         userProfileMap.put("name", "name-value");
         userProfileMap.put("nickname", "nickname-value");
+        userProfileMap.put("picture", "picture-value");
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -139,5 +140,6 @@ public class UserProfileBridgeTest {
         assertThat(map.getString("name"), is(equalTo("name-value")));
         assertThat(map.getString("nickname"), is(equalTo("nickname-value")));
         assertThat(map.getString("createdAt"), is(equalTo(sdf.format(now))));
+        assertThat(map.getString("picture"), is(equalTo("picture-value")));
     }
 }

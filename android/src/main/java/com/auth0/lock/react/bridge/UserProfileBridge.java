@@ -41,6 +41,7 @@ public class UserProfileBridge implements LockReactBridge {
     private static final String NAME_KEY = "name";
     private static final String NICKNAME_KEY = "nickname";
     private static final String CREATED_AT_KEY = "createdAt";
+    private static final String PICTURE_KEY = "picture";
 
     private UserProfile profile;
 
@@ -62,6 +63,7 @@ public class UserProfileBridge implements LockReactBridge {
                 simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
                 profileMap.putString(CREATED_AT_KEY, simpleDateFormat.format(profile.getCreatedAt()));
             }
+            profileMap.putString(PICTURE_KEY, profile.getPictureURL());
         }
         return profileMap;
     }

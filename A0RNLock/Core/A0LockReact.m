@@ -149,18 +149,31 @@
         callback(@[@"Please configure Lock before using it"]);
         return;
     }
-    if (!options[@"api"]) {
-        callback(@[@"Must specify api in options."]);
+
+    NSString *api = options[@"api"];
+    if (!api) {
+      api = @"app";
+    }
+
+    NSString *token = options[@"token"];
+    NSString *refreshToken = options[@"refresh_token"];
+
+    if (token && refreshToken) {
+        callback(@[@"Must specify either a token or a refreshToken in options"]);
         return;
     }
-    if (!options[@"id_token"]) {
-        callback(@[@"Must specify id_token in options"]);
+
+    if (!token && !refreshToken) {
+        callback(@[@"Must specify at least a token or a refreshToken in options"]);
         return;
     }
-    if (!options[@"scope"]) {
-        callback(@[@"Must specify scope in options"]);
-        return;
+
+    NSString *scope = options[@"scope"];
+    if (!scope) {
+        scope = @"openid";
     }
+
+    NSString *target = options[@"target"];
 
     A0APIClient *client = [self.lock apiClient];
 
@@ -171,11 +184,16 @@
         callback(@[[error localizedDescription]]);
     };
 
+    NSString *tokenKey = refreshToken ? @"refresh_token" : @"id_token";
+    NSString *tokenValue = refreshToken ? refreshToken : token;
     A0AuthParameters *parameters = [A0AuthParameters newWithDictionary:@{
                                                                          A0ParameterAPIType: options[@"api"],
-                                                                         @"id_token": options[@"id_token"],
+                                                                         tokenKey: tokenValue,
                                                                          A0ParameterScope: [self scopeParamterFromOptions:options],
                                                                          }];
+    if (target) {
+        parameters[@"target"] = target;
+    }
     [client fetchDelegationTokenWithParameters:parameters success:success failure:failure];
 }
 

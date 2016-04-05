@@ -1,4 +1,4 @@
-# react-native-lock-ios
+# react-native-lock
 
 [![NPM version][npm-image]][npm-url]
 [![CI Status][travis-image]][travis-url]

@@ -30,6 +30,19 @@ Run `npm install --save react-native-lock` to add the package to your app's depe
 
 Run `rnpm link react-native-lock` so your project is linked against your Xcode project & install Lock for iOS using CocoaPods and run `react-native run-ios`
 
+#### Manually
+
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+2. Go to `node_modules` ➜ `react-native-lock` and add `A0RNLock.xcodeproj`
+3. In XCode, in the project navigator, select your project. Add `libA0RNLock.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Header Search Paths` and make sure it contains `$(SRCROOT)/../react-native/React`, `$(SRCROOT)/../../React`, `${SRCROOT}/../../ios/Pods/Headers/Public` and `${SRCROOT}/../../ios/Pods/Headers/Public/Lock` - all marked as `recursive`.
+5. Inside your `ios` directory add a file named `Podfile` with the following [content](https://github.com/auth0/react-native-lock/blob/master/Podfile.template)
+6. Run `pod install --project-directory=ios`
+7. Run `react-native run-ios`
+
+
+#### CocoaPods Warning
+
 If you get the following warning.
 
 ```
@@ -44,17 +57,55 @@ If you get the following warning.
 
 Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)`.
 
-#### Manually
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-lock` and add `A0RNLock.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libA0RNLock.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Header Search Paths` and make sure it contains `$(SRCROOT)/../react-native/React`, `$(SRCROOT)/../../React`, `${SRCROOT}/../../ios/Pods/Headers/Public` and `${SRCROOT}/../../ios/Pods/Headers/Public/Lock` - all marked as `recursive`.
-5. Inside your `ios` directory add a file named `Podfile` with the following [content](https://github.com/auth0/react-native-lock/blob/master/Podfile.template)
-6. Run `pod install --project-directory=ios`
-7. Run `react-native run-ios`
-
 ### Android
+
+#### rnpm
+
+Run `rnpm link react-native-lock` so your project is linked against your Android project 
+
+In your file `android/settings.gradle`, inside the `android` section add the following
+
+```gradle
+packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+}
+```
+
+Then in your `android/app/src/mainAndroidManifest.xml` add the following inside `<application>` tag
+
+```xml
+<!--Auth0 Lock-->
+<activity
+  android:name="com.auth0.lock.LockActivity"
+  android:theme="@style/Lock.Theme"
+  android:screenOrientation="portrait"
+  android:launchMode="singleTask">
+</activity>
+<!--Auth0 Lock End-->
+<!--Auth0 Lock Embedded WebView-->
+<activity 
+    android:name="com.auth0.identity.web.WebViewActivity" 
+    android:theme="@style/Lock.Theme">
+</activity>
+<!--Auth0 Lock Embedded WebView End-->
+<!--Auth0 Lock Passwordless-->
+<activity
+    android:name="com.auth0.lock.passwordless.LockPasswordlessActivity"
+    android:theme="@style/Lock.Theme"
+    android:screenOrientation="portrait"
+    android:launchMode="singleTask">
+</activity>
+<activity 
+    android:name="com.auth0.lock.passwordless.CountryCodeActivity" 
+    android:theme="@style/Lock.Theme">
+</activity>
+<!--Auth0 Lock Passwordless End-->
+```
+
+And finally run `react-native run-android`
+
+#### Manually
 
 In your file `android/settings.gradle` add the following
 

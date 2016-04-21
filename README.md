@@ -57,6 +57,8 @@ If you get the following warning.
 
 Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)`.
 
+> Also make sure you are not adding `use_frameworks!` in your Podfile, there is a known issue with Dynamic Frameworks that needs to be fixed.
+
 ### Android
 
 #### rnpm

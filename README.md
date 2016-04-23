@@ -65,7 +65,7 @@ Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Setti
 
 Run `rnpm link react-native-lock` so your project is linked against your Android project 
 
-In your file `android/settings.gradle`, inside the `android` section add the following
+In your file `android/app/build.gradle`, inside the `android` section add the following
 
 ```gradle
 packagingOptions {
@@ -73,6 +73,7 @@ packagingOptions {
     exclude 'META-INF/NOTICE'
 }
 ```
+> This fixes the error `Error: duplicate files during packaging of APK
 
 Then in your `android/app/src/mainAndroidManifest.xml` add the following inside `<application>` tag
 

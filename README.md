@@ -65,7 +65,7 @@ Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Setti
 
 Run `rnpm link react-native-lock` so your project is linked against your Android project 
 
-In your file `android/settings.gradle`, inside the `android` section add the following
+In your file `android/app/build.gradle`, inside the `android` section add the following
 
 ```gradle
 packagingOptions {

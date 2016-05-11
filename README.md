@@ -297,7 +297,7 @@ Auth0 helps you to:
 
 ## Author
 
-[Auth0](auth0.com)
+[Auth0](https://auth0.com/)
 
 ## License
 

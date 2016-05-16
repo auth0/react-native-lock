@@ -35,7 +35,10 @@ fi
 
 echo "Adding Podfile to iOS project"
 
-cp $template $podfile >/dev/null 2>&1
+cd ios
+pod init >/dev/null 2>&1
+cat $template >> $podfile
+cd ..
 
 echo "Installing Pods"
 

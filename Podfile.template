@@ -1,3 +1,6 @@
+
+# Auth0 Lock
+
 pod 'Lock', '~> 1.24'
 pod 'Lock/TouchID'
 pod 'Lock/SMS'

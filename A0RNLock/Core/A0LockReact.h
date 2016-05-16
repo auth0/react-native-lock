@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <Lock/A0Lock.h>
+#import <Lock/Lock.h>
 
 typedef void(^A0LockCallback)(NSArray *parameters);
 

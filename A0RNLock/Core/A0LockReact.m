@@ -22,8 +22,6 @@
 
 #import "A0LockReact.h"
 #import <Lock/Lock.h>
-#import <Lock/A0APIClient.h>
-#import <Lock/A0Telemetry.h>
 #import "A0Token+ReactNative.h"
 #import "A0UserProfile+ReactNative.h"
 

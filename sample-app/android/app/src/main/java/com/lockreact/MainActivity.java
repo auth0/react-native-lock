@@ -1,13 +1,13 @@
 package com.lockreact;
 
 import com.facebook.react.ReactActivity;
+import com.auth0.lock.react.LockReactPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.auth0.lock.react.LockReactPackage;
 
 public class MainActivity extends ReactActivity {
 

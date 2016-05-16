@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Lock/A0Token.h>
+#import <Lock/Lock.h>
 #import "A0DictionarySerialization.h"
 
 @interface A0Token (ReactNative) <A0DictionarySerialization>

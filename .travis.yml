@@ -1,16 +1,22 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
-language: objective-c
-osx_image: xcode7.1
-podfile: Example/Podfile
-
-before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=Example
-install:
-- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-script:
-- set -o pipefail && xcodebuild build -workspace Example/LockReact.xcworkspace -scheme LockReact -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
-- pod lib lint --quick
+matrix:
+  include:
+  - os: linux
+    language: android
+    sudo: false
+    android:
+      components:
+      - build-tools-23.0.1
+      - android-23
+      - extra-google-m2repository
+      - extra-android-m2repository
+    env: TERM=dumb
+  - os: osx
+    language: objective-c
+    osx_image: xcode7.3
+install: scripts/install.sh
+script: scripts/ci.sh
+branches:
+  only: master
+notifications:
+  slack:
+    secure: itImwp3AXpbzTHThmAgwWYrj/Hnwe/V4CfbxMeU2O+a3Vl1+8ZtO0R/SYYPZIkVHlxIvdQ1gALigJMu1RZ9H5bBNZic+eLtU066x6YCjUTHFAkpPGUtId43c58xJWCHUAO4X7UWEdsYpxnVLnrE50iZufUlEDIwWg1zwQ4j1+cTFz5kTFzjGKpZDIBslSW4h19dkS4YQaK7XXgg90jX8Q46pKo0HzoikoWrCAAYr1rMslozQA6//TRfFKhk11/YcZtqK7ToWy2lSGDvzu7SlmBKpWWrYXgoh1lD6SA4X8kNhgsK7cYo8XM1BZqOPBOePK+yytDY83eVm15k1Gx2OM7SFQzxMPI2ARtTscooU55gc8bU7Ls0UMMDIXb7N30NPh8nrABkj2CENOd42iSORcdjxDvQCK7lBVVnF8kFcCCVw+kU7PQsA9FrIaQ7buitas8g9X6+O0DacXu2D6HFX3uHlDH9cQQlNhgYzwFyatIO1CIVGmq+XlJgI4lNXJpfVALI478hESLgVKDg4JPmHTf2Thjk32MQ1AzHxwjgwX/DMrsRBAm9dLz/rXiOwIYSRlv7eqT7/wjX7XQ04Yl/kjmkSbjSSFLu08CNBHyujIuzP9kbRuGwbxjAsU++sJng0n0dJOc4iRcAX3lSxK74vadjQGVNDYgD4SqNkleQWt80=

@@ -251,10 +251,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../react-native/React/**",
-					"${SRCROOT}/../../ios/Pods/Headers/Public/**",
-					"${SRCROOT}/../../ios/Pods/Headers/Public/Lock/**",
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/Lock/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -266,10 +266,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../react-native/React/**",
-					"${SRCROOT}/../../ios/Pods/Headers/Public/**",
-					"${SRCROOT}/../../ios/Pods/Headers/Public/Lock/**",
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/Lock/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

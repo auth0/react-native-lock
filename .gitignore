@@ -39,7 +39,7 @@ auth0-credentials.js
 
 # Android
 .gradle
-/local.properties
+android/local.properties
 .idea
 .DS_Store
 /build

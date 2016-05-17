@@ -24,7 +24,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		AAE20147DB977E63DA0BFA0E /* libPods-LockReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A1E41FECB038651FF6DD05 /* libPods-LockReact.a */; };
-		DCCF0AB3C9CF4C95B41E3F0D /* libA0RNLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0349E29F18A434FBD1DFB98 /* libA0RNLock.a */; };
+		D0250A046D35406686E3C65B /* libA0RNLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8905D7134B4C049CEBA177 /* libA0RNLock.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,9 +91,9 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		5F049B0E1CAF05EA006F6C05 /* PBXContainerItemProxy */ = {
+		5F66F79E1CEA9047003827DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A9AB54CBF62D4F74B6E6A99B /* A0RNLock.xcodeproj */;
+			containerPortal = A0DB6B97D25F41F4ACCECE48 /* A0RNLock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5F0499EE1CAE9F4A006F6C05;
 			remoteInfo = A0RNLock;
@@ -140,9 +140,9 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		850E6EBA40B55E93C200822E /* Pods-LockReactTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockReactTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockReactTests/Pods-LockReactTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0DB6B97D25F41F4ACCECE48 /* A0RNLock.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = A0RNLock.xcodeproj; path = "../node_modules/react-native-lock/ios/A0RNLock.xcodeproj"; sourceTree = "<group>"; };
 		A4F0008FCB883E35B6876F51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A9AB54CBF62D4F74B6E6A99B /* A0RNLock.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = A0RNLock.xcodeproj; path = "../node_modules/react-native-lock/A0RNLock.xcodeproj"; sourceTree = "<group>"; };
-		B0349E29F18A434FBD1DFB98 /* libA0RNLock.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libA0RNLock.a; sourceTree = "<group>"; };
+		AB8905D7134B4C049CEBA177 /* libA0RNLock.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libA0RNLock.a; sourceTree = "<group>"; };
 		B691A50C9392956F4EA49DAE /* Pods-LockReactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockReactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockReactTests/Pods-LockReactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BCA0AC9E987E9E6D2AC40CAD /* Pods-LockReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockReact.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockReact/Pods-LockReact.release.xcconfig"; sourceTree = "<group>"; };
 		DBE98EE43F6036D4D481B7DF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				DCCF0AB3C9CF4C95B41E3F0D /* libA0RNLock.a in Frameworks */,
 				AAE20147DB977E63DA0BFA0E /* libPods-LockReact.a in Frameworks */,
+				D0250A046D35406686E3C65B /* libA0RNLock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +283,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5F049B0B1CAF05EA006F6C05 /* Products */ = {
+		5F66F79B1CEA9047003827DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F049B0F1CAF05EA006F6C05 /* libA0RNLock.a */,
+				5F66F79F1CEA9047003827DA /* libA0RNLock.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				A9AB54CBF62D4F74B6E6A99B /* A0RNLock.xcodeproj */,
+				A0DB6B97D25F41F4ACCECE48 /* A0RNLock.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -435,8 +435,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 5F049B0B1CAF05EA006F6C05 /* Products */;
-					ProjectRef = A9AB54CBF62D4F74B6E6A99B /* A0RNLock.xcodeproj */;
+					ProductGroup = 5F66F79B1CEA9047003827DA /* Products */;
+					ProjectRef = A0DB6B97D25F41F4ACCECE48 /* A0RNLock.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -544,11 +544,11 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5F049B0F1CAF05EA006F6C05 /* libA0RNLock.a */ = {
+		5F66F79F1CEA9047003827DA /* libA0RNLock.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libA0RNLock.a;
-			remoteRef = 5F049B0E1CAF05EA006F6C05 /* PBXContainerItemProxy */;
+			remoteRef = 5F66F79E1CEA9047003827DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -767,8 +767,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockReact.app/LockReact";
@@ -791,8 +789,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockReact.app/LockReact";
@@ -810,6 +806,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/A0RNLock/**",
+					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 				);
 				INFOPLIST_FILE = LockReact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -828,6 +825,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/A0RNLock/**",
+					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 				);
 				INFOPLIST_FILE = LockReact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -876,6 +874,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/A0RNLock/**",
+					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -918,6 +917,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock-ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/A0RNLock/**",
+					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

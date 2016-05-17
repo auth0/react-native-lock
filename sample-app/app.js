@@ -110,12 +110,10 @@ var LockReactApp = React.createClass({
   },
   _onRefresh: function() {
     console.log("Refresh token " + this.state.token.idToken);
-    lock.delegation({
-      refreshToken: this.state.token.refreshToken
-    })
+    lock.refreshToken(this.state.token.refreshToken)
     .then((response) => {
       let token = this.state.token;
-      token.idToken = response.id_token;
+      token.idToken = response.idToken;
       this.setState({token: token});
       console.log(response);
     })

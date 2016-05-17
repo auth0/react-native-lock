@@ -64,8 +64,6 @@ class Auth0Lock {
     let attrName = "refresh_token";
     if (options.refreshToken === undefined) {
       attrName = "id_token";
-    } else {
-      payload["api_type"] = "app";
     }
 
     payload[attrName] = token;
@@ -92,7 +90,20 @@ class Auth0Lock {
     })
     .then((response) => response.json());
   }
-}
 
+  refreshToken(refreshToken, options) {
+    let delegationOptions = Object.assign({}, options);
+    delegationOptions.refreshToken = refreshToken;
+    delegationOptions.apiType = "app";
+    return this.delegation(delegationOptions)
+    .then((json) => {
+      return {
+        idToken: json.id_token,
+        expiresIn: json.expires_in,
+        tokenType: json.token_type
+      };
+    });
+  }
+}
 
 module.exports = Auth0Lock;

@@ -14,5 +14,5 @@ matrix:
           language: objective-c
           osx_image: xcode7.3
 
-install: script/install.sh
-script: script/ci.sh
+install: scripts/install.sh
+script: scripts/ci.sh

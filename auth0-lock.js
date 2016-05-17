@@ -44,14 +44,58 @@ class Auth0Lock {
     LockModule.authenticate(connectionName, options, callback);
   }
 
-  delegation(options, callback) {
-    if (Platform.OS === "android") {
-      callback("Not available in Android", null, null);
-      return;
+  delegation(options) {
+    let clientId = this.lockOptions.clientId;
+    let domain = this.lockOptions.domain;
+    if (!domain.startsWith("http")) {
+      domain = `https://${domain}`;
     }
-    LockModule.init(this.lockOptions);
-    LockModule.delegation(options, callback);
+    console.log(`refreshing token with base url ${domain}`);
+    let payload = {
+      "client_id": clientId,
+      "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+    };
+
+    let token = options.refreshToken || options.idToken;
+    if (token === undefined) {
+        console.log("No valid token for delegation");
+        return Promise.reject("must supply either a refreshToken or idToken");
+    }
+
+    let attrName = "refresh_token";
+    if (options.refreshToken === undefined) {
+      attrName = "id_token";
+    } else {
+      payload["api_type"] = "app";
+    }
+
+    payload[attrName] = token;
+
+    if (options.apiType !== undefined) {
+      payload["api_type"] = options.apiType;
+    }
+
+    if (options.target !== undefined) {
+      payload["target"] = options.target;
+    }
+
+    if (options.scope !== undefined) {
+      payload["scope"] = options.scope;
+    }
+
+    console.log(`Delegation payload ${JSON.stringify(payload)}`);
+
+    return fetch(`${domain}/delegation`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
+    .then((response) => response.json());
   }
 }
+
 
 module.exports = Auth0Lock;

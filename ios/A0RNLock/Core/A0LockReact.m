@@ -142,59 +142,6 @@
     self.shown = YES;
 }
 
-- (void)delegationWithOptions:(NSDictionary *)options callback:(A0LockCallback)callback {
-    if (!self.lock) {
-        callback(@[@"Please configure Lock before using it"]);
-        return;
-    }
-
-    NSString *api = options[@"api"];
-    if (!api) {
-      api = @"app";
-    }
-
-    NSString *token = options[@"token"];
-    NSString *refreshToken = options[@"refresh_token"];
-
-    if (token && refreshToken) {
-        callback(@[@"Must specify either a token or a refreshToken in options"]);
-        return;
-    }
-
-    if (!token && !refreshToken) {
-        callback(@[@"Must specify at least a token or a refreshToken in options"]);
-        return;
-    }
-
-    NSString *scope = options[@"scope"];
-    if (!scope) {
-        scope = @"openid";
-    }
-
-    NSString *target = options[@"target"];
-
-    A0APIClient *client = [self.lock apiClient];
-
-    void(^success)(NSDictionary *) = ^(NSDictionary *credentials) {
-        callback(@[[NSNull null], credentials]);
-    };
-    void(^failure)(NSError *) = ^(NSError *error) {
-        callback(@[[error localizedDescription]]);
-    };
-
-    NSString *tokenKey = refreshToken ? @"refresh_token" : @"id_token";
-    NSString *tokenValue = refreshToken ? refreshToken : token;
-    A0AuthParameters *parameters = [A0AuthParameters newWithDictionary:@{
-                                                                         A0ParameterAPIType: options[@"api"],
-                                                                         tokenKey: tokenValue,
-                                                                         A0ParameterScope: [self scopeParamterFromOptions:options],
-                                                                         }];
-    if (target) {
-        parameters[@"target"] = target;
-    }
-    [client fetchDelegationTokenWithParameters:parameters success:success failure:failure];
-}
-
 - (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback {
     A0IdentityProviderAuthenticator *authenticator = [self.lock identityProviderAuthenticator];
     void(^success)(A0UserProfile *, A0Token *) = ^(A0UserProfile *profile, A0Token *token) {

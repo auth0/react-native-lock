@@ -50,7 +50,7 @@ class Auth0Lock {
     if (!domain.startsWith("http")) {
       domain = `https://${domain}`;
     }
-    console.log(`refreshing token with base url ${domain}`);
+
     let payload = {
       "client_id": clientId,
       "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
@@ -58,7 +58,6 @@ class Auth0Lock {
 
     let token = options.refreshToken || options.idToken;
     if (token === undefined) {
-        console.log("No valid token for delegation");
         return Promise.reject("must supply either a refreshToken or idToken");
     }
 
@@ -82,8 +81,6 @@ class Auth0Lock {
     if (options.scope !== undefined) {
       payload["scope"] = options.scope;
     }
-
-    console.log(`Delegation payload ${JSON.stringify(payload)}`);
 
     return fetch(`${domain}/delegation`, {
       method: 'POST',

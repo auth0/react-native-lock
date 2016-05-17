@@ -63,6 +63,9 @@ var LockReactApp = React.createClass({
             refreshToken={this.state.token.refreshToken}
           />
           <View style={styles.actionContainer}>
+            <TouchableHighlight style={styles.actionButton} onPress={this._onRefresh}>
+              <Text style={styles.actionButtonText}>Refresh</Text>
+            </TouchableHighlight>
             <TouchableHighlight style={styles.actionButton} onPress={this._onLogout}>
               <Text style={styles.actionButtonText}>Logout</Text>
             </TouchableHighlight>
@@ -104,6 +107,17 @@ var LockReactApp = React.createClass({
   },
   _onLogout: function() {
     this.setState({logged: false});
+  },
+  _onRefresh: function() {
+    console.log("Refresh token " + this.state.token.idToken);
+    lock.refreshToken(this.state.token.refreshToken)
+    .then((response) => {
+      let token = this.state.token;
+      token.idToken = response.idToken;
+      this.setState({token: token});
+      console.log(response);
+    })
+    .catch((error) => console.log(error));
   },
 });
 

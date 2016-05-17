@@ -275,6 +275,24 @@ Show Lock's authentication screen as a modal screen using the connections config
 
 The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
 
+####.delegation(options)
+Performs delegation request with given `options` and returns a `Promise` that will resolve in the JSON response from the server or an error. The valid option are:
+
+* **idToken** (`string`): valid user id_token obtained during login.
+* **refreshToken** (`string`): user's refresh_token used to request new id_token.
+* **apiType** (`string`): for what api the new token will be for. e.g. `firebase` or `aws`.
+* **target** (`string`): what Auth0 client the token will be requested from.
+* **scope** (`string`): scope required in the token.
+
+####.refreshToken(refreshToken, options)
+Performs delegation to obtain a new token using the given `refreshToken` and `options` and returns a `Promise`. The valid options are the same as the `.delegation(options)` method.
+
+On success the Promise will yield an object with the following attributes.
+
+* **idToken** (`string`): new id_token obtained form Auth0.
+* **expiresIn** (`number`): number of seconds till the token expires
+* **tokenType** (`string`): type of the token returned.
+
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.

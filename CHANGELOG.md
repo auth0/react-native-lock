@@ -1,8 +1,35 @@
 # Change Log
 
-## [Unreleased](https://github.com/auth0/react-native-lock/tree/HEAD)
+## [0.2.0](https://github.com/auth0/react-native-lock/tree/0.2.0) (2016-05-18)
+[Full Changelog](https://github.com/auth0/react-native-lock/compare/0.1.0...0.2.0)
 
-[Full Changelog](https://github.com/auth0/react-native-lock/compare/0.0.5...HEAD)
+**Implemented enhancements:**
+
+- delegation request for Android [\#31](https://github.com/auth0/react-native-lock/issues/31)
+- Add support to include library using `.xcodeproj` without CocoaPods [\#4](https://github.com/auth0/react-native-lock/issues/4)
+
+**Fixed bugs:**
+
+- A0LockReact.m delegationWithOptions passes null dictionary when attempting to obtain firebase token, crashing app [\#39](https://github.com/auth0/react-native-lock/issues/39)
+
+**Closed issues:**
+
+- Closable not working on Android [\#41](https://github.com/auth0/react-native-lock/issues/41)
+- Issues with running rnpm [\#28](https://github.com/auth0/react-native-lock/issues/28)
+- Auth0Lock.show - Cannot read property 'init' of defined  [\#20](https://github.com/auth0/react-native-lock/issues/20)
+
+**Merged pull requests:**
+
+- Add a Auth0 client class [\#46](https://github.com/auth0/react-native-lock/pull/46) ([hzalaz](https://github.com/hzalaz))
+- Use fetch API for delegation requests [\#45](https://github.com/auth0/react-native-lock/pull/45) ([hzalaz](https://github.com/hzalaz))
+- Introduce travis again [\#44](https://github.com/auth0/react-native-lock/pull/44) ([hzalaz](https://github.com/hzalaz))
+- Make it work with CP 1.0.0 [\#43](https://github.com/auth0/react-native-lock/pull/43) ([hzalaz](https://github.com/hzalaz))
+- Update README.md [\#40](https://github.com/auth0/react-native-lock/pull/40) ([arjunkomath](https://github.com/arjunkomath))
+- Fixed path Android setup build.gradle [\#33](https://github.com/auth0/react-native-lock/pull/33) ([robmoorman](https://github.com/robmoorman))
+- Remove "-ios" from main README header [\#27](https://github.com/auth0/react-native-lock/pull/27) ([twistedstream](https://github.com/twistedstream))
+
+## [0.1.0](https://github.com/auth0/react-native-lock/tree/0.1.0) (2016-04-04)
+[Full Changelog](https://github.com/auth0/react-native-lock/compare/0.0.5...0.1.0)
 
 **Closed issues:**
 

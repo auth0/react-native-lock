@@ -5,20 +5,23 @@ const VERSION = require('./version');
 
 class Auth0Lock {
   constructor(options) {
-    if (options) {
+    let { clientId, domain } = options;
+    if (options != null && clientId != null && domain != null) {
       this.lockOptions = {
-        clientId: options.clientId,
-        domain: options.domain,
+        clientId: clientId,
+        domain: domain,
         configurationDomain: options.configurationDomain,
         libraryVersion: VERSION
       };
       this.nativeIntegrations = options.integrations;
+    } else {
+      throw "Must supply clientId & domain";
     }
   }
 
   hide(callback) {
     if (Platform.OS === "android") {
-      callback();
+      setTimeout(() => callback(), 0);
       return;
     }
     LockModule.hide(callback);
@@ -45,8 +48,7 @@ class Auth0Lock {
   }
 
   delegation(options) {
-    let clientId = this.lockOptions.clientId;
-    let domain = this.lockOptions.domain;
+    let { clientId, domain } = this.lockOptions;
     if (!domain.startsWith("http")) {
       domain = `https://${domain}`;
     }
@@ -57,26 +59,26 @@ class Auth0Lock {
     };
 
     let token = options.refreshToken || options.idToken;
-    if (token === undefined) {
+    if (token == null) {
         return Promise.reject("must supply either a refreshToken or idToken");
     }
 
     let attrName = "refresh_token";
-    if (options.refreshToken === undefined) {
+    if (options.refreshToken == null) {
       attrName = "id_token";
     }
 
     payload[attrName] = token;
 
-    if (options.apiType !== undefined) {
+    if (options.apiType != null) {
       payload["api_type"] = options.apiType;
     }
 
-    if (options.target !== undefined) {
+    if (options.target != null) {
       payload["target"] = options.target;
     }
 
-    if (options.scope !== undefined) {
+    if (options.scope != null) {
       payload["scope"] = options.scope;
     }
 
@@ -88,15 +90,15 @@ class Auth0Lock {
       },
       body: JSON.stringify(payload)
     })
-    .then((response) => response.json());
+    .then(response => response.json());
   }
 
   refreshToken(refreshToken, options) {
-    let delegationOptions = Object.assign({}, options);
+    const delegationOptions = Object.assign({}, options);
     delegationOptions.refreshToken = refreshToken;
     delegationOptions.apiType = "app";
     return this.delegation(delegationOptions)
-    .then((json) => {
+    .then(json => {
       return {
         idToken: json.id_token,
         expiresIn: json.expires_in,

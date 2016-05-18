@@ -111,13 +111,13 @@ var LockReactApp = React.createClass({
   _onRefresh: function() {
     console.log("Refresh token " + this.state.token.idToken);
     lock.refreshToken(this.state.token.refreshToken)
-    .then((response) => {
+    .then(response => {
       let token = this.state.token;
       token.idToken = response.idToken;
       this.setState({token: token});
       console.log(response);
     })
-    .catch((error) => console.log(error));
+    .catch(error => console.log(error));
   },
 });
 

@@ -57,7 +57,7 @@ ext.libraries = [
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.facebook.react:react-native:+'
-    compile 'com.auth0.android:lock:1.14.+'
-    compile 'com.auth0.android:lock-passwordless:1.14.+'
+    compile 'com.auth0.android:lock:1.16.+'
+    compile 'com.auth0.android:lock-passwordless:1.16.+'
     testCompile libraries.testing
 }

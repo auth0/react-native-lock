@@ -2,23 +2,29 @@ var { NativeModules, Platform } = require('react-native');
 var LockModule = NativeModules.Auth0LockModule;
 
 const VERSION = require('./version');
+const Auth0 = require('./auth0');
 
 class Auth0Lock {
   constructor(options) {
-    if (options) {
+    let { clientId, domain } = options;
+    if (options != null && clientId != null && domain != null) {
       this.lockOptions = {
-        clientId: options.clientId,
-        domain: options.domain,
+        clientId: clientId,
+        domain: domain,
         configurationDomain: options.configurationDomain,
         libraryVersion: VERSION
       };
       this.nativeIntegrations = options.integrations;
+      const auth0 = new Auth0(domain);
+      this.authentication = auth0.authentication(clientId);
+    } else {
+      throw "Must supply clientId & domain";
     }
   }
 
   hide(callback) {
     if (Platform.OS === "android") {
-      callback();
+      setTimeout(() => callback(), 0);
       return;
     }
     LockModule.hide(callback);
@@ -45,64 +51,11 @@ class Auth0Lock {
   }
 
   delegation(options) {
-    let clientId = this.lockOptions.clientId;
-    let domain = this.lockOptions.domain;
-    if (!domain.startsWith("http")) {
-      domain = `https://${domain}`;
-    }
-
-    let payload = {
-      "client_id": clientId,
-      "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-    };
-
-    let token = options.refreshToken || options.idToken;
-    if (token === undefined) {
-        return Promise.reject("must supply either a refreshToken or idToken");
-    }
-
-    let attrName = "refresh_token";
-    if (options.refreshToken === undefined) {
-      attrName = "id_token";
-    }
-
-    payload[attrName] = token;
-
-    if (options.apiType !== undefined) {
-      payload["api_type"] = options.apiType;
-    }
-
-    if (options.target !== undefined) {
-      payload["target"] = options.target;
-    }
-
-    if (options.scope !== undefined) {
-      payload["scope"] = options.scope;
-    }
-
-    return fetch(`${domain}/delegation`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
-    })
-    .then((response) => response.json());
+    return this.authentication.delegation(options);
   }
 
   refreshToken(refreshToken, options) {
-    let delegationOptions = Object.assign({}, options);
-    delegationOptions.refreshToken = refreshToken;
-    delegationOptions.apiType = "app";
-    return this.delegation(delegationOptions)
-    .then((json) => {
-      return {
-        idToken: json.id_token,
-        expiresIn: json.expires_in,
-        tokenType: json.token_type
-      };
-    });
+    return this.authentication.refreshToken(refreshToken, options);
   }
 }
 

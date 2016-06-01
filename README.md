@@ -55,7 +55,7 @@ If you get the following warning.
     - Remove the build settings from the target.
 ```
 
-Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)`.
+Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)` for your Application's Target.
 
 > Also make sure you are not adding `use_frameworks!` in your Podfile, there is a known issue with Dynamic Frameworks that currently has no fix.
 

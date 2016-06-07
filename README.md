@@ -55,9 +55,18 @@ If you get the following warning.
     - Remove the build settings from the target.
 ```
 
-Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)` for your Application's Target.
+Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and add the value `$(inherited)` for your Application's Target.
 
 > Also make sure you are not adding `use_frameworks!` in your Podfile, there is a known issue with Dynamic Frameworks that currently has no fix.
+
+If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project, 
+
+```
+"std::terminate()", referenced from: 
+        ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
+```
+
+To solve it, click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations .
 
 ### Android
 

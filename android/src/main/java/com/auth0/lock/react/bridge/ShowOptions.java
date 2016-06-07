@@ -45,12 +45,14 @@ public class ShowOptions {
 
     private static final String CLOSABLE_KEY = "closable";
     private static final String DISABLE_SIGNUP = "disableSignUp";
+    private static final String DISABLE_RESET_PASSWORD = "disableResetPassword";
     private static final String AUTH_PARAMS_KEY = "authParams";
     private static final String CONNECTIONS_KEY = "connections";
     private static final String USE_MAGIC_LINK_KEY = "useMagicLink";
 
     private boolean closable = false;
     private boolean disableSignUp = false;
+    private boolean disableResetPassword = false;
     private boolean useMagicLink = false;
     private Map<String, Object> authParams;
     private String[] connections;
@@ -69,6 +71,11 @@ public class ShowOptions {
         if (options.hasKey(DISABLE_SIGNUP)) {
              disableSignUp = options.getBoolean(DISABLE_SIGNUP);
              Log.d(TAG, DISABLE_SIGNUP + disableSignUp);
+        }
+
+        if (options.hasKey(DISABLE_RESET_PASSWORD)) {
+             disableResetPassword = options.getBoolean(DISABLE_RESET_PASSWORD);
+             Log.d(TAG, DISABLE_RESET_PASSWORD + disableResetPassword);
         }
 
         if (options.hasKey(USE_MAGIC_LINK_KEY)) {
@@ -109,6 +116,10 @@ public class ShowOptions {
 
     public boolean isDisableSignUp() {
          return disableSignUp;
+    }
+
+    public boolean isDisableResetPassword() {
+         return disableResetPassword;
     }
 
     public boolean useMagicLink() {

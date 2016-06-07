@@ -167,6 +167,7 @@ public class LockReactModule extends ReactContextBaseJavaModule {
         lockBuilder
                 .closable(showOptions.isClosable())
                 .disableSignUp(showOptions.isDisableSignUp())
+                .disableResetPassword(showOptions.isDisableResetPassword())
                 .authenticationParameters(showOptions.getAuthParams());
 
         if (showOptions.getConnections() != null) {

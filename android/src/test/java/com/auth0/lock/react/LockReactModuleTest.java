@@ -268,10 +268,11 @@ public class LockReactModuleTest {
         return options;
     }
 
-    private ReadableMap showOptions(boolean closable, boolean disableSignUp, boolean useMagicLink, String[] connections) {
+    private ReadableMap showOptions(boolean closable, boolean disableSignUp, boolean disableResetPassword, boolean useMagicLink, String[] connections) {
         SimpleMap options = new SimpleMap();
         options.putBoolean("closable", closable);
         options.putBoolean("disableSignup", disableSignUp);
+        options.putBoolean("disableResetPassword", disableResetPassword);
         options.putBoolean("useMagicLink", useMagicLink);
         SimpleArray connectionsArray = new SimpleArray();
         for (String connection : connections) {

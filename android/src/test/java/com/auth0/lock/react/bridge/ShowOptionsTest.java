@@ -52,7 +52,7 @@ public class ShowOptionsTest {
     public void testAllNull() throws Exception {
         ShowOptions showOptions = new ShowOptions(null);
         assertThat(showOptions.isClosable(), is(false));
-        assertThat(showOptions.isDisableSignup(), is(false));
+        assertThat(showOptions.isDisableSignUp(), is(false));
         assertThat(showOptions.useMagicLink(), is(false));
         assertThat(showOptions.getConnections(), is(nullValue()));
         assertThat(showOptions.getAuthParams(), is(nullValue()));
@@ -62,7 +62,7 @@ public class ShowOptionsTest {
     public void testAllNative() throws Exception {
         WritableMap options = new SimpleMap();
         options.putBoolean("closable", true);
-        options.putBoolean("disableSignup", true);
+        options.putBoolean("disableSignUp", true);
         options.putBoolean("useMagicLink", true);
 
         SimpleArray connections = new SimpleArray();
@@ -79,7 +79,7 @@ public class ShowOptionsTest {
 
         ShowOptions showOptions = new ShowOptions(options);
         assertThat(showOptions.isClosable(), is(true));
-        assertThat(showOptions.isDisableSignup(), is(true));
+        assertThat(showOptions.isDisableSignUp(), is(true));
         assertThat(showOptions.useMagicLink(), is(true));
         assertThat(showOptions.getConnectionType(), is(equalTo(LockReactModule.CONNECTION_NATIVE)));
         assertThat(Arrays.asList(showOptions.getConnections()), containsInAnyOrder("twitter", "facebook"));

@@ -128,8 +128,8 @@
     } else {
         A0LockViewController *lock = [self.lock newLockViewController];
         lock.closable = [options[@"closable"] boolValue];
-        lock.disableSignUp = [self booleanValueOf:options[@"disableSignup"] defaultValue:NO];
-        lock.disableResetPassword = [self booleanValueOf:options[@"disableResetPassword"] defaultValue:NO];
+        lock.disableSignUp = [options[@"disableSignUp"] boolValue];
+        lock.disableResetPassword = [options[@"disableResetPassword"] boolValue];
         lock.usesEmail = [self booleanValueOf:options[@"usesEmail"] defaultValue:YES];
         lock.useWebView = [self booleanValueOf:options[@"useWebView"] defaultValue:YES];
         lock.loginAfterSignUp = [self booleanValueOf:options[@"loginAfterSignUp"] defaultValue:YES];

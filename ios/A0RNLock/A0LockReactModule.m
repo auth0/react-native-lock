@@ -22,7 +22,7 @@
 
 #import "A0LockReactModule.h"
 #import "A0LockReact.h"
-#import <Lock/Lock.h>
+#import "Lock.h"
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)
 #define FACEBOOK_ENABLED 1

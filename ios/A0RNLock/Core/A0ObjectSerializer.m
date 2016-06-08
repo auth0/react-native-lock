@@ -75,7 +75,7 @@
         value = [self arrayFromArray:object];
     }
     if ([object isKindOfClass:NSDictionary.class]) {
-        value = [self dictionaryFromDictionary:object];
+        value = [self dictionaryFromDictionary:value];
     }
     if ([object isKindOfClass:NSString.class] ||
         [object isKindOfClass:NSNumber.class]) {

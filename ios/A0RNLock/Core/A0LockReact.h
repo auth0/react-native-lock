@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <Lock/Lock.h>
+@import Foundation;
+#import "Lock.h"
 
 typedef void(^A0LockCallback)(NSArray *parameters);
 

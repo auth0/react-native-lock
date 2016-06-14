@@ -57,6 +57,10 @@ class Auth0Lock {
   refreshToken(refreshToken, options) {
     return this.authentication.refreshToken(refreshToken, options);
   }
+
+  authenticationAPI() {
+    return this.authentication;
+  }
 }
 
 module.exports = Auth0Lock;

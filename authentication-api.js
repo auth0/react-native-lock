@@ -4,7 +4,7 @@ class AuthenticationAPI {
     this.baseUrl = baseUrl;
   }
 
-    delegation(options) {
+  delegation(options) {
     let payload = {
       "client_id": this.clientId,
       "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
@@ -57,6 +57,38 @@ class AuthenticationAPI {
         tokenType: json.token_type
       };
     });
+  }
+
+  tokenInfo(token) {
+    if (token == null) {
+      return Promise.reject("must supply a idToken");
+    }
+
+    return fetch(`${this.baseUrl}/tokeninfo`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({"id_token": token})
+    })
+    .then(response => response.json());    
+  }
+
+  userInfo(token) {
+    if (token == null) {
+      return Promise.reject("must supply an accessToken");
+    }
+
+    return fetch(`${this.baseUrl}/userinfo`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => response.json());    
   }
 }
 

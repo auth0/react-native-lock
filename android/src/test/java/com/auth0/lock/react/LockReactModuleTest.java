@@ -131,7 +131,7 @@ public class LockReactModuleTest {
     @Test
     public void shouldStartPasswordlessEmailActivityCode() throws Exception {
         module.init(initOptions("CLIENT_ID", "samples.auth0.com", null));
-        module.show(showOptions(false, false, new String[]{"email", "twitter"}), callback);
+        module.show(showOptions(false, false, false, false, new String[]{"email", "twitter"}), callback);
         ArgumentCaptor<Intent> captor = ArgumentCaptor.forClass(Intent.class);
         verify(reactContext).startActivity(captor.capture());
         final Intent intent = captor.getValue();
@@ -145,7 +145,7 @@ public class LockReactModuleTest {
     @Test
     public void shouldStartPasswordlessEmailActivityMagicLink() throws Exception {
         module.init(initOptions("CLIENT_ID", "samples.auth0.com", null));
-        module.show(showOptions(false, true, new String[]{"linkedin", "email", "twitter"}), callback);
+        module.show(showOptions(false, false, false, true, new String[]{"linkedin", "email", "twitter"}), callback);
         ArgumentCaptor<Intent> captor = ArgumentCaptor.forClass(Intent.class);
         verify(reactContext).startActivity(captor.capture());
         final Intent intent = captor.getValue();
@@ -159,7 +159,7 @@ public class LockReactModuleTest {
     @Test
     public void shouldStartPasswordlessSmsActivityCode() throws Exception {
         module.init(initOptions("CLIENT_ID", "samples.auth0.com", null));
-        module.show(showOptions(false, false, new String[]{"sms", "facebook"}), callback);
+        module.show(showOptions(false, false, false, false, new String[]{"sms", "facebook"}), callback);
         ArgumentCaptor<Intent> captor = ArgumentCaptor.forClass(Intent.class);
         verify(reactContext).startActivity(captor.capture());
         final Intent intent = captor.getValue();
@@ -173,7 +173,7 @@ public class LockReactModuleTest {
     @Test
     public void shouldStartPasswordlessSmsActivityMagicLink() throws Exception {
         module.init(initOptions("CLIENT_ID", "samples.auth0.com", null));
-        module.show(showOptions(false, true, new String[]{"linkedin", "sms", "twitter"}), callback);
+        module.show(showOptions(false, false, false, true, new String[]{"linkedin", "sms", "twitter"}), callback);
         ArgumentCaptor<Intent> captor = ArgumentCaptor.forClass(Intent.class);
         verify(reactContext).startActivity(captor.capture());
         final Intent intent = captor.getValue();
@@ -268,9 +268,11 @@ public class LockReactModuleTest {
         return options;
     }
 
-    private ReadableMap showOptions(boolean closable, boolean useMagicLink, String[] connections) {
+    private ReadableMap showOptions(boolean closable, boolean disableSignUp, boolean disableResetPassword, boolean useMagicLink, String[] connections) {
         SimpleMap options = new SimpleMap();
         options.putBoolean("closable", closable);
+        options.putBoolean("disableSignup", disableSignUp);
+        options.putBoolean("disableResetPassword", disableResetPassword);
         options.putBoolean("useMagicLink", useMagicLink);
         SimpleArray connectionsArray = new SimpleArray();
         for (String connection : connections) {

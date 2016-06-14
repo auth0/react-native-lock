@@ -287,6 +287,8 @@ Then run `rnpm link react-native-lock` and follow the same steps like you did th
 Show Lock's authentication screen as a modal screen using the connections configured for your applications or the ones specified in the `options` parameter. This is the list of valid options:
 
 * **closable** (`boolean`): If Lock screen can be dismissed
+* **disableSignUp** (`boolean`): default to false, if true will hide the signup button
+* **disableResetPassword** (`boolean`): default to false, if true will hide the reset password button
 * **connections** (`[string]`): List of enabled connections to use for authentication. Must be enabled in your app's dashboard first.
 * **authParams** (`object`): Object with the parameters to be sent to the Authentication API, e.g. `scope`.
 

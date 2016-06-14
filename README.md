@@ -55,9 +55,18 @@ If you get the following warning.
     - Remove the build settings from the target.
 ```
 
-Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and change the current value for `$(inherited)` for your Application's Target.
+Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and replace the value `-ObjC` with the value `$(inherited)` for your Application's Target.
 
 > Also make sure you are not adding `use_frameworks!` in your Podfile, there is a known issue with Dynamic Frameworks that currently has no fix.
+
+If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project, 
+
+```
+"std::terminate()", referenced from: 
+        ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
+```
+
+To solve it, click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations .
 
 ### Android
 
@@ -261,6 +270,14 @@ lock.show({
 And you'll see Email Passwordless login screen
 
 [![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-pwdless-email.png)](https://auth0.com)
+
+## Upgrading
+
+If you are upgrading your `react-native` version just run `react-native upgrade` and overwrite all conflicts (option `a` or `overwrite this and all others`).
+
+> If you have custom code in any of the conflict files, like `AppDelegate.m`, it's probably best to backup a copy to apply those changes later.
+
+Then run `rnpm link react-native-lock` and follow the same steps like you did the first time you installed the library.
 
 ## API
 

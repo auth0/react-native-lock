@@ -114,31 +114,32 @@ var LockReactApp = React.createClass({
   },
   _onRefresh: function() {
     console.log("Refresh token " + this.state.token.idToken);
-    lock.refreshToken(this.state.token.refreshToken)
-    .then(response => {
-      let token = this.state.token;
-      token.idToken = response.idToken;
-      this.setState({token: token});
-      console.log(response);
-    })
-    .catch(error => console.log(error));
+    lock.authenticationAPI()
+      .refreshToken(this.state.token.refreshToken)
+      .then(response => {
+        let token = this.state.token;
+        token.idToken = response.idToken;
+        this.setState({token: token});
+        console.log(response);
+      })
+      .catch(error => console.log(error));
   },
   _onUserInfo: function() {
     const token = this.state.token.accessToken;
     console.log("Fetching user info with token " + token);
     lock
-    .authenticationAPI()
-    .userInfo(token)
-    .then(profile => {
-      Alert.alert(
-        `Hi ${profile.name}`,
-        `Your email is ${profile.email}`,
-        [
-          {text: 'OK', onPress: () => {}},
-        ]
-      )
-    })
-    .catch(error => console.log(error));
+      .authenticationAPI()
+      .userInfo(token)
+      .then(profile => {
+        Alert.alert(
+          `Hi ${profile.name}`,
+          `Your email is ${profile.email}`,
+          [
+            {text: 'OK', onPress: () => {}},
+          ]
+        )
+      })
+      .catch(error => console.log(error));
   },
 });
 

@@ -68,6 +68,16 @@ If you are using a `react-native` version `>=0.26.0`, you might encounter the fo
 
 To solve it, click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations .
 
+#### CocoaPods with uses_framework! flag
+
+> This more of a hack than an actual solution. We recommend to avoid including Lock as a dynamic framework unless you have a very good reason to do that.
+
+After setting up `react-native-lock` either [Manually](#manually) or using [rnpm](#rnpm) you need to open your iOS project with Xcode and follow these steps:
+
+1. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Framework Search Paths` and make sure it contains `$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/Lock`
+2. Change to the `A0RNLock.xcodeproj` target tab `Build Phases`, and in the section `Link Binary with Libraries` click the `+` and add `Lock.framework` and make sure it's `Status` is set to **optional**
+3. In the project navigator, select your project (should be the top one) and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic') and look for `Other Linker Flags` and make sure the value `-ObjC` is listed there
+
 ### Android
 
 #### rnpm

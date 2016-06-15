@@ -29,9 +29,14 @@ import android.support.annotation.Nullable;
 
 import com.auth0.core.UserProfile;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class UserProfileBridge implements LockReactBridge {
@@ -45,7 +50,11 @@ public class UserProfileBridge implements LockReactBridge {
 
     private UserProfile profile;
 
+    private final SimpleDateFormat formatter;
     public UserProfileBridge(@Nullable UserProfile profile) {
+        // use ISO 8601 international standard date/time format
+        this.formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+        this.formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         this.profile = profile;
     }
 
@@ -58,13 +67,74 @@ public class UserProfileBridge implements LockReactBridge {
             profileMap.putString(NAME_KEY, profile.getName());
             profileMap.putString(NICKNAME_KEY, profile.getNickname());
             if (profile.getCreatedAt() != null) {
-                // use ISO 8601 international standard date/time format
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-                simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-                profileMap.putString(CREATED_AT_KEY, simpleDateFormat.format(profile.getCreatedAt()));
+                profileMap.putString(CREATED_AT_KEY, formatter.format(profile.getCreatedAt()));
             }
             profileMap.putString(PICTURE_KEY, profile.getPictureURL());
+            put("userMetadata", profile.getExtraInfo().get("user_metadata"), profileMap);
         }
         return profileMap;
+    }
+
+    private void put(String key, Map<String, Object> map, WritableMap into) {
+        if (map == null || map.isEmpty()) {
+            return;
+        }
+
+        final WritableMap writableMap = Arguments.createMap();
+        for (Map.Entry<String, Object> entry: map.entrySet()) {
+            put(entry.getKey(), entry.getValue(), writableMap);
+        }
+        into.putMap(key, writableMap);
+    }
+
+    private void put(String key, List<?> list, WritableMap into) {
+        if (list == null || list.isEmpty()) {
+            return;
+        }
+
+        final WritableArray array = Arguments.createArray();
+        for (Object item: list) {
+            if (item instanceof String) {
+                array.pushString((String) item);
+            }
+            if (item instanceof Integer) {
+                array.pushInt((Integer) item);
+            }
+            if (item instanceof Boolean) {
+                array.pushBoolean((Boolean) item);
+            }
+            if (item instanceof Double) {
+                array.pushDouble((Double) item);
+            }
+            if (item instanceof Date) {
+                array.pushString(formatter.format(item));
+            }
+        }
+        into.putArray(key, array);
+    }
+
+    private void put(String key, Object value, WritableMap map) {
+        if (value instanceof String) {
+            map.putString(key, (String) value);
+        }
+        if (value instanceof Integer) {
+            map.putInt(key, (Integer) value);
+        }
+        if (value instanceof Boolean) {
+            map.putBoolean(key, (Boolean) value);
+        }
+        if (value instanceof Double) {
+            map.putDouble(key, (Double) value);
+        }
+        if (value instanceof Date) {
+            map.putString(key, formatter.format(value));
+        }
+        if (value instanceof Map) {
+            //noinspection unchecked
+            put(key, (Map) value, map);
+        }
+        if (value instanceof List) {
+            put(key, (List)value, map);
+        }
     }
 }

@@ -44,13 +44,16 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.robolectric.RobolectricTestRunner;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 /*
@@ -127,9 +130,10 @@ public class UserProfileBridgeTest {
         userProfileMap.put("nickname", "nickname-value");
         userProfileMap.put("picture", "picture-value");
         Date now = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         userProfileMap.put("created_at", sdf.format(now));
+        userProfileMap.put("user_metadata", Collections.singletonMap("role", "admin"));
         UserProfile userProfile = new UserProfile(userProfileMap);
 
         UserProfileBridge userProfileBridge = new UserProfileBridge(userProfile);
@@ -141,5 +145,6 @@ public class UserProfileBridgeTest {
         assertThat(map.getString("nickname"), is(equalTo("nickname-value")));
         assertThat(map.getString("createdAt"), is(equalTo(sdf.format(now))));
         assertThat(map.getString("picture"), is(equalTo("picture-value")));
+        assertThat(map.getMap("userMetadata"), is(notNullValue()));
     }
 }

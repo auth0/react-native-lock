@@ -2,7 +2,7 @@ var { NativeModules, Platform } = require('react-native');
 var LockModule = NativeModules.Auth0LockModule;
 
 const VERSION = require('./version');
-const Auth0 = require('./auth0');
+const Auth0 = require('react-native-auth0');
 
 class Auth0Lock {
   constructor(options) {
@@ -15,8 +15,7 @@ class Auth0Lock {
         libraryVersion: VERSION
       };
       this.nativeIntegrations = options.integrations;
-      const auth0 = new Auth0(domain);
-      this.authentication = auth0.authentication(clientId);
+      this.auth0 = new Auth0(domain);
     } else {
       throw "Must supply clientId & domain";
     }
@@ -50,12 +49,12 @@ class Auth0Lock {
     LockModule.authenticate(connectionName, options, callback);
   }
 
-  delegation(options) {
-    return this.authentication.delegation(options);
+  authenticationAPI() {
+    return this.auth0.authentication(this.lockOptions.clientId);
   }
 
-  refreshToken(refreshToken, options) {
-    return this.authentication.refreshToken(refreshToken, options);
+  usersAPI(token) {
+    return this.auth0.users(token);
   }
 }
 

@@ -6,6 +6,7 @@ var {
   View,
   Image,
   TouchableHighlight,
+  Alert,
 } = React;
 
 var Auth0Lock = require('react-native-lock');
@@ -63,6 +64,9 @@ var LockReactApp = React.createClass({
             refreshToken={this.state.token.refreshToken}
           />
           <View style={styles.actionContainer}>
+            <TouchableHighlight style={styles.actionButton} onPress={this._onUserInfo}>
+              <Text style={styles.actionButtonText}>Greet</Text>
+            </TouchableHighlight>
             <TouchableHighlight style={styles.actionButton} onPress={this._onRefresh}>
               <Text style={styles.actionButtonText}>Refresh</Text>
             </TouchableHighlight>
@@ -110,14 +114,32 @@ var LockReactApp = React.createClass({
   },
   _onRefresh: function() {
     console.log("Refresh token " + this.state.token.idToken);
-    lock.refreshToken(this.state.token.refreshToken)
-    .then(response => {
-      let token = this.state.token;
-      token.idToken = response.idToken;
-      this.setState({token: token});
-      console.log(response);
-    })
-    .catch(error => console.log(error));
+    lock.authenticationAPI()
+      .refreshToken(this.state.token.refreshToken)
+      .then(response => {
+        let token = this.state.token;
+        token.idToken = response.idToken;
+        this.setState({token: token});
+        console.log(response);
+      })
+      .catch(error => console.log(error));
+  },
+  _onUserInfo: function() {
+    const token = this.state.token.accessToken;
+    console.log("Fetching user info with token " + token);
+    lock
+      .authenticationAPI()
+      .userInfo(token)
+      .then(profile => {
+        Alert.alert(
+          `Hi ${profile.name}`,
+          `Your email is ${profile.email}`,
+          [
+            {text: 'OK', onPress: () => {}},
+          ]
+        )
+      })
+      .catch(error => console.log(error));
   },
 });
 

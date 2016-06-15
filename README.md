@@ -294,23 +294,15 @@ Show Lock's authentication screen as a modal screen using the connections config
 
 The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
 
-####.delegation(options)
-Performs delegation request with given `options` and returns a `Promise` that will resolve in the JSON response from the server or an error. The valid option are:
+####.authenticationAPI()
+Returns Auth0 Authentication API client that can be used to refresh user's token, obtain user information or call Auth0 delegation.
 
-* **idToken** (`string`): valid user id_token obtained during login.
-* **refreshToken** (`string`): user's refresh_token used to request new id_token.
-* **apiType** (`string`): for what api the new token will be for. e.g. `firebase` or `aws`.
-* **target** (`string`): what Auth0 client the token will be requested from.
-* **scope** (`string`): scope required in the token.
+> For more info check [react-native-auth0](https://github.com/auth0/react-native-auth0)
 
-####.refreshToken(refreshToken, options)
-Performs delegation to obtain a new token using the given `refreshToken` and `options` and returns a `Promise`. The valid options are the same as the `.delegation(options)` method.
+####.usersAPI(token)
+Returns Auth0 Users API client using a valid user's token for [Management API](https://auth0.com/docs/api/management/v2#!/Users/get_users). With this client you can update user's metadata or link two user accounts.
 
-On success the Promise will yield an object with the following attributes.
-
-* **idToken** (`string`): new id_token obtained form Auth0.
-* **expiresIn** (`number`): number of seconds till the token expires
-* **tokenType** (`string`): type of the token returned.
+> For more info check [react-native-auth0](https://github.com/auth0/react-native-auth0)
 
 ## Issue Reporting
 

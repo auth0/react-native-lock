@@ -111,6 +111,7 @@
         lock.authenticationParameters = [self authenticationParametersFromOptions:options];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;
+        lock.disableSignUp = [options[@"disableSignUp"] boolValue];
         lock.cleanOnError = [options[@"cleanOnError"] boolValue];
         [self.lock presentTouchIDController:lock fromController:controller];
     } else if (isSMS) {

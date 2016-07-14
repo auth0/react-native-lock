@@ -104,7 +104,7 @@
         self.shown =  NO;
         callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
     };
-
+    
     if (isTouchID) {
         A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
         lock.closable = [options[@"closable"] boolValue];
@@ -182,5 +182,17 @@
 
 - (BOOL)booleanValueOf:(id)value defaultValue:(BOOL)defaultValue {
     return value != nil ? [value boolValue] : defaultValue;
+}
+
+- (void)signInWithUsername:(NSString *)username password:(NSString *)password options:(NSDictionary *)options succes:(A0APIClientAuthenticationSuccess)successCallback error:(A0APIClientError)errorCallback {
+    
+    A0APIClient *client = [self.lock apiClient];
+    
+    NSLog(@"%@",username);
+    NSLog(@"%@", password);
+    
+    A0AuthParameters *params = [A0AuthParameters newWithDictionary:options];
+    
+    [client loginWithUsername:username password:password parameters:params success:successCallback failure:errorCallback];
 }
 @end

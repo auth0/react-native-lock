@@ -36,6 +36,14 @@ class Auth0Lock {
     }
     LockModule.show(options, callback);
   }
+  
+  signIn(options, username, password, callback) {
+    LockModule.init(this.lockOptions);
+    if (Platform.OS === "ios" && this.nativeIntegrations) {
+      LockModule.nativeIntegrations(this.nativeIntegrations);
+    }
+    LockModule.signIn(options, username, password, callback);
+  }
 
   authenticate(connectionName, options, callback) {
     if (Platform.OS === "android") {

@@ -103,4 +103,18 @@ RCT_EXPORT_METHOD(authenticate:(NSString *)connectionName options:(NSDictionary 
     });
 }
 
+RCT_EXPORT_METHOD(signIn:(NSDictionary *)options username:(NSString *)username password:(NSString *)password callback:(RCTResponseSenderBlock)callback) {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        A0APIClientAuthenticationSuccess success = ^(A0UserProfile *profile, A0Token *token){
+            callback(@[profile.userId]);
+        };
+        A0APIClientError failure = ^(NSError *error) {
+            NSLog(@"error %@", error);
+        };
+        
+        [[A0LockReact sharedInstance] signInWithUsername:username password:password options:options succes:success error:failure];
+    });
+}
+
 @end

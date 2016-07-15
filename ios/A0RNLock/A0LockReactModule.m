@@ -107,7 +107,7 @@ RCT_EXPORT_METHOD(signIn:(NSDictionary *)options username:(NSString *)username p
     
     dispatch_async(dispatch_get_main_queue(), ^{
         A0APIClientAuthenticationSuccess success = ^(A0UserProfile *profile, A0Token *token){
-            callback(@[profile.userId]);
+            callback(@[profile.userId, token.idToken]);
         };
         A0APIClientError failure = ^(NSError *error) {
             NSLog(@"error %@", error);

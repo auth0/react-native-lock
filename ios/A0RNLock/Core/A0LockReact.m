@@ -188,9 +188,6 @@
     
     A0APIClient *client = [self.lock apiClient];
     
-    NSLog(@"%@",username);
-    NSLog(@"%@", password);
-    
     A0AuthParameters *params = [A0AuthParameters newWithDictionary:options];
     
     [client loginWithUsername:username password:password parameters:params success:successCallback failure:errorCallback];

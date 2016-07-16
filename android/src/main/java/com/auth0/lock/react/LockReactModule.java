@@ -187,7 +187,7 @@ public class LockReactModule extends ReactContextBaseJavaModule {
             public void onSuccess(UserProfile userProfile, Token token) {
                 // Store credentials
                 // Navigate to your main activity
-                this.authCallbackSuccess(profile, token);
+                authCallbackSuccess(userProfile, token);
             }
             @Override
             public void onFailure(Throwable error) {

@@ -155,11 +155,13 @@ packagingOptions {
 
 > This fixes the error `Error: duplicate files during packaging of APK
 
-Then in the file `MainActivity.java` add the following Java import
+Then in the file `MainApplication.java` add the following Java import
 
 ```java
 import com.auth0.lock.react.LockReactPackage;
 ```
+
+> In react-native versions older than 0.29 you should add do this in `MainActivity.java` instead
 
 and add Lock's React Native module
 

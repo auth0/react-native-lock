@@ -1,5 +1,5 @@
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   StyleSheet,
   Text,
@@ -7,7 +7,7 @@ var {
   Image,
   TouchableHighlight,
   Alert,
-} = React;
+} from 'react-native';
 
 var Auth0Lock = require('react-native-lock');
 

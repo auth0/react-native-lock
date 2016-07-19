@@ -22,6 +22,8 @@
 
 #import "A0LockReactModule.h"
 #import "A0LockReact.h"
+#import "A0Token+ReactNative.h"
+#import "A0UserProfile+ReactNative.h"
 #import <Lock/Lock.h>
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)
@@ -107,7 +109,7 @@ RCT_EXPORT_METHOD(signIn:(NSDictionary *)options username:(NSString *)username p
     
     dispatch_async(dispatch_get_main_queue(), ^{
         A0APIClientAuthenticationSuccess success = ^(A0UserProfile *profile, A0Token *token){
-            callback(@[profile.userId, token.idToken]);
+            callback(@[[NSNull null], [profile asDictionary], [token asDictionary]]);
         };
         A0APIClientError failure = ^(NSError *error) {
             NSLog(@"error %@", error);

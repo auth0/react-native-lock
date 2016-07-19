@@ -188,7 +188,7 @@
     
     A0APIClient *client = [self.lock apiClient];
     
-    A0AuthParameters *params = [A0AuthParameters newWithDictionary:options];
+    A0AuthParameters *params = [self authenticationParametersFromOptions:options];
     
     [client loginWithUsername:username password:password parameters:params success:successCallback failure:errorCallback];
 }

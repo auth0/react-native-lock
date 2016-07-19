@@ -180,8 +180,9 @@ public class LockReactModule extends ReactContextBaseJavaModule {
         Lock lock = LockContext.getLock(activity);
 
         AuthenticationAPIClient apiClient = lock.getAuthenticationAPIClient();
-
-        apiClient.login(username, password).start(new AuthenticationCallback() {
+        apiClient.login(username, password)
+                .addParameters(lock.getAuthenticationParameters())
+                .start(new AuthenticationCallback() {
 
             @Override
             public void onSuccess(UserProfile userProfile, Token token) {

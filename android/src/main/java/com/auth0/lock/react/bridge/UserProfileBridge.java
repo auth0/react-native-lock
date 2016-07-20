@@ -34,6 +34,7 @@ import com.facebook.react.bridge.WritableMap;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -71,6 +72,9 @@ public class UserProfileBridge implements LockReactBridge {
             }
             profileMap.putString(PICTURE_KEY, profile.getPictureURL());
             put("userMetadata", profile.getExtraInfo().get("user_metadata"), profileMap);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("roles", profile.getExtraInfo().get("roles"));
+            put("appMetadata", map, profileMap);
         }
         return profileMap;
     }

@@ -66,7 +66,13 @@ If you are using a `react-native` version `>=0.26.0`, you might encounter the fo
         ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
 ```
 
-To solve it, click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations .
+*React Native* introduced some C++ code so we need to tell **Xcode** to include use those symbols for compile. First click `<YourAppName>.xcodeproj` in the Project Navigator to show your project's target (at least one for your app).
+Then for each of the targets do the following:
+
+- Go the `Build Settings` tab, and make sure `All` is toggled on (instead of `Basic`)
+- Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations
+
+> If your project was created using `react-native init` command, you will have two targets (app & tests) so make sure **BOTH** of them has the correct flags 
 
 #### CocoaPods with uses_framework! flag
 

@@ -57,9 +57,9 @@ If you get the following warning.
 
 Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Other Linker Flags` and replace the value `-ObjC` with the value `$(inherited)` for your Application's Target.
 
-> Also make sure you are not adding `use_frameworks!` in your Podfile, there is a known issue with Dynamic Frameworks that currently has no fix.
+#### Compile error react-native >=0.26.0
 
-If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project, 
+If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project
 
 ```
 "std::terminate()", referenced from: 

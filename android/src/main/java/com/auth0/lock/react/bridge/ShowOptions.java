@@ -48,7 +48,7 @@ public class ShowOptions {
     private static final String DISABLE_RESET_PASSWORD = "disableResetPassword";
     private static final String AUTH_PARAMS_KEY = "authParams";
     private static final String CONNECTIONS_KEY = "connections";
-    private static final String USE_MAGIC_LINK_KEY = "useMagicLink";
+    private static final String USE_MAGIC_LINK_KEY = "magicLink";
 
     private boolean closable = false;
     private boolean disableSignUp = false;

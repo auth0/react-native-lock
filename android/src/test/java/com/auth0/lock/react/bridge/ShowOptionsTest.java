@@ -65,7 +65,7 @@ public class ShowOptionsTest {
         options.putBoolean("closable", true);
         options.putBoolean("disableSignUp", true);
         options.putBoolean("disableResetPassword", true);
-        options.putBoolean("useMagicLink", true);
+        options.putBoolean("magicLink", true);
 
         SimpleArray connections = new SimpleArray();
         connections.pushString("facebook");

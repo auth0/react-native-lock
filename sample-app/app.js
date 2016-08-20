@@ -56,7 +56,7 @@ var LockReactApp = React.createClass({
       return (
         <View style={styles.container}>
           <HeaderView/>
-          <TokenView 
+          <TokenView
             style={styles.token}
             username={this.state.profile.name}
             email={this.state.profile.email}

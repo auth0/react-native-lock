@@ -118,11 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F66F7D21CEA93BA003827DA /* Build configuration list for PBXNativeTarget "A0RNLockCore" */;
 			buildPhases = (
-				D920466B4D1920FE99944984 /* 📦 Check Pods Manifest.lock */,
+				D920466B4D1920FE99944984 /* [CP] Check Pods Manifest.lock */,
 				5F66F7C51CEA93BA003827DA /* Sources */,
 				5F66F7C61CEA93BA003827DA /* Frameworks */,
 				5F66F7C71CEA93BA003827DA /* CopyFiles */,
-				1EAB5EC76649CAF749154545 /* 📦 Copy Pods Resources */,
+				1EAB5EC76649CAF749154545 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -165,14 +165,14 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1EAB5EC76649CAF749154545 /* 📦 Copy Pods Resources */ = {
+		1EAB5EC76649CAF749154545 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,14 +180,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-A0RNLockCore/Pods-A0RNLockCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D920466B4D1920FE99944984 /* 📦 Check Pods Manifest.lock */ = {
+		D920466B4D1920FE99944984 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

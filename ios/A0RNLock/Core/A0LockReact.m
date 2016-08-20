@@ -115,12 +115,14 @@
     } else if (isSMS) {
         A0SMSLockViewController *lock = [self.lock newSMSViewController];
         lock.closable = [options[@"closable"] boolValue];
+        lock.useMagicLink = [options[@"magicLink"] boolValue];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;
         [self.lock presentSMSController:lock fromController:controller];
     } else if (isEmail) {
         A0EmailLockViewController *lock = [self.lock newEmailViewController];
         lock.closable = [options[@"closable"] boolValue];
+        lock.useMagicLink = [options[@"magicLink"] boolValue];
         lock.authenticationParameters = [self authenticationParametersFromOptions:options];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;

@@ -25,13 +25,14 @@
 package com.auth0.lock.react;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.auth0.api.authentication.AuthenticationAPIClient;
+import com.auth0.api.callback.AuthenticationCallback;
 import com.auth0.core.Strategies;
 import com.auth0.core.Token;
 import com.auth0.core.UserProfile;
@@ -157,6 +158,45 @@ public class LockReactModule extends ReactContextBaseJavaModule {
      * @param callback the JS callback that will be invoked with the results. It should be a function
      *                 of the form callback(error, profile, token)
      */
+
+    @ReactMethod
+    public void signIn(@Nullable ReadableMap options, String username, String password, Callback callback) {
+        authCallback = callback;
+        authenticationReceiver.registerIn(this.broadcastManager);
+
+        ShowOptions showOptions = new ShowOptions(options);
+
+        lockBuilder
+                .closable(showOptions.isClosable())
+                .authenticationParameters(showOptions.getAuthParams());
+
+        if (showOptions.getConnections() != null) {
+            lockBuilder.useConnections(showOptions.getConnections());
+        }
+
+        LockContext.configureLock(lockBuilder);
+
+        Activity activity = getCurrentActivity();
+        Lock lock = LockContext.getLock(activity);
+
+        AuthenticationAPIClient apiClient = lock.getAuthenticationAPIClient();
+        apiClient.login(username, password)
+                .addParameters(lock.getAuthenticationParameters())
+                .start(new AuthenticationCallback() {
+
+            @Override
+            public void onSuccess(UserProfile userProfile, Token token) {
+                // Store credentials
+                // Navigate to your main activity
+                authCallbackSuccess(userProfile, token);
+            }
+            @Override
+            public void onFailure(Throwable error) {
+                Log.e(TAG, "Error");
+            }
+        });
+    }
+
     @ReactMethod
     public void show(@Nullable ReadableMap options, Callback callback) {
         authCallback = callback;

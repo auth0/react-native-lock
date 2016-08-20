@@ -104,13 +104,15 @@
         self.shown =  NO;
         callback(@[@"Lock was dismissed by the user", [NSNull null], [NSNull null]]);
     };
-
+    
     if (isTouchID) {
         A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
         lock.closable = [options[@"closable"] boolValue];
         lock.authenticationParameters = [self authenticationParametersFromOptions:options];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;
+        lock.disableSignUp = [options[@"disableSignUp"] boolValue];
+        lock.cleanOnError = [options[@"cleanOnError"] boolValue];
         [self.lock presentTouchIDController:lock fromController:controller];
     } else if (isSMS) {
         A0SMSLockViewController *lock = [self.lock newSMSViewController];
@@ -182,5 +184,14 @@
 
 - (BOOL)booleanValueOf:(id)value defaultValue:(BOOL)defaultValue {
     return value != nil ? [value boolValue] : defaultValue;
+}
+
+- (void)signInWithUsername:(NSString *)username password:(NSString *)password options:(NSDictionary *)options succes:(A0APIClientAuthenticationSuccess)successCallback error:(A0APIClientError)errorCallback {
+    
+    A0APIClient *client = [self.lock apiClient];
+    
+    A0AuthParameters *params = [self authenticationParametersFromOptions:options];
+    
+    [client loginWithUsername:username password:password parameters:params success:successCallback failure:errorCallback];
 }
 @end

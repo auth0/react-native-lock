@@ -39,4 +39,6 @@ typedef void(^A0LockCallback)(NSArray *parameters);
 
 + (instancetype)sharedInstance;
 
+- (void)signInWithUsername:(NSString *)username password:(NSString *)password options:(NSDictionary *)options succes:(A0APIClientAuthenticationSuccess)successCallback error:(A0APIClientError)errorCallback;
+
 @end

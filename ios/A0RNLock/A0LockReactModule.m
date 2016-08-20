@@ -22,6 +22,8 @@
 
 #import "A0LockReactModule.h"
 #import "A0LockReact.h"
+#import "A0Token+ReactNative.h"
+#import "A0UserProfile+ReactNative.h"
 #import <Lock/Lock.h>
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)
@@ -100,6 +102,20 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)options callback:(RCTResponseSenderBlock)
 RCT_EXPORT_METHOD(authenticate:(NSString *)connectionName options:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[A0LockReact sharedInstance] authenticateWithConnectionName:connectionName options:options callback:callback];
+    });
+}
+
+RCT_EXPORT_METHOD(signIn:(NSDictionary *)options username:(NSString *)username password:(NSString *)password callback:(RCTResponseSenderBlock)callback) {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        A0APIClientAuthenticationSuccess success = ^(A0UserProfile *profile, A0Token *token){
+            callback(@[[NSNull null], [profile asDictionary], [token asDictionary]]);
+        };
+        A0APIClientError failure = ^(NSError *error) {
+            NSLog(@"error %@", error);
+        };
+        
+        [[A0LockReact sharedInstance] signInWithUsername:username password:password options:options succes:success error:failure];
     });
 }
 

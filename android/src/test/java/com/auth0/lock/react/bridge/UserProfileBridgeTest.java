@@ -24,9 +24,11 @@
 
 package com.auth0.lock.react.bridge;
 
+import com.auth0.core.UserIdentity;
 import com.auth0.core.UserProfile;
 import com.auth0.lock.react.bridge.utils.Randomizer;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.SimpleArray;
 import com.facebook.react.bridge.SimpleMap;
@@ -46,9 +48,11 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.robolectric.RobolectricTestRunner;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
@@ -181,6 +185,25 @@ public class UserProfileBridgeTest {
         assertThat(map.getInt("logins_count"), equalTo(profile.getExtraInfo().get("logins_count")));
     }
 
+    @Test
+    public void shouldBridgeIdentity() throws Exception {
+        final UserProfile profile = withIdentities(INFO_AUTH0_COM, "facebook");
+        final ReadableMap map = bridge(profile);
+
+        assertThat(map.getString(EMAIL), equalTo(profile.getEmail()));
+
+        final ReadableArray identities = map.getArray("identities");
+        assertThat(identities.size(), is(1));
+
+        final ReadableMap identityMap = identities.getMap(0);
+        final UserIdentity identity = profile.getIdentities().get(0);
+        assertThat(identityMap.getString("provider"), equalTo(identity.getProvider()));
+        assertThat(identityMap.getString("connection"), equalTo(identity.getConnection()));
+        assertThat(identityMap.getString("userId"), equalTo(identity.getId()));
+        assertThat(identityMap.getBoolean("social"), equalTo(identity.isSocial()));
+        assertThat(identityMap.getMap("profileData"), is(notNullValue()));
+    }
+
     private ReadableMap bridge(UserProfile profile) {
         return new UserProfileBridge(profile).toMap();
     }
@@ -196,6 +219,18 @@ public class UserProfileBridgeTest {
         return json;
     }
 
+    private Map<String, Object> identityJson(String provider) {
+        Map<String, Object> json = new HashMap<>();
+        json.put("provider", provider);
+        json.put("user_id", randomizer.string());
+        json.put("connection", randomizer.string());
+        json.put("isSocial", true);
+        Map<String, Object> profile = new HashMap<>();
+        profile.put("name", "John Doe");
+        json.put("profileData", profile);
+        return json;
+    }
+
     private UserProfile basic(String email) {
         return new UserProfile(defaultJson(email));
     }
@@ -203,6 +238,16 @@ public class UserProfileBridgeTest {
     private UserProfile withOtherRootAttributes(String email) {
         final Map<String, Object> json = defaultJson(email);
         json.put("logins_count", randomizer.integer());
+        return new UserProfile(json);
+    }
+
+    private UserProfile withIdentities(String email, String...providers) {
+        final Map<String, Object> json = defaultJson(email);
+        List<Map<String, Object>> identities = new ArrayList<>();
+        for (String provider: providers) {
+            identities.add(identityJson(provider));
+        }
+        json.put("identities", identities);
         return new UserProfile(json);
     }
 

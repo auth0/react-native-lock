@@ -25,10 +25,12 @@
 package com.auth0.lock.react.bridge;
 
 import com.auth0.core.UserProfile;
+import com.auth0.lock.react.bridge.utils.Randomizer;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.SimpleArray;
 import com.facebook.react.bridge.SimpleMap;
+import com.google.common.collect.Maps;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -49,6 +51,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.TimeZone;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -90,19 +93,29 @@ import static org.junit.Assert.assertThat;
     }
  */
 
-//@RunWith(RobolectricGradleTestRunner.class)
-//@Config(constants = BuildConfig.class, sdk = 18, manifest = Config.NONE)
-
 @PrepareForTest({Arguments.class})
 @PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*", "org.json.*"})
 @RunWith(RobolectricTestRunner.class)
 public class UserProfileBridgeTest {
 
+    private static final String EMAIL = "email";
+    private static final String USER_ID = "userId";
+    private static final String NAME = "name";
+    private static final String NICKNAME = "nickname";
+    private static final String CREATED_AT = "createdAt";
+    private static final String PICTURE = "picture";
+    private static final String USER_METADATA = "userMetadata";
+    private static final String INFO_AUTH0_COM = "info@auth0.com";
+    private static final String APP_METADATA = "appMetadata";
     @Rule
     public PowerMockRule rule = new PowerMockRule();
 
+    public Randomizer randomizer;
+    private SimpleDateFormat sdf;
+
     @Before
     public void prepareModules() {
+        randomizer = new Randomizer();
         PowerMockito.mockStatic(Arguments.class);
         Mockito.when(Arguments.createArray()).thenAnswer(
                 new Answer<Object>() {
@@ -119,32 +132,88 @@ public class UserProfileBridgeTest {
                         return new SimpleMap();
                     }
                 });
+        sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     @Test
-    public void testAll() throws Exception {
-        Map<String, Object> userProfileMap = new HashMap<>();
-        userProfileMap.put("email", "email-value");
-        userProfileMap.put("user_id", "id-value");
-        userProfileMap.put("name", "name-value");
-        userProfileMap.put("nickname", "nickname-value");
-        userProfileMap.put("picture", "picture-value");
-        Date now = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        userProfileMap.put("created_at", sdf.format(now));
-        userProfileMap.put("user_metadata", Collections.singletonMap("role", "admin"));
-        UserProfile userProfile = new UserProfile(userProfileMap);
+    public void shouldBridgeBasicProfile() throws Exception {
+        final UserProfile profile = basic(INFO_AUTH0_COM);
+        final ReadableMap map = bridge(profile);
+        assertThat(map.getString(EMAIL), equalTo(profile.getEmail()));
+        assertThat(map.getString(USER_ID), equalTo(profile.getId()));
+        assertThat(map.getString(NAME), equalTo(profile.getName()));
+        assertThat(map.getString(NICKNAME), equalTo(profile.getNickname()));
+        assertThat(sdf.parse(map.getString(CREATED_AT)), equalTo(profile.getCreatedAt()));
+        assertThat(map.getString(PICTURE), equalTo(profile.getPictureURL()));
+    }
 
-        UserProfileBridge userProfileBridge = new UserProfileBridge(userProfile);
-        ReadableMap map = userProfileBridge.toMap();
+    @Test
+    public void shouldBridgeMetadata() throws Exception {
+        final HashMap<String, Object> user = Maps.newHashMap();
+        user.put("first_name", "John");
+        user.put("last_name", "Doe");
+        user.put("friend_count", 14);
 
-        assertThat(map.getString("email"), is(equalTo("email-value")));
-        assertThat(map.getString("userId"), is(equalTo("id-value")));
-        assertThat(map.getString("name"), is(equalTo("name-value")));
-        assertThat(map.getString("nickname"), is(equalTo("nickname-value")));
-        assertThat(map.getString("createdAt"), is(equalTo(sdf.format(now))));
-        assertThat(map.getString("picture"), is(equalTo("picture-value")));
-        assertThat(map.getMap("userMetadata"), is(notNullValue()));
+        final HashMap<String, Object> app = Maps.newHashMap();
+        app.put("subscription", "bronze");
+
+        final UserProfile profile = withMetadata(INFO_AUTH0_COM, user, app);
+        final ReadableMap map = bridge(profile);
+
+        assertThat(map.getString(EMAIL), equalTo(INFO_AUTH0_COM));
+
+        final ReadableMap userMetadata = map.getMap(USER_METADATA);
+        assertThat(userMetadata.getString("first_name"), equalTo("John"));
+        assertThat(userMetadata.getString("last_name"), equalTo("Doe"));
+        assertThat(userMetadata.getInt("friend_count"), equalTo(14));
+
+        final ReadableMap appMetadata = map.getMap(APP_METADATA);
+        assertThat(appMetadata.getString("subscription"), equalTo("bronze"));
+    }
+
+    @Test
+    public void shouldBridgeNonBasicProfile() throws Exception {
+        final UserProfile profile = withOtherRootAttributes(INFO_AUTH0_COM);
+        final ReadableMap map = bridge(profile);
+
+        assertThat(map.getString(EMAIL), equalTo(profile.getEmail()));
+        assertThat(map.getInt("logins_count"), equalTo(profile.getExtraInfo().get("logins_count")));
+    }
+
+    private ReadableMap bridge(UserProfile profile) {
+        return new UserProfileBridge(profile).toMap();
+    }
+
+    private Map<String, Object> defaultJson(String email) {
+        Map<String, Object> json = new HashMap<>();
+        json.put("email", email);
+        json.put("user_id", randomizer.string());
+        json.put("name", randomizer.string());
+        json.put("nickname", randomizer.string());
+        json.put("picture", randomizer.string());
+        json.put("created_at", randomizer.isoDate());
+        return json;
+    }
+
+    private UserProfile basic(String email) {
+        return new UserProfile(defaultJson(email));
+    }
+
+    private UserProfile withOtherRootAttributes(String email) {
+        final Map<String, Object> json = defaultJson(email);
+        json.put("logins_count", randomizer.integer());
+        return new UserProfile(json);
+    }
+
+    private UserProfile withMetadata(String email, Map<String, Object> userMetadata, Map<String, Object> appMetadata) {
+        Map<String, Object> json = defaultJson(email);
+        if (userMetadata != null) {
+            json.put("user_metadata", userMetadata);
+        }
+        if (appMetadata != null) {
+            json.put("app_metadata", appMetadata);
+        }
+        return new UserProfile(json);
     }
 }

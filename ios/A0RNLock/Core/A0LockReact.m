@@ -76,6 +76,8 @@
         callback(@[@"Please configure Lock before using it", [NSNull null], [NSNull null]]);
         return;
     }
+
+    self.lock.usePKCE = [options[@"pkce"] boolValue];
     NSArray *connections = options[@"connections"];
     NSArray *passwordless = [connections filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString * _Nonnull name, NSDictionary<NSString *,id> * _Nullable bindings) {
         NSString *lowecaseName = name.lowercaseString;

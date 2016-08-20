@@ -27,6 +27,7 @@ package com.auth0.lock.react.bridge;
 
 import android.support.annotation.Nullable;
 
+import com.auth0.core.UserIdentity;
 import com.auth0.core.UserProfile;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableArray;
@@ -34,6 +35,7 @@ import com.facebook.react.bridge.WritableMap;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -70,9 +72,29 @@ public class UserProfileBridge implements LockReactBridge {
                 profileMap.putString(CREATED_AT_KEY, formatter.format(profile.getCreatedAt()));
             }
             profileMap.putString(PICTURE_KEY, profile.getPictureURL());
-            put("userMetadata", profile.getExtraInfo().get("user_metadata"), profileMap);
+            Map<String, Object> info = new HashMap<>(profile.getExtraInfo());
+            put("userMetadata", info.remove("user_metadata"), profileMap);
+            put("appMetadata", info.remove("app_metadata"), profileMap);
+            for (Map.Entry<String, Object> entry: info.entrySet()) {
+                put(entry.getKey(), entry.getValue(), profileMap);
+            }
+            final WritableArray identities = Arguments.createArray();
+            for (UserIdentity identity: profile.getIdentities()) {
+                add(identity, identities);
+            }
+            profileMap.putArray("identities", identities);
         }
         return profileMap;
+    }
+
+    private void add(UserIdentity identity, WritableArray into) {
+        final WritableMap map = Arguments.createMap();
+        map.putString("userId", identity.getId());
+        map.putString("connection", identity.getConnection());
+        map.putString("provider", identity.getProvider());
+        map.putBoolean("social", identity.isSocial());
+        put("profileData", identity.getProfileInfo(), map);
+        into.pushMap(map);
     }
 
     private void put(String key, Map<String, Object> map, WritableMap into) {

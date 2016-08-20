@@ -1,5 +1,21 @@
 # Change Log
 
+## [0.4.0](https://github.com/auth0/react-native-lock/tree/0.4.0) (2016-08-20)
+[Full Changelog](https://github.com/auth0/react-native-lock/compare/0.3.0...0.4.0)
+
+**Closed issues:**
+
+- Inconsistent Android and iOS profile upon login [\#74](https://github.com/auth0/react-native-lock/issues/74) ([calclavia](https://github.com/calclavia))
+
+**Added:**
+
+- Lock options to enable PKCE & customize TouchID behaviour [\#85](https://github.com/auth0/react-native-lock/pull/85) ([hzalaz](https://github.com/hzalaz))
+- Allow using magic link with passwordless [\#83](https://github.com/auth0/react-native-lock/pull/83) ([hzalaz](https://github.com/hzalaz))
+
+**Changed:**
+
+- Improve Android profile bridge [\#84](https://github.com/auth0/react-native-lock/pull/84) ([hzalaz](https://github.com/hzalaz))
+
 ## [0.3.0](https://github.com/auth0/react-native-lock/tree/0.3.0) (2016-06-15)
 [Full Changelog](https://github.com/auth0/react-native-lock/compare/0.2.0...0.3.0)
 
@@ -11,7 +27,7 @@
 **Added**
 
 - Disable change password & sign up buttons [\#59](https://github.com/auth0/react-native-lock/pull/59) ([deepaksisodiya](https://github.com/deepaksisodiya))
-- Added Authentication & Users API clients from [react-native-auth0](https://github.com/auth0/react-native-auth0). These can be obtained from the `Lock` instance. [\#63](https://github.com/auth0/react-native-lock/pull/63) ([hzalaz](https://github.com/hzalaz)) 
+- Added Authentication & Users API clients from [react-native-auth0](https://github.com/auth0/react-native-auth0). These can be obtained from the `Lock` instance. [\#63](https://github.com/auth0/react-native-lock/pull/63) ([hzalaz](https://github.com/hzalaz))
 
 **Breaking changes**
 

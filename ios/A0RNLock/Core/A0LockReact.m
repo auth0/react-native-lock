@@ -76,6 +76,8 @@
         callback(@[@"Please configure Lock before using it", [NSNull null], [NSNull null]]);
         return;
     }
+
+    self.lock.usePKCE = [options[@"pkce"] boolValue];
     NSArray *connections = options[@"connections"];
     NSArray *passwordless = [connections filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString * _Nonnull name, NSDictionary<NSString *,id> * _Nullable bindings) {
         NSString *lowecaseName = name.lowercaseString;
@@ -108,6 +110,9 @@
     if (isTouchID) {
         A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
         lock.closable = [options[@"closable"] boolValue];
+        lock.disableSignUp = ![self booleanValueOf:options[@"allowSignUp"] defaultValue:YES];
+        lock.cleanOnError = [options[@"cleanOnError"] boolValue];
+        lock.cleanOnStart = [options[@"cleanOnStart"] boolValue];
         lock.authenticationParameters = [self authenticationParametersFromOptions:options];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;

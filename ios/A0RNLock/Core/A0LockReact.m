@@ -108,6 +108,9 @@
     if (isTouchID) {
         A0TouchIDLockViewController *lock = [self.lock newTouchIDViewController];
         lock.closable = [options[@"closable"] boolValue];
+        lock.disableSignUp = ![self booleanValueOf:options[@"allowSignUp"] defaultValue:YES];
+        lock.cleanOnError = [options[@"cleanOnError"] boolValue];
+        lock.cleanOnStart = [options[@"cleanOnStart"] boolValue];
         lock.authenticationParameters = [self authenticationParametersFromOptions:options];
         lock.onAuthenticationBlock = authenticationBlock;
         lock.onUserDismissBlock = dismissBlock;

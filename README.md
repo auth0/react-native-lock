@@ -9,8 +9,6 @@
 
 ## Requirements
 
-* [rnpm](https://github.com/rnpm/rnpm)
-
 ### iOS
 
 * iOS 7+ 
@@ -26,9 +24,9 @@ Run `npm install --save react-native-lock` to add the package to your app's depe
 
 ### iOS
 
-#### rnpm
+#### react-native cli
 
-Run `rnpm link react-native-lock` so your project is linked against your Xcode project & install Lock for iOS using CocoaPods and run `react-native run-ios`
+Run `react-native link react-native-lock` so your project is linked against your Xcode project & install Lock for iOS using CocoaPods and run `react-native run-ios`
 
 #### Manually
 

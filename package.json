@@ -1,0 +1,23 @@
+{
+  "name": "react-native-lock",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0/react-native-lock.git"
+  },
+  "dependencies": {
+    "react-native-auth0": "git@github.com:auth0/react-native-auth0.git#master",
+    "react-native-auth0-ui": "git@github.com:auth0/react-native-styleguide.git#master"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/react-native-lock/issues"
+  },
+  "homepage": "https://github.com/auth0/react-native-lock#readme"
+}

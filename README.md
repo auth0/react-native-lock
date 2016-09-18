@@ -11,7 +11,7 @@
 
 ### iOS
 
-* iOS 7+ 
+* iOS 7+
 * [CocoaPods](https://cocoapods.org)
 
 ### Android
@@ -60,7 +60,7 @@ Click `<YourAppName>.xcodeproj` in the project navigator and go the `Build Setti
 If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project
 
 ```
-"std::terminate()", referenced from: 
+"std::terminate()", referenced from:
         ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
 ```
 
@@ -70,13 +70,13 @@ Then for each of the targets do the following:
 - Go the `Build Settings` tab, and make sure `All` is toggled on (instead of `Basic`)
 - Look for `Other Linker Flags` and add the flag `-lc++` for **all** configurations
 
-> If your project was created using `react-native init` command, you will have two targets (app & tests) so make sure **BOTH** of them has the correct flags 
+> If your project was created using `react-native init` command, you will have two targets (app & tests) so make sure **BOTH** of them has the correct flags
 
 #### CocoaPods with uses_framework! flag
 
 > This more of a hack than an actual solution. We recommend to avoid including Lock as a dynamic framework unless you have a very good reason to do that.
 
-After setting up `react-native-lock` either [Manually](#manually) or using [rnpm](#rnpm) you need to open your iOS project with Xcode and follow these steps:
+After setting up `react-native-lock` either [Manually](#manually) or using [react-native cli](#react-native-cli) you need to open your iOS project with Xcode and follow these steps:
 
 1. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Framework Search Paths` and make sure it contains `$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/Lock`
 2. Change to the `A0RNLock.xcodeproj` target tab `Build Phases`, and in the section `Link Binary with Libraries` click the `+` and add `Lock.framework` and make sure it's `Status` is set to **optional**
@@ -84,9 +84,9 @@ After setting up `react-native-lock` either [Manually](#manually) or using [rnpm
 
 ### Android
 
-#### rnpm
+#### react-native cli
 
-Run `rnpm link react-native-lock` so your project is linked against your Android project 
+Run `react-native link react-native-lock` so your project is linked against your Android project
 
 In your file `android/app/build.gradle`, inside the `android` section add the following
 
@@ -97,7 +97,7 @@ packagingOptions {
 }
 ```
 
-Then in your `android/app/src/mainAndroidManifest.xml` add the following inside `<application>` tag
+Then in your `android/app/src/main/AndroidManifest.xml` add the following inside `<application>` tag
 
 ```xml
 <!--Auth0 Lock-->
@@ -109,8 +109,8 @@ Then in your `android/app/src/mainAndroidManifest.xml` add the following inside 
 </activity>
 <!--Auth0 Lock End-->
 <!--Auth0 Lock Embedded WebView-->
-<activity 
-    android:name="com.auth0.identity.web.WebViewActivity" 
+<activity
+    android:name="com.auth0.identity.web.WebViewActivity"
     android:theme="@style/Lock.Theme">
 </activity>
 <!--Auth0 Lock Embedded WebView End-->
@@ -121,8 +121,8 @@ Then in your `android/app/src/mainAndroidManifest.xml` add the following inside 
     android:screenOrientation="portrait"
     android:launchMode="singleTask">
 </activity>
-<activity 
-    android:name="com.auth0.lock.passwordless.CountryCodeActivity" 
+<activity
+    android:name="com.auth0.lock.passwordless.CountryCodeActivity"
     android:theme="@style/Lock.Theme">
 </activity>
 <!--Auth0 Lock Passwordless End-->
@@ -139,7 +139,7 @@ include ':react-native-lock'
 project(':react-native-lock').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-lock/android')
 ```
 
-In the file `android/app/build.gradle` add a new dependency 
+In the file `android/app/build.gradle` add a new dependency
 
 ```gradle
 dependencies {
@@ -196,8 +196,8 @@ Then in your `android/app/src/mainAndroidManifest.xml` add the following inside 
 </activity>
 <!--Auth0 Lock End-->
 <!--Auth0 Lock Embedded WebView-->
-<activity 
-    android:name="com.auth0.identity.web.WebViewActivity" 
+<activity
+    android:name="com.auth0.identity.web.WebViewActivity"
     android:theme="@style/Lock.Theme">
 </activity>
 <!--Auth0 Lock Embedded WebView End-->
@@ -208,8 +208,8 @@ Then in your `android/app/src/mainAndroidManifest.xml` add the following inside 
     android:screenOrientation="portrait"
     android:launchMode="singleTask">
 </activity>
-<activity 
-    android:name="com.auth0.lock.passwordless.CountryCodeActivity" 
+<activity
+    android:name="com.auth0.lock.passwordless.CountryCodeActivity"
     android:theme="@style/Lock.Theme">
 </activity>
 <!--Auth0 Lock Passwordless End-->
@@ -293,7 +293,7 @@ If you are upgrading your `react-native` version just run `react-native upgrade`
 
 > If you have custom code in any of the conflict files, like `AppDelegate.m`, it's probably best to backup a copy to apply those changes later.
 
-Then run `rnpm link react-native-lock` and follow the same steps like you did the first time you installed the library.
+Then run `react-native link react-native-lock` and follow the same steps like you did the first time you installed the library.
 
 ## API
 
@@ -353,4 +353,3 @@ react-native-lock-ios is available under the MIT license. See the [LICENSE](LICE
 [npm-url]: https://npmjs.org/package/react-native-lock
 [travis-image]: http://img.shields.io/travis/auth0/react-native-lock.svg?style=flat
 [travis-url]: https://travis-ci.org/auth0/react-native-lock
-

@@ -184,7 +184,7 @@ and add Lock's React Native module
     }
 ```
 
-Then in your `android/app/src/mainAndroidManifest.xml` add the following inside `<application>` tag
+Then in your `android/app/src/main/AndroidManifest.xml` add the following inside `<application>` tag
 
 ```xml
 <!--Auth0 Lock-->

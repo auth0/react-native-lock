@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29217F861E3BCEBE0058AAA0 /* A0ThemeReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 29217F851E3BCEBE0058AAA0 /* A0ThemeReact.m */; };
 		5F049A0B1CAE9FCD006F6C05 /* A0LockReactModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0499FC1CAE9FCD006F6C05 /* A0LockReactModule.m */; };
 		5F049A0D1CAE9FCD006F6C05 /* A0LockReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F049A021CAE9FCD006F6C05 /* A0LockReact.m */; };
 		5F049A0E1CAE9FCD006F6C05 /* A0ObjectSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F049A041CAE9FCD006F6C05 /* A0ObjectSerializer.m */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29217F851E3BCEBE0058AAA0 /* A0ThemeReact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0ThemeReact.m; sourceTree = "<group>"; };
+		29217F871E3BCECF0058AAA0 /* A0ThemeReact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A0ThemeReact.h; sourceTree = "<group>"; };
 		5F0499EE1CAE9F4A006F6C05 /* libA0RNLock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libA0RNLock.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0499FB1CAE9FCD006F6C05 /* A0LockReactModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0LockReactModule.h; sourceTree = "<group>"; };
 		5F0499FC1CAE9FCD006F6C05 /* A0LockReactModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0LockReactModule.m; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				5F049A081CAE9FCD006F6C05 /* A0UserIdentity+ReactNative.m */,
 				5F049A091CAE9FCD006F6C05 /* A0UserProfile+ReactNative.h */,
 				5F049A0A1CAE9FCD006F6C05 /* A0UserProfile+ReactNative.m */,
+				29217F851E3BCEBE0058AAA0 /* A0ThemeReact.m */,
+				29217F871E3BCECF0058AAA0 /* A0ThemeReact.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F049A0D1CAE9FCD006F6C05 /* A0LockReact.m in Sources */,
+				29217F861E3BCEBE0058AAA0 /* A0ThemeReact.m in Sources */,
 				5F049A0E1CAE9FCD006F6C05 /* A0ObjectSerializer.m in Sources */,
 				5F049A0B1CAE9FCD006F6C05 /* A0LockReactModule.m in Sources */,
 				5F049A111CAE9FCD006F6C05 /* A0UserProfile+ReactNative.m in Sources */,

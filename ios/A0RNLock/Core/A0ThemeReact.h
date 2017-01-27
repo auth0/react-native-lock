@@ -16,8 +16,6 @@
 
 @property (strong, readonly, nonatomic) A0Theme *theme;
 
-- (void)themeLockColorForKey:(NSString *)key style:(NSDictionary *)style;
-
 - (void)themeLockWithStyle:(NSDictionary*)style;
 
 @end

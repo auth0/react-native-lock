@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29DB92E01E3BFA59006E68A3 /* A0ThemeReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 29DB92DE1E3BFA59006E68A3 /* A0ThemeReact.m */; };
 		5F66F7E11CEA940F003827DA /* A0LockReact.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F66F7D81CEA940F003827DA /* A0LockReact.m */; };
 		5F66F7E21CEA940F003827DA /* A0ObjectSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F66F7DA1CEA940F003827DA /* A0ObjectSerializer.m */; };
 		5F66F7E31CEA940F003827DA /* A0Token+ReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F66F7DC1CEA940F003827DA /* A0Token+ReactNative.m */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		06C00AF9EC72A970CE036D4A /* libPods-A0RNLockCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-A0RNLockCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2156351E6881F1AB91F962CE /* Pods-A0RNLockCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A0RNLockCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-A0RNLockCore/Pods-A0RNLockCore.release.xcconfig"; sourceTree = "<group>"; };
+		29DB92DE1E3BFA59006E68A3 /* A0ThemeReact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0ThemeReact.m; sourceTree = "<group>"; };
+		29DB92DF1E3BFA59006E68A3 /* A0ThemeReact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0ThemeReact.h; sourceTree = "<group>"; };
 		3608FAD91F4A02215EACFACF /* Pods-A0RNLockCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A0RNLockCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A0RNLockCore/Pods-A0RNLockCore.debug.xcconfig"; sourceTree = "<group>"; };
 		5F66F7C91CEA93BA003827DA /* libA0RNLockCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libA0RNLockCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F66F7D61CEA940F003827DA /* A0DictionarySerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0DictionarySerialization.h; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 		5F66F7D51CEA940F003827DA /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				29DB92DE1E3BFA59006E68A3 /* A0ThemeReact.m */,
+				29DB92DF1E3BFA59006E68A3 /* A0ThemeReact.h */,
 				5F66F7D61CEA940F003827DA /* A0DictionarySerialization.h */,
 				5F66F7D71CEA940F003827DA /* A0LockReact.h */,
 				5F66F7D81CEA940F003827DA /* A0LockReact.m */,
@@ -202,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DB92E01E3BFA59006E68A3 /* A0ThemeReact.m in Sources */,
 				5F66F7E51CEA940F003827DA /* A0UserProfile+ReactNative.m in Sources */,
 				5F66F7E31CEA940F003827DA /* A0Token+ReactNative.m in Sources */,
 				5F66F7E11CEA940F003827DA /* A0LockReact.m in Sources */,

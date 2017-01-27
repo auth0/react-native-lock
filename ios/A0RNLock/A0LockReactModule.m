@@ -52,7 +52,8 @@ RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
     }
     NSDictionary *style = values[@"style"];
     if (style) {
-        [[A0ThemeReact alloc] themeLockWithStyle:style];
+        NSDictionary *iosStyle = style[@"ios"];
+        [[A0ThemeReact alloc] themeLockWithStyle:iosStyle];
     }
 }
 

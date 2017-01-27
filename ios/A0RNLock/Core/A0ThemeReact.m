@@ -41,42 +41,42 @@
     _theme = [[A0Theme alloc] init];
     
     // Primary Button
-    [self themeLockColorForKey:@"A0ThemePrimaryButtonNormalColor" style:style];
-    [self themeLockColorForKey:@"A0ThemePrimaryButtonHighlightedColor" style:style];
-    [self themeLockColorForKey:@"A0ThemePrimaryButtonTextColor" style:style];
+    [self themeLockColorForKey:A0ThemePrimaryButtonNormalColor style:style];
+    [self themeLockColorForKey:A0ThemePrimaryButtonHighlightedColor style:style];
+    [self themeLockColorForKey:A0ThemePrimaryButtonTextColor style:style];
     // Secondary Button
-    [self themeLockColorForKey:@"A0ThemeSecondaryButtonBackgroundColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeSecondaryButtonTextColor" style:style];
+    [self themeLockColorForKey:A0ThemeSecondaryButtonBackgroundColor style:style];
+    [self themeLockColorForKey:A0ThemeSecondaryButtonTextColor style:style];
     // Text field
-    [self themeLockColorForKey:@"A0ThemeTextFieldTextColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeTextFieldPlaceholderTextColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeTextFieldIconColor" style:style];
+    [self themeLockColorForKey:A0ThemeTextFieldTextColor style:style];
+    [self themeLockColorForKey:A0ThemeTextFieldPlaceholderTextColor style:style];
+    [self themeLockColorForKey:A0ThemeTextFieldIconColor style:style];
     // Title
-    [self themeLockColorForKey:@"A0ThemeTitleTextColor" style:style];
+    [self themeLockColorForKey:A0ThemeTitleTextColor style:style];
     // Icon
-    [self themeLockColorForKey:@"A0ThemeIconBackgroundColor" style:style];
+    [self themeLockColorForKey:A0ThemeIconBackgroundColor style:style];
     // Background
-    [self themeLockColorForKey:@"A0ThemeScreenBackgroundColor" style:style];
+    [self themeLockColorForKey:A0ThemeScreenBackgroundColor style:style];
     // Description
-    [self themeLockColorForKey:@"A0ThemeDescriptionTextColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeSeparatorTextColor" style:style];
+    [self themeLockColorForKey:A0ThemeDescriptionTextColor style:style];
+    [self themeLockColorForKey:A0ThemeSeparatorTextColor style:style];
     // Credentials Box
-    [self themeLockColorForKey:@"A0ThemeCredentialBoxBorderColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeCredentialBoxSeparatorColor" style:style];
-    [self themeLockColorForKey:@"A0ThemeCredentialBoxBackgroundColor" style:style];
+    [self themeLockColorForKey:A0ThemeCredentialBoxBorderColor style:style];
+    [self themeLockColorForKey:A0ThemeCredentialBoxSeparatorColor style:style];
+    [self themeLockColorForKey:A0ThemeCredentialBoxBackgroundColor style:style];
     // Close
-    [self themeLockColorForKey:@"A0ThemeCloseButtonTintColor" style:style];
+    [self themeLockColorForKey:A0ThemeCloseButtonTintColor style:style];
     
     // Primary Button
-    [self themeLockImageForKey:@"A0ThemePrimaryButtonNormalImageName" style:style];
-    [self themeLockImageForKey:@"A0ThemePrimaryButtonHighlightedImageName" style:style];
+    [self themeLockImageForKey:A0ThemePrimaryButtonNormalImageName style:style];
+    [self themeLockImageForKey:A0ThemePrimaryButtonHighlightedImageName style:style];
     // Secondary Button
-    [self themeLockImageForKey:@"A0ThemeSecondaryButtonNormalImageName" style:style];
-    [self themeLockImageForKey:@"A0ThemeSecondaryButtonHighlightedImageName" style:style];
+    [self themeLockImageForKey:A0ThemeSecondaryButtonNormalImageName style:style];
+    [self themeLockImageForKey:A0ThemeSecondaryButtonHighlightedImageName style:style];
     // Icon
-    [self themeLockImageForKey:@"A0ThemeIconImageName" style:style];
+    [self themeLockImageForKey:A0ThemeIconImageName style:style];
     // Screen
-    [self themeLockImageForKey:@"A0ThemeScreenBackgroundImageName" style:style];
+    [self themeLockImageForKey:A0ThemeScreenBackgroundImageName style:style];
     
     [[A0Theme sharedInstance] registerTheme:_theme];
 }

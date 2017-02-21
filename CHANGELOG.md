@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.5.0](https://github.com/auth0/react-native-lock/tree/0.5.0) (2017-01-21)
+[Full Changelog](https://github.com/auth0/react-native-lock/compare/0.4.0...0.5.0)
+
+**Added**
+- Basic Theming support for iOS [\#117](https://github.com/auth0/react-native-lock/pull/117) ([jmoutte](https://github.com/jmoutte))
+
 ## [0.4.0](https://github.com/auth0/react-native-lock/tree/0.4.0) (2016-08-20)
 [Full Changelog](https://github.com/auth0/react-native-lock/compare/0.3.0...0.4.0)
 

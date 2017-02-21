@@ -9,7 +9,9 @@ fi
 podfile="$ios_dir/Podfile"
 template=`pwd`/node_modules/react-native-lock/Podfile.template
 
-echo "Checking Podfile in iOS project ($podfile)"
+project_name=$(node -pe "require('./package.json').name")
+
+echo "Checking Podfile in iOS project $project_name ($podfile)"
 
 if [ -f $podfile ]
   then
@@ -35,10 +37,22 @@ fi
 
 echo "Adding Podfile to iOS project"
 
-cd ios
-pod init >/dev/null 2>&1
-cat $template >> $podfile
-cd ..
+touch ios/Podfile
+cat >ios/Podfile <<EOL
+target '${project_name}' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for tonypoc
+end
+
+# Auth0 Lock
+
+pod 'Lock', '~> 1.26'
+pod 'Lock/TouchID'
+pod 'Lock/SMS'
+pod 'Lock/Email'
+EOL
 
 echo "Installing Pods"
 

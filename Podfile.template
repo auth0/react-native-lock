@@ -1,7 +1,0 @@
-
-# Auth0 Lock
-
-pod 'Lock', '~> 1.26'
-pod 'Lock/TouchID'
-pod 'Lock/SMS'
-pod 'Lock/Email'

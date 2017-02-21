@@ -6,11 +6,12 @@ const Auth0 = require('react-native-auth0');
 
 class Auth0Lock {
   constructor(options) {
-    let { clientId, domain } = options;
+    let { clientId, domain, style } = options;
     if (options != null && clientId != null && domain != null) {
       this.lockOptions = {
         clientId: clientId,
         domain: domain,
+        style: style,
         configurationDomain: options.configurationDomain,
         libraryVersion: VERSION
       };

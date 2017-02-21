@@ -22,6 +22,7 @@
 
 #import "A0LockReactModule.h"
 #import "A0LockReact.h"
+#import "A0ThemeReact.h"
 #import <Lock/Lock.h>
 
 #if __has_include(<Lock-Facebook/A0FacebookAuthenticator.h>)
@@ -48,6 +49,13 @@ RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
     NSString *domain = values[@"domain"];
     if (clientId && domain) {
         [[A0LockReact sharedInstance] configureLockWithClientId:clientId domain:domain version:values[@"libraryVersion"]];
+    }
+    NSDictionary *style = values[@"style"];
+    if (style) {
+        NSDictionary *iosStyle = style[@"ios"];
+        if (iosStyle) {
+            [[A0ThemeReact alloc] themeLockWithStyle:iosStyle];
+        }
     }
 }
 

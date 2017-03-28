@@ -42,8 +42,6 @@ cat >ios/Podfile <<EOL
 target '${project_name}' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-
-  # Pods for tonypoc
 end
 
 # Auth0 Lock

@@ -14,42 +14,28 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CocoaLumberjack (2.3.0):
-    - CocoaLumberjack/Default (= 2.3.0)
-    - CocoaLumberjack/Extensions (= 2.3.0)
-  - CocoaLumberjack/Core (2.3.0)
-  - CocoaLumberjack/Default (2.3.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.3.0):
-    - CocoaLumberjack/Default
-  - Lock (1.26.2):
-    - CocoaLumberjack (~> 2.0)
-    - Lock/Core (= 1.26.2)
-    - Lock/UI (= 1.26.2)
-    - Lock/WebView (= 1.26.2)
-  - Lock/Core (1.26.2):
+  - Lock (1.28.2):
+    - Lock/Core (= 1.28.2)
+    - Lock/UI (= 1.28.2)
+    - Lock/WebView (= 1.28.2)
+  - Lock/Core (1.28.2):
     - AFNetworking (~> 3.0)
-    - CocoaLumberjack (~> 2.0)
-  - Lock/CoreUI (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/CoreUI (1.28.2):
     - Lock/Core
     - Masonry (~> 0.6)
-  - Lock/Email (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/Email (1.28.2):
     - Lock/UI
-  - Lock/SMS (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/Safari (1.28.2):
+    - Lock/CoreUI
+  - Lock/SMS (1.28.2):
     - Lock/UI
-  - Lock/TouchID (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/TouchID (1.28.2):
     - Lock/UI
     - SimpleKeychain (~> 0.2)
     - TouchIDAuth (~> 0.1)
-  - Lock/UI (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/UI (1.28.2):
     - Lock/CoreUI
-  - Lock/WebView (1.26.2):
-    - CocoaLumberjack (~> 2.0)
+  - Lock/WebView (1.28.2):
     - Lock/CoreUI
   - Masonry (0.6.4)
   - SimpleKeychain (0.7.0)
@@ -59,17 +45,17 @@ PODS:
 DEPENDENCIES:
   - Lock (~> 1.26)
   - Lock/Email
+  - Lock/Safari
   - Lock/SMS
   - Lock/TouchID
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
-  Lock: 5aabf27ad5eb79f9faf43d34f3908479759aa8b3
+  Lock: 742c21d94c8a1805a3fb8d7e8a5d5e873b14ec47
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
   TouchIDAuth: 0cf861f58a2cacfc1c12cb02de4850729d943c81
 
-PODFILE CHECKSUM: d04401b7eb089bec1fc02ecd2208e30fc34d958e
+PODFILE CHECKSUM: f11964e75598b93f2851756711475450a7da1b78
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

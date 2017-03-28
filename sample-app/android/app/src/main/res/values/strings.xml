@@ -1,1 +1,3 @@
-<resources>    <string name="app_name">LockReact</string></resources>
+<resources>
+    <string name="app_name">LockReact</string>
+</resources>

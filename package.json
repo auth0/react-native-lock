@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "react-native-auth0": "github:auth0/react-native-auth0#abaa05a1ba01aa985fff73f1d8c2c0c71fee1d1c"
+    "react-native-auth0": "^1.0.0-beta.1"
   },
   "repository": {
     "type": "git",

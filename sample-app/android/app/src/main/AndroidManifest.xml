@@ -34,11 +34,18 @@
         android:theme="@style/Lock.Theme"
         android:screenOrientation="portrait"
         android:launchMode="singleTask">
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+          <category android:name="android.intent.category.DEFAULT"/>
+          <category android:name="android.intent.category.BROWSABLE"/>
+          <data android:scheme="a0{lowercase auth0 client id}" android:host="{auth0 domain}"/>
+        </intent-filter>
       </activity>
       <!--Auth0 Lock End-->
       <!--Auth0 Lock Embedded WebView-->
-      <activity 
-          android:name="com.auth0.identity.web.WebViewActivity" 
+      <!--Can be removed if you want to use browser instead-->
+      <activity
+          android:name="com.auth0.identity.web.WebViewActivity"
           android:theme="@style/Lock.Theme">
       </activity>
       <!--Auth0 Lock Embedded WebView End-->
@@ -49,11 +56,12 @@
           android:screenOrientation="portrait"
           android:launchMode="singleTask">
       </activity>
-      <activity 
-          android:name="com.auth0.lock.passwordless.CountryCodeActivity" 
+      <activity
+          android:name="com.auth0.lock.passwordless.CountryCodeActivity"
           android:theme="@style/Lock.Theme">
       </activity>
       <!--Auth0 Lock Passwordless End-->
     </application>
+
 
 </manifest>

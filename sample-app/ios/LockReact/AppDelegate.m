@@ -11,6 +11,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "A0LockReact.h"
 
 @implementation AppDelegate
 
@@ -34,4 +35,7 @@
   return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  return [[A0LockReact sharedInstance] handleURL:url sourceApplication:nil];
+}
 @end

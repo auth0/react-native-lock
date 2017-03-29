@@ -24,7 +24,11 @@ if [ -f $podfile ]
     echo "Add the following pods":
     echo ""
     echo ""
-    cat $template
+    echo "pod 'Lock', '~> 1.26'"
+    echo "pod 'Lock/TouchID'"
+    echo "pod 'Lock/SMS'"
+    echo "pod 'Lock/Email'"
+    echo "pod 'Lock/Safari'"
     echo ""
     echo ""
     echo "and run 'pod install' to install Lock for iOS"
@@ -50,6 +54,7 @@ pod 'Lock', '~> 1.26'
 pod 'Lock/TouchID'
 pod 'Lock/SMS'
 pod 'Lock/Email'
+pod 'Lock/Safari'
 EOL
 
 echo "Installing Pods"

@@ -133,7 +133,7 @@ public class LockReactModule extends ReactContextBaseJavaModule {
 
         Telemetry telemetry = new Telemetry("lock.react-native.android", initOptions.getLibraryVersion(), com.auth0.lock.BuildConfig.VERSION_NAME, null);
         lockBuilder = new Lock.Builder()
-                .useWebView(true)
+                .useWebView(!initOptions.useBrowser())
                 .telemetry(telemetry)
                 .clientId(initOptions.getClientId())
                 .domainUrl(initOptions.getDomain())

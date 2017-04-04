@@ -40,6 +40,11 @@
 #import <Lock-GooglePlus/A0GooglePlusAuthenticator.h>
 #endif
 
+#if __has_include(<Lock/A0SafariAuthenticator.h>)
+#define SAFARI_GOOGLE_OAUTH2_ENABLED 1
+#import <Lock/A0SafariAuthenticator.h>
+#endif
+
 @implementation A0LockReactModule
 
 RCT_EXPORT_MODULE(Auth0LockModule);
@@ -80,6 +85,13 @@ RCT_EXPORT_METHOD(nativeIntegrations:(NSDictionary *)integrations) {
             NSString *apiKey = values[@"api_key"];
             NSString *apiSecret = values[@"api_secret"];
             [authenticators addObject:[A0TwitterAuthenticator newAuthenticatorWithKey:apiKey andSecret:apiSecret]];
+        }
+#endif
+#ifdef SAFARI_GOOGLE_OAUTH2_ENABLED
+        if ([@"safari" isEqualToString:key]) {
+            NSString *connectionName = values[@"connection_name"];
+            BOOL useUniversalLink = values[@"use_universal_link"] != nil ? [values[@"use_universal_link"] boolValue] : YES;
+            [authenticators addObject:[[A0SafariAuthenticator alloc] initWithLock:lock connectionName:connectionName useUniversalLink:useUniversalLink]];
         }
 #endif
 #ifdef GOOGLE_PLUS_ENABLED

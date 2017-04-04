@@ -13,4 +13,5 @@ target 'A0RNLockCore' do
   pod 'Lock/Email'
   pod 'Lock/SMS'
   pod 'Lock/TouchID'
+  pod 'Lock/Safari'
 end

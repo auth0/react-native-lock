@@ -24,7 +24,7 @@ if [ -f $podfile ]
     echo "Add the following pods":
     echo ""
     echo ""
-    echo "pod 'Lock', '~> 1.26'"
+    echo "pod 'Lock', '~> 1.29'"
     echo "pod 'Lock/TouchID'"
     echo "pod 'Lock/SMS'"
     echo "pod 'Lock/Email'"
@@ -50,7 +50,7 @@ end
 
 # Auth0 Lock
 
-pod 'Lock', '~> 1.26'
+pod 'Lock', '~> 1.29'
 pod 'Lock/TouchID'
 pod 'Lock/SMS'
 pod 'Lock/Email'

@@ -5,7 +5,7 @@ end
 
 # Auth0 Lock
 
-pod 'Lock', '~> 1.26'
+pod 'Lock', '~> 1.29'
 pod 'Lock/TouchID'
 pod 'Lock/SMS'
 pod 'Lock/Email'

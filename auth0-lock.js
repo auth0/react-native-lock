@@ -14,7 +14,7 @@ class Auth0Lock {
         style: style,
         configurationDomain: options.configurationDomain,
         libraryVersion: VERSION,
-        useBrowserForConnections: options.useBrowserForConnections
+        useBrowser: options.useBrowser
       };
       this.nativeIntegrations = options.integrations;
       this.auth0 = new Auth0(domain);

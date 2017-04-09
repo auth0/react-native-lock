@@ -38,7 +38,7 @@ public class InitOptions {
     private static final String DOMAIN_KEY = "domain";
     private static final String CONFIGURATION_DOMAIN_KEY = "configurationDomain";
     private static final String LIBRARY_VERSION_KEY = "libraryVersion";
-    private static final String USE_BROWSER_FOR_CONNECTIONS = "useBrowserForConnections";
+    private static final String USE_BROWSER = "useBrowser";
 
     private String clientId;
     private String domain;
@@ -63,9 +63,8 @@ public class InitOptions {
             this.configurationDomain = options.getString(CONFIGURATION_DOMAIN_KEY);
         }
 
-        if (options.hasKey(USE_BROWSER_FOR_CONNECTIONS)) {
-            ReadableArray connections = options.getArray(USE_BROWSER_FOR_CONNECTIONS);
-            this.useBrowser = connections.size() > 0;
+        if (options.hasKey(USE_BROWSER)) {
+            this.useBrowser = options.getBoolean(USE_BROWSER);
         }
 
         this.libraryVersion = options.hasKey(LIBRARY_VERSION_KEY) ? options.getString(LIBRARY_VERSION_KEY) : "0.0.0";

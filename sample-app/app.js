@@ -13,8 +13,7 @@ var Auth0Lock = require('react-native-lock');
 
 var credentials = require('./auth0-credentials');
 
-const useBrowserForConnections = ["google-oauth2"];
-var lock = new Auth0Lock({useBrowserForConnections, ...credentials});
+var lock = new Auth0Lock({useBrowser: true, ...credentials});
 
 var HeaderView = React.createClass({
   render: function() {

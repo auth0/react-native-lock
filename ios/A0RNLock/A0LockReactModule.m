@@ -51,14 +51,13 @@ RCT_REMAP_METHOD(init, configureLockWithValues:(NSDictionary *)values) {
     if (clientId && domain) {
         A0LockReact *lockReact = [A0LockReact sharedInstance];
         [lockReact configureLockWithClientId:clientId domain:domain version:values[@"libraryVersion"]];
-        NSArray *browserConnections = values[@"useBrowserForConnections"];
-        A0Lock *lock = [lockReact lock];
-        NSMutableArray *authenticators = [@[] mutableCopy];
-        for (NSString *connectionName in browserConnections) {
-            A0SafariAuthenticator *safari = [[A0SafariAuthenticator alloc] initWithLock:lock connectionName:connectionName useUniversalLink:NO];
-            [authenticators addObject:safari];
+        BOOL useBrowser = [values[@"useBrowser"] boolValue];
+        if (useBrowser) {
+            A0Lock *lock = [lockReact lock];
+            [[lock identityProviderAuthenticator] registerDefaultAuthenticationProvider:^A0BaseAuthenticator * _Nonnull(A0Lock * _Nonnull lock, NSString * _Nonnull connectionName) {
+                return [[A0SafariAuthenticator alloc] initWithLock:lock connectionName:connectionName useUniversalLink:NO];
+            }];
         }
-        [lock registerAuthenticators:authenticators];
     }
     NSDictionary *style = values[@"style"];
     if (style) {

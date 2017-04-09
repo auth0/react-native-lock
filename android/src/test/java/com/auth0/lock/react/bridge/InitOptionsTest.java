@@ -27,6 +27,7 @@ package com.auth0.lock.react.bridge;
 import com.auth0.lock.react.BuildConfig;
 import com.facebook.react.bridge.SimpleMap;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.SimpleArray;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,11 +58,13 @@ public class InitOptionsTest {
         options.putString("clientId", "client-id-value");
         options.putString("domain", "domain-value");
         options.putString("configurationDomain", "configuration-domain-value");
+        options.putBoolean("useBrowser", true);
 
         InitOptions initOptions = new InitOptions(options);
         assertThat(initOptions.getClientId(), is(equalTo("client-id-value")));
         assertThat(initOptions.getConfigurationDomain(), is(equalTo("configuration-domain-value")));
         assertThat(initOptions.getDomain(), is(equalTo("domain-value")));
+        assertThat(initOptions.useBrowser(), is(true));
     }
 
     @Test

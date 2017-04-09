@@ -151,6 +151,10 @@
     self.shown = YES;
 }
 
+- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
+    return [self.lock handleURL:url sourceApplication:sourceApplication];
+}
+
 - (void)authenticateWithConnectionName:(NSString *)connectionName options:(NSDictionary *)options callback:(A0LockCallback)callback {
     A0IdentityProviderAuthenticator *authenticator = [self.lock identityProviderAuthenticator];
     void(^success)(A0UserProfile *, A0Token *) = ^(A0UserProfile *profile, A0Token *token) {

@@ -13,7 +13,7 @@ var Auth0Lock = require('react-native-lock');
 
 var credentials = require('./auth0-credentials');
 
-var lock = new Auth0Lock(credentials);
+var lock = new Auth0Lock({useBrowser: true, ...credentials});
 
 var HeaderView = React.createClass({
   render: function() {

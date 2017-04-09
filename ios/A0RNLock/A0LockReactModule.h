@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "RCTBridgeModule.h"
+#import <React/RCTBridgeModule.h>
 
 @interface A0LockReactModule : NSObject<RCTBridgeModule>
 

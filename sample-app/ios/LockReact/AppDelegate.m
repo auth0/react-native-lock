@@ -9,9 +9,8 @@
 
 #import "AppDelegate.h"
 
-#import "RCTBundleURLProvider.h"
-#import "RCTRootView.h"
-
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
 #import "A0LockReact.h"
 
 @implementation AppDelegate
@@ -20,7 +19,6 @@
 {
   NSURL *jsCodeLocation;
 
-  [[RCTBundleURLProvider sharedSettings] setDefaults];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
@@ -37,7 +35,7 @@
   return YES;
 }
 
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
-  return [[[A0LockReact sharedInstance] lock] continueUserActivity:userActivity restorationHandler:restorationHandler];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  return [[A0LockReact sharedInstance] handleURL:url sourceApplication:nil];
 }
 @end

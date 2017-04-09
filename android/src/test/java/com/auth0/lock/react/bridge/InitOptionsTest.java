@@ -55,12 +55,10 @@ public class InitOptionsTest {
     @Test
     public void testAll() throws Exception {
         WritableMap options = new SimpleMap();
-        SimpleArray connections = new SimpleArray();
-        connections.pushString("google-oauth2");
         options.putString("clientId", "client-id-value");
         options.putString("domain", "domain-value");
         options.putString("configurationDomain", "configuration-domain-value");
-        options.putArray("useBrowserForConnections", connections);
+        options.putBoolean("useBrowser", true);
 
         InitOptions initOptions = new InitOptions(options);
         assertThat(initOptions.getClientId(), is(equalTo("client-id-value")));

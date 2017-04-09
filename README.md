@@ -245,6 +245,74 @@ And you'll see our native login screen
 
 [![Lock.png](https://cdn.auth0.com/mobile-sdk-lock/lock-ios-default.png)](https://auth0.com)
 
+### Avoid WebView for Social Auth
+
+In order to make Lock use the OS browser to perform Web Auth you will need to pass the attribute `useBrowser` when you build Lock like
+
+```js
+var lock = new Auth0Lock({clientId: "YOUR_CLIENT_ID", domain: "YOUR_DOMAIN", useBrowser: true});
+```
+
+Then you need to configure both your iOS and Android project following the instructions detailed below.
+
+> **IMPORTANT**: This feature only works with iOS 9 or later.
+
+### iOS
+
+In the file `AppDelegate.m` add the following import on the top (next to the other imports of the file)
+
+```objc
+#import "A0LockReact.h"
+```
+
+and then inside the `AppDelegate` implementation add the following method
+
+```objc
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  return [[A0LockReact sharedInstance] handleURL:url sourceApplication:nil];
+}
+```
+
+And finally in the file `Info.plist` add the following entry
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>auth0</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>{Bundle Identifier}</string>
+    </array>
+  </dict>
+</array>
+```
+
+Where the Bundle identifier can be found in the same file under the key `CFBundleIdentifier` like
+
+```xml
+<key>CFBundleIdentifier</key>
+<string>org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)</string>
+```
+
+### Android
+
+In the file `AndroidManifest` find where the `LockActivity` is declared and insde the `activity` tags add the following
+
+```xml
+<intent-filter>
+  <action android:name="android.intent.action.VIEW"/>
+  <category android:name="android.intent.category.DEFAULT"/>
+  <category android:name="android.intent.category.BROWSABLE"/>
+  <data android:scheme="a0{your lowercase auth0 client id}" android:host="{your auth0 domain}"/>
+</intent-filter>
+```
+
+And make sure Lock's activity launch mode is `singleTask` 
+
 ### TouchID (iOS Only)
 
 ```js

@@ -378,7 +378,7 @@ Show Lock's authentication screen as a modal screen using the connections config
 
 The callback will have the error if anything went wrong or after a successful authentication, it will yield the user's profile info and tokens.
 
-####.authenticationAPI()
+####.authenticationAPI(clientID)
 Returns Auth0 Authentication API client that can be used to refresh user's token, obtain user information or call Auth0 delegation.
 
 > For more info check [react-native-auth0](https://github.com/auth0/react-native-auth0)

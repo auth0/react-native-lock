@@ -96,6 +96,7 @@ packagingOptions {
     exclude 'META-INF/NOTICE'
 }
 ```
+> This fixes the error `Error: duplicate files during packaging of APK
 
 Then in your `android/app/src/main/AndroidManifest.xml` add the following inside `<application>` tag
 

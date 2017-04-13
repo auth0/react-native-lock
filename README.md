@@ -285,13 +285,13 @@ And finally in the file `Info.plist` add the following entry
     <string>auth0</string>
     <key>CFBundleURLSchemes</key>
     <array>
-      <string>{Bundle Identifier}</string>
+      <string>{Replace this with Bundle Identifier}</string>
     </array>
   </dict>
 </array>
 ```
 
-Where the Bundle identifier can be found in the same file under the key `CFBundleIdentifier` like
+Where the Bundle identifier can be found and has to be replaced by the same value in the same file under the key `CFBundleIdentifier` like
 
 ```xml
 <key>CFBundleIdentifier</key>

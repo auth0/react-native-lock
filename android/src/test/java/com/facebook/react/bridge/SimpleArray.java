@@ -126,6 +126,11 @@ public class SimpleArray implements ReadableArray, WritableArray {
   }
 
   @Override
+  public Dynamic getDynamic(int index) {
+    return DynamicFromArray.create(this, index);
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

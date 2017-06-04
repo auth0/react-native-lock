@@ -102,6 +102,11 @@ public class SimpleMap implements ReadableMap, WritableMap {
   }
 
   @Override
+  public Dynamic getDynamic(String name) {
+    return DynamicFromMap.create(this, name);
+  }
+
+  @Override
   public ReadableMapKeySetIterator keySetIterator() {
     return new ReadableMapKeySetIterator() {
       Iterator<String> mIterator = mBackingMap.keySet().iterator();

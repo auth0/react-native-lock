@@ -1,8 +1,9 @@
-var { NativeModules, Platform } = require('react-native');
-var LockModule = NativeModules.Auth0LockModule;
+import { NativeModules, Platform } from 'react-native';
+import Auth0 from 'react-native-auth0';
 
-const VERSION = require('./version');
-const Auth0 = require('react-native-auth0');
+import VERSION from './version';
+
+const LockModule = NativeModules.Auth0LockModule;
 
 class Auth0Lock {
   constructor(options) {
@@ -60,4 +61,4 @@ class Auth0Lock {
   }
 }
 
-module.exports = Auth0Lock;
+export default Auth0Lock;

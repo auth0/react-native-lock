@@ -7,6 +7,18 @@
 
 **react-native-lock** is a wrapper around Lock's implementations for [iOS](https://github.com/auth0/Lock.iOS-OSX) and [Android](https://github.com/auth0/Lock.Android) ready to use for React Native
 
+## Before you start
+
+Starting 8th June 2017 Auth0 restricted some Auth flows for new Auth0 clients (Grant types), even if your account was created before that date, so this library won't work out of the box since it relies on legacy grants. If you were already using this libary before 8th June, you can go to your client's settings and enable the grants you neeed.
+
+* `Legacy: RO` (`http://auth0.com/oauth/legacy/grant-type/ro`): for database connections
+* `Legacy: RO jwt bearer` (`http://auth0.com/oauth/legacy/grant-type/ro/jwt-bearer`): for TouchID
+* `Legcy: Access Token` (`http://auth0.com/oauth/legacy/grant-type/access_token`): for native social integrations
+
+In our documentation you will find more information about [Grant types](https://auth0.com/docs/clients/client-grant-types).
+
+We recommend following our react-native quickstart or using https://github.com/auth0/react-native-auth0, we will continue fixing bugs for react-native-lock for the time being.
+
 ## Requirements
 
 ### iOS

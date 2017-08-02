@@ -144,15 +144,6 @@ public class LockReactPackage implements ReactPackage {
      * @see ReactPackage
      */
     @Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return new ArrayList<>();
-    }
-
-    /**
-     * NOT USED. This is a required override
-     * @see ReactPackage
-     */
-    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return new ArrayList<>();
     }

@@ -301,7 +301,7 @@ And finally in the file `Info.plist` add the following entry
     <string>auth0</string>
     <key>CFBundleURLSchemes</key>
     <array>
-      <string>{Bundle Identifier}</string>
+      <string>{Insert Bundle Identifier here}</string>
     </array>
   </dict>
 </array>
@@ -313,6 +313,9 @@ Where the Bundle identifier can be found in the same file under the key `CFBundl
 <key>CFBundleIdentifier</key>
 <string>org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)</string>
 ```
+
+Then in your Auth0 web account, go to Client -> Settings -> Allowed Callback URLs and add the callback URL in this format:
+`{bundle identifier}://{auth0 domain}/ios/{bundle identifier}/callback`
 
 ### Android
 

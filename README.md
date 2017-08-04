@@ -94,7 +94,7 @@ Then for each of the targets do the following:
 
 After setting up `react-native-lock` either [Manually](#manually) or using [react-native cli](#react-native-cli) you need to open your iOS project with Xcode and follow these steps:
 
-1. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Framework Search Paths` and make sure it contains `$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/Lock`
+1. Click `A0RNLock.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Framework Search Paths` and make sure it contains `$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/`, marked as `recursive`.
 2. Change to the `A0RNLock.xcodeproj` target tab `Build Phases`, and in the section `Link Binary with Libraries` click the `+` and add `Lock.framework` and make sure it's `Status` is set to **optional**
 3. In the project navigator, select your project (should be the top one) and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic') and look for `Other Linker Flags` and make sure the value `-ObjC` is listed there
 

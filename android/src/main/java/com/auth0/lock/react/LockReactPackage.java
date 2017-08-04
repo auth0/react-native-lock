@@ -139,13 +139,9 @@ public class LockReactPackage implements ReactPackage {
         return modules;
     }
 
-    /**
-     * NOT USED. This is a required override
-     * @see ReactPackage
-     */
-    @Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return new ArrayList<>();
+    // Required @Override for React Native v0.46.x and lower
+    public List<Class<? extends JavaScriptModule>> createJSModules() {		
+      return new ArrayList<>();		
     }
 
     /**

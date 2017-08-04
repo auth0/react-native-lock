@@ -1,3 +1,7 @@
+# This library is DEPRECATED
+
+We recommend following our [react-native quickstart](https://auth0.com/docs/quickstart/native/react-native) and using https://github.com/auth0/react-native-auth0.
+
 # react-native-lock
 
 [![NPM version][npm-image]][npm-url]
@@ -17,7 +21,7 @@ Starting 8th June 2017 Auth0 restricted some Auth flows for new Auth0 clients (G
 
 In our documentation you will find more information about [Grant types](https://auth0.com/docs/clients/client-grant-types).
 
-We recommend following our react-native quickstart or using https://github.com/auth0/react-native-auth0, we will continue fixing bugs for react-native-lock for the time being.
+We will continue fixing bugs for react-native-lock for the time being.
 
 ## Requirements
 
